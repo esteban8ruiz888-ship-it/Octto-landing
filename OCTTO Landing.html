@@ -1,0 +1,3092 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>OCTTO — Software ERP con IA para Negocios en Colombia | POS, Facturación DIAN y CRM</title>
+<meta name="description" content="OCTTO es el sistema operativo con IA para negocios latinoamericanos. POS, facturación electrónica DIAN, CRM, inventario y e-commerce en una sola plataforma. Implementación en 7 días. Sin tarjeta de crédito." />
+<meta name="keywords" content="software empresarial colombia, ERP pymes colombia, facturacion electronica DIAN, software POS colombia, CRM pymes, inventario automatizado, sistema gestion empresarial, software restaurantes colombia, software retail colombia, inteligencia artificial negocios, ERP colombia" />
+<meta name="robots" content="index, follow" />
+<meta name="author" content="OCTTO Technologies S.A.S." />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="OCTTO — Software ERP con IA para Negocios en Colombia" />
+<meta property="og:description" content="Sistema operativo IA para negocios latinoamericanos. POS, facturación DIAN, CRM, inventario y e-commerce en una sola plataforma. Implementación en 7 días." />
+<meta property="og:locale" content="es_CO" />
+<meta property="og:site_name" content="OCTTO" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="OCTTO — Tu negocio en piloto automático" />
+<meta name="twitter:description" content="Software ERP con IA para PyMEs en Colombia. POS, facturación DIAN, CRM e inventario en una sola plataforma." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "OCTTO",
+      "alternateName": "OCTTO ERP",
+      "description": "Sistema operativo con IA para negocios latinoamericanos. POS, facturación electrónica DIAN, CRM, inventario, e-commerce y logística en una sola plataforma.",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web, iOS, Android",
+      "offers": [
+        { "@type": "Offer", "name": "Portales Electrónicos", "price": "49000", "priceCurrency": "COP" },
+        { "@type": "Offer", "name": "POS + Contabilidad", "price": "69000", "priceCurrency": "COP" },
+        { "@type": "Offer", "name": "ERP Empresas", "price": "122000", "priceCurrency": "COP" }
+      ],
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "247", "bestRating": "5" },
+      "publisher": { "@type": "Organization", "name": "OCTTO Technologies S.A.S.", "address": { "@type": "PostalAddress", "addressCountry": "CO", "addressLocality": "Bogotá" } }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "¿OCTTO está habilitado para facturación electrónica DIAN?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. OCTTO es proveedor tecnológico habilitado por la DIAN para emitir facturas electrónicas, notas crédito y documentos equivalentes desde el primer día." } },
+        { "@type": "Question", "name": "¿Cuánto tiempo tarda la implementación?", "acceptedAnswer": { "@type": "Answer", "text": "El promedio de nuestros clientes está operativo en 3 a 7 días hábiles. Incluye carga de catálogo, migración de datos, configuración y capacitación del equipo." } },
+        { "@type": "Question", "name": "¿Hay contrato de permanencia mínima?", "acceptedAnswer": { "@type": "Answer", "text": "No. Pagás tu plan de usuarios mes a mes sin penalidades, o anual con 15% de descuento. La activación es un pago único inicial." } },
+        { "@type": "Question", "name": "¿Mis empleados necesitan experiencia técnica?", "acceptedAnswer": { "@type": "Answer", "text": "No. OCTTO fue diseñado para que cualquier persona pueda dominarlo en menos de 1 día. La interfaz es táctil y en español con guías en video." } }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="grain">
+<div id="root"></div>
+
+<!-- Panel de tweaks desactivado en producción. Para volver a usarlo en desarrollo, descomentar la línea de abajo: -->
+<!-- <script type="text/babel" src="tweaks-panel.jsx"></script> -->
+<script type="text/babel" data-from="components/shared.jsx">
+// OCTTO — Shared iconography + visual components (ES)
+
+const Logo = ({ size = 28 }) => (
+  <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+    <img src="assets/octto-mascot-transparent.png" alt="OCTTO" style={{ width: size * 1.35, height: size * 1.35, objectFit: 'contain', filter: 'drop-shadow(0 0 8px rgba(184,158,255,0.7))' }} />
+    <span style={{ fontFamily: 'Manrope', fontWeight: 800, fontSize: 20, letterSpacing: '-0.04em', color: '#fff' }}>
+      OCTTO
+    </span>
+  </div>
+);
+
+const Icon = ({ name, size = 22, color = 'currentColor', strokeWidth = 1.6 }) => {
+  const common = { width: size, height: size, viewBox: '0 0 24 24', fill: 'none', stroke: color, strokeWidth, strokeLinecap: 'round', strokeLinejoin: 'round' };
+  const paths = {
+    'pos': <><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/><circle cx="7" cy="15" r="1"/><path d="M11 15h6"/></>,
+    'invoice': <><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M8 13h8M8 17h5"/></>,
+    'inventory': <><path d="M21 8V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8"/><path d="M1 3h22v5H1z"/><path d="M10 12h4"/></>,
+    'crm': <><circle cx="9" cy="8" r="4"/><path d="M3 21v-2a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5v2"/><circle cx="17" cy="6" r="3"/><path d="M21 13v-1a3 3 0 0 0-3-3"/></>,
+    'ecommerce': <><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></>,
+    'finance': <><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></>,
+    'hr': <><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></>,
+    'logistics': <><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></>,
+    'chatbot': <><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><circle cx="9" cy="10" r="1" fill={color}/><circle cx="15" cy="10" r="1" fill={color}/><path d="M9 14h6"/></>,
+    'automation': <><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="4"/></>,
+    'insights': <><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/><circle cx="7" cy="14" r="1.5" fill={color}/><circle cx="20" cy="9" r="1.5" fill={color}/></>,
+    'sparkle': <><path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/></>,
+    'arrow-right': <><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></>,
+    'check': <polyline points="20 6 9 17 4 12"/>,
+    'x': <><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></>,
+    'plus': <><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></>,
+    'zap': <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>,
+    'shield': <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>,
+    'trending': <><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></>,
+    'globe': <><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10z"/></>,
+    'lock': <><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></>,
+    'cpu': <><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></>,
+  };
+  return <svg {...common}>{paths[name]}</svg>;
+};
+
+const Nav = () => {
+  const [scrolled, setScrolled] = React.useState(false);
+  const [solucionesOpen, setSolucionesOpen] = React.useState(false);
+  const ref = React.useRef(null);
+
+  React.useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  React.useEffect(() => {
+    const handler = (e) => { if (ref.current && !ref.current.contains(e.target)) setSolucionesOpen(false); };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, []);
+
+  const linkStyle = { color: 'var(--text-dim)', textDecoration: 'none', fontSize: 14, fontWeight: 500, transition: 'color .2s' };
+
+  const soluciones = [
+    { emoji: '🏭', label: 'Industrias', desc: 'Retail, restaurantes, salud y más', href: '#solutions' },
+    { emoji: '💳', label: 'Fidelización', desc: 'Tarjetas Wallet + geo-marketing', href: '#fidelizacion', accent: true },
+    { emoji: '🤖', label: 'Inteligencia IA', desc: 'Agentes, chatbot y automatización', href: '#ai' },
+    { emoji: '🔗', label: 'Integraciones', desc: 'DIAN, Wallets, pasarelas y más', href: '#integrations' },
+  ];
+
+  return (
+    <nav style={{
+      position: 'fixed', top: 16, left: '50%', transform: 'translateX(-50%)',
+      zIndex: 50, width: 'calc(100% - 32px)', maxWidth: 1200,
+      padding: '12px 18px',
+      borderRadius: 999,
+      background: scrolled ? 'rgba(11,15,26,0.7)' : 'rgba(11,15,26,0.35)',
+      border: '1px solid var(--line)',
+      backdropFilter: 'blur(18px) saturate(1.4)',
+      WebkitBackdropFilter: 'blur(18px) saturate(1.4)',
+      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+      transition: 'background .3s',
+    }}>
+      <Logo size={22} />
+      <div style={{ display: 'flex', gap: 28, alignItems: 'center' }} className="nav-links">
+        <a href="#platform" style={linkStyle}>Plataforma</a>
+        <a href="#ai" style={linkStyle}>IA</a>
+
+        {/* Soluciones dropdown */}
+        <div ref={ref} style={{ position: 'relative' }}>
+          <button
+            onClick={() => setSolucionesOpen(v => !v)}
+            style={{ ...linkStyle, background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 5, padding: 0 }}
+          >
+            Soluciones
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" style={{ transition: 'transform .2s', transform: solucionesOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}>
+              <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+            </svg>
+          </button>
+
+          {solucionesOpen && (
+            <div style={{
+              position: 'absolute', top: 'calc(100% + 14px)', left: '50%', transform: 'translateX(-50%)',
+              background: 'rgba(11,15,26,0.95)', border: '1px solid rgba(255,255,255,0.1)',
+              borderRadius: 16, padding: 8, minWidth: 260,
+              backdropFilter: 'blur(20px)', boxShadow: '0 24px 60px rgba(0,0,0,0.5)',
+              animation: 'fadeIn .15s ease'
+            }}>
+              {soluciones.map(s => (
+                <a key={s.label} href={s.href} onClick={() => setSolucionesOpen(false)} style={{
+                  display: 'flex', alignItems: 'center', gap: 12, padding: '10px 14px',
+                  borderRadius: 10, textDecoration: 'none',
+                  background: s.accent ? 'rgba(99,102,241,0.1)' : 'transparent',
+                  border: s.accent ? '1px solid rgba(99,102,241,0.2)' : '1px solid transparent',
+                  marginBottom: 4, transition: 'background .15s'
+                }}
+                  onMouseEnter={e => { if (!s.accent) e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; }}
+                  onMouseLeave={e => { if (!s.accent) e.currentTarget.style.background = 'transparent'; }}
+                >
+                  <span style={{ fontSize: 20 }}>{s.emoji}</span>
+                  <div>
+                    <div style={{ fontSize: 13, fontWeight: 600, color: s.accent ? '#a5b4fc' : '#fff' }}>{s.label}</div>
+                    <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)' }}>{s.desc}</div>
+                  </div>
+                  {s.accent && <div style={{ marginLeft: 'auto', fontSize: 10, fontWeight: 700, letterSpacing: 1, color: '#6366f1', background: 'rgba(99,102,241,0.15)', padding: '2px 8px', borderRadius: 6 }}>NUEVO</div>}
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <a href="#pricing" style={linkStyle}>Precios</a>
+      </div>
+      <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+        <a href="https://app.octto.co" style={{ ...linkStyle, fontSize: 14 }}>Iniciar sesión</a>
+        <a href="https://wa.me/573209921580?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20OCTTO.%20%C2%BFPueden%20ayudarme%3F%20%F0%9F%91%8B" target="_blank" className="btn btn-primary" style={{ padding: '10px 18px', fontSize: 13 }}>
+          Agendar demo
+          <Icon name="arrow-right" size={14} />
+        </a>
+      </div>
+    </nav>
+  );
+};
+
+Object.assign(window, { Logo, Icon, Nav });
+
+</script>
+<script type="text/babel" data-from="components/hero.jsx">
+// Hero — Español
+
+const VIDEO_DEMO_URL = ''; // 👈 Pegá acá la URL del video (YouTube, Vimeo, etc.)
+
+const VideoModal = ({ onClose }) => {
+  React.useEffect(() => {
+    const handler = (e) => { if (e.key === 'Escape') onClose(); };
+    document.addEventListener('keydown', handler);
+    return () => document.removeEventListener('keydown', handler);
+  }, [onClose]);
+
+  const embedUrl = (() => {
+    if (!VIDEO_DEMO_URL) return '';
+    const yt = VIDEO_DEMO_URL.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&?/]+)/);
+    if (yt) return `https://www.youtube.com/embed/${yt[1]}?autoplay=1&rel=0`;
+    const vm = VIDEO_DEMO_URL.match(/vimeo\.com\/(\d+)/);
+    if (vm) return `https://player.vimeo.com/video/${vm[1]}?autoplay=1`;
+    return VIDEO_DEMO_URL;
+  })();
+
+  return (
+    <div onClick={onClose} style={{
+      position: 'fixed', inset: 0, zIndex: 9999,
+      background: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(8px)',
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      padding: 24, animation: 'fadeIn 0.2s ease'
+    }}>
+      <div onClick={e => e.stopPropagation()} style={{
+        position: 'relative', width: '100%', maxWidth: 900,
+        borderRadius: 16, overflow: 'hidden',
+        boxShadow: '0 40px 120px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.08)',
+        background: '#0a0a0a',
+        animation: 'slideUp 0.25s ease'
+      }}>
+        <button onClick={onClose} style={{
+          position: 'absolute', top: 14, right: 14, zIndex: 10,
+          width: 36, height: 36, borderRadius: '50%',
+          background: 'rgba(255,255,255,0.1)', border: 'none',
+          color: '#fff', fontSize: 18, cursor: 'pointer',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          backdropFilter: 'blur(4px)'
+        }}>×</button>
+        <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0 }}>
+          {embedUrl
+            ? <iframe src={embedUrl} title="Demo OCTTO" frameBorder="0" allow="autoplay; fullscreen"
+                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }} allowFullScreen />
+            : <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', color: 'rgba(255,255,255,0.4)', gap: 12 }}>
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16" fill="currentColor" stroke="none"/></svg>
+                <span style={{ fontSize: 14 }}>Agregá la URL del video en VIDEO_DEMO_URL</span>
+              </div>
+          }
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const Hero = () => {
+  const [liveMetric, setLiveMetric] = React.useState(2847293);
+  const [showVideo, setShowVideo] = React.useState(false);
+  React.useEffect(() => {
+    const i = setInterval(() => setLiveMetric(m => m + Math.floor(Math.random() * 340)), 1500);
+    return () => clearInterval(i);
+  }, []);
+
+  return (
+    <section style={{ position: 'relative', minHeight: '100vh', paddingTop: 140, paddingBottom: 80, overflow: 'hidden' }}>
+      <div className="glow-orb" style={{ width: 600, height: 600, top: -200, left: -150, background: 'var(--primary)', opacity: 0.32 }} />
+      <div className="glow-orb" style={{ width: 520, height: 520, top: 100, right: -150, background: 'var(--secondary)', opacity: 0.28 }} />
+      <div className="glow-orb" style={{ width: 400, height: 400, bottom: -100, left: '40%', background: 'var(--accent)', opacity: 0.08 }} />
+
+      <div style={{
+        position: 'absolute', inset: 0,
+        backgroundImage: 'linear-gradient(rgba(122,92,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(122,92,255,0.05) 1px, transparent 1px)',
+        backgroundSize: '64px 64px',
+        maskImage: 'radial-gradient(ellipse at 50% 40%, black 30%, transparent 75%)',
+        WebkitMaskImage: 'radial-gradient(ellipse at 50% 40%, black 30%, transparent 75%)',
+      }} />
+
+      <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 28 }}>
+          <div className="pill" style={{ padding: '8px 14px 8px 8px' }}>
+            <span style={{ background: 'linear-gradient(135deg, var(--secondary), var(--primary))', padding: '3px 8px', borderRadius: 999, fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', color: '#fff' }}>🔥 EN VIVO</span>
+            <span>+2.000 negocios en Colombia ya operan con IA — ¿el tuyo cuándo?</span>
+            <Icon name="arrow-right" size={12} />
+          </div>
+        </div>
+
+        {/* Mascot + headline side-by-side on desktop */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', alignItems: 'center', gap: 40, marginBottom: 48 }} className="hero-grid">
+          <div>
+            <h1 className="display" style={{ fontSize: 'clamp(44px, 5.6vw, 88px)', marginBottom: 24 }}>
+              <span style={{ color: '#fff' }}>Tu negocio factura,</span>
+              <br />
+              <span className="gradient-text">contabiliza y vende</span>
+              <br />
+              <span style={{ position: 'relative', display: 'inline-block' }}>
+                <span className="gradient-accent" style={{ fontStyle: 'italic' }}>solo. Con IA.</span>
+                <svg style={{ position: 'absolute', bottom: -8, left: 0, width: '100%', height: 16 }} viewBox="0 0 300 16" preserveAspectRatio="none">
+                  <path d="M5 10 Q 75 2, 150 8 T 295 6" stroke="var(--accent)" strokeWidth="2" fill="none" strokeLinecap="round" opacity="0.6" />
+                </svg>
+              </span>
+            </h1>
+            <p style={{
+              fontSize: 'clamp(16px, 1.3vw, 19px)',
+              color: 'var(--text-dim)',
+              maxWidth: 520,
+              marginBottom: 36,
+              lineHeight: 1.55,
+            }}>
+              OCTTO es el único ERP donde <strong style={{ color: 'var(--text)' }}>la IA no es un extra — es el motor</strong>. Cada venta genera su asiento contable sola. Cada factura se timbra en la DIAN sola. Cada cliente que está a punto de irse recibe una oferta <strong style={{ color: 'var(--text)' }}>sola</strong>. Vos tomás decisiones. La IA ejecuta todo lo demás.
+            </p>
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+              <a href="https://wa.me/573209921580?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20OCTTO.%20%C2%BFPueden%20ayudarme%3F%20%F0%9F%91%8B" target="_blank" className="btn btn-primary" style={{ padding: '15px 26px', fontSize: 15 }}>
+                Quiero ver mi negocio con IA
+                <Icon name="arrow-right" size={16} />
+              </a>
+              <button onClick={() => setShowVideo(true)} className="btn btn-ghost" style={{ padding: '15px 26px', fontSize: 15, border: 'none', cursor: 'pointer' }}>
+                <span style={{ width: 24, height: 24, borderRadius: '50%', background: 'rgba(122,92,255,0.25)', border: '1.5px solid rgba(122,92,255,0.5)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <svg width="8" height="8" viewBox="0 0 8 8"><polygon points="1,0 7,4 1,8" fill="#fff"/></svg>
+                </span>
+                Ver demo de 2 min
+              </button>
+              {showVideo && <VideoModal onClose={() => setShowVideo(false)} />}
+            </div>
+          </div>
+
+          {/* Mascot with bright visible backdrop */}
+          <div style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 460 }} className="hero-mascot">
+            {/* Solid bright circle backdrop so mascot pops */}
+            <div style={{ position: 'absolute', width: 400, height: 400, borderRadius: '50%', background: 'radial-gradient(circle, rgba(140,110,255,0.7) 0%, rgba(100,70,220,0.5) 35%, rgba(80,50,200,0.25) 60%, transparent 80%)', filter: 'blur(40px)' }} />
+            <div style={{ position: 'absolute', width: 320, height: 320, borderRadius: '50%', background: 'radial-gradient(circle, rgba(220,210,255,0.35) 0%, rgba(200,185,255,0.15) 50%, transparent 75%)', filter: 'blur(15px)' }} />
+            {/* Gold accent sparkle */}
+            <div style={{ position: 'absolute', width: 200, height: 200, borderRadius: '50%', background: 'radial-gradient(circle, rgba(245,184,65,0.22) 0%, transparent 55%)', filter: 'blur(20px)' }} />
+            {/* Orbital ring */}
+            <svg style={{ position: 'absolute', width: 520, height: 520 }} viewBox="0 0 520 520">
+              <defs>
+                <linearGradient id="hero-ring" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stopColor="#b89eff" stopOpacity="0.7" />
+                  <stop offset="50%" stopColor="#F5B841" stopOpacity="0.4" />
+                  <stop offset="100%" stopColor="#7A5CFF" stopOpacity="0.7" />
+                </linearGradient>
+              </defs>
+              <g className="animate-spin-slow" style={{ transformOrigin: 'center' }}>
+                <circle cx="260" cy="260" r="240" fill="none" stroke="url(#hero-ring)" strokeWidth="1.2" strokeDasharray="2 6" />
+                <circle cx="260" cy="260" r="200" fill="none" stroke="rgba(184,158,255,0.35)" strokeWidth="1" strokeDasharray="1 8" />
+              </g>
+            </svg>
+            <img src="assets/octto-mascot-transparent.png" alt="OCTTO" className="animate-float" style={{
+              position: 'relative', width: '100%', maxWidth: 460, height: 'auto',
+              filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.5)) drop-shadow(0 0 40px rgba(184,158,255,0.7)) drop-shadow(0 0 80px rgba(122,92,255,0.5))',
+              zIndex: 2,
+            }} />
+          </div>
+        </div>
+
+        {/* Hero product visualization */}
+        <HeroDashboard liveMetric={liveMetric} />
+
+        <div style={{ marginTop: 72, textAlign: 'center' }}>
+          <div className="eyebrow" style={{ marginBottom: 20 }}>+2.000 usuarios ya confían en OCTTO</div>
+        </div>
+      </div>
+      <style>{`
+        @media (max-width: 900px) {
+          .hero-grid { grid-template-columns: 1fr !important; text-align: center; }
+          .hero-grid > div:first-child > div[style*="flex"] { justify-content: center; }
+          .hero-grid p { margin-left: auto; margin-right: auto; }
+          .hero-mascot { min-height: 340px !important; }
+        }
+      `}</style>
+    </section>
+  );
+};
+
+const HeroDashboard = ({ liveMetric }) => {
+  return (
+    <div style={{ position: 'relative', maxWidth: 1200, margin: '0 auto' }}>
+      <div style={{ position: 'absolute', inset: '-40px -40px auto -40px', height: 200, background: 'radial-gradient(ellipse at center top, rgba(122,92,255,0.4), transparent 70%)', filter: 'blur(40px)', pointerEvents: 'none' }} />
+
+      <div style={{
+        position: 'relative',
+        background: 'linear-gradient(180deg, rgba(122,92,255,0.12) 0%, rgba(11,15,26,0.95) 100%)',
+        border: '1px solid rgba(122,92,255,0.3)',
+        borderRadius: 24,
+        padding: 3,
+        boxShadow: '0 40px 80px -20px rgba(91,61,245,0.4), 0 0 0 1px rgba(255,255,255,0.04) inset',
+      }}>
+        <div style={{ background: 'var(--bg-2)', borderRadius: 21, padding: 20, overflow: 'hidden' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20, paddingBottom: 16, borderBottom: '1px solid var(--line)' }}>
+            <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+              <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#ff5f57' }} />
+              <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#febc2e' }} />
+              <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#28c840' }} />
+              <div className="mono" style={{ marginLeft: 16, fontSize: 11, color: 'var(--text-muted)' }}>octto.app / centro-de-mando</div>
+            </div>
+            <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
+              <div style={{ display: 'flex', gap: 6, alignItems: 'center', fontSize: 11, color: 'var(--text-dim)' }}>
+                <span className="pill-dot" style={{ background: '#28c840', boxShadow: '0 0 8px #28c840' }} />
+                <span className="mono">Todos los sistemas operativos</span>
+              </div>
+            </div>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: '260px 1fr 280px', gap: 16, minHeight: 420 }} className="hero-dash-grid">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+              {[
+                { name: 'Centro de Mando', icon: 'cpu', active: true, count: null },
+                { name: 'Ventas & POS', icon: 'pos', count: '$42.8M' },
+                { name: 'Inventario', icon: 'inventory', count: '1.284' },
+                { name: 'Facturación · DIAN', icon: 'invoice', count: '38' },
+                { name: 'CRM', icon: 'crm', count: '5.2K' },
+                { name: 'E-commerce', icon: 'ecommerce', count: '12' },
+                { name: 'Finanzas', icon: 'finance', count: null },
+                { name: 'Nómina & RR.HH.', icon: 'hr', count: null },
+                { name: 'Logística', icon: 'logistics', count: '7' },
+              ].map((m, i) => (
+                <div key={m.name} style={{
+                  display: 'flex', alignItems: 'center', gap: 10,
+                  padding: '9px 12px', borderRadius: 10,
+                  background: m.active ? 'rgba(122,92,255,0.18)' : 'transparent',
+                  border: m.active ? '1px solid rgba(122,92,255,0.35)' : '1px solid transparent',
+                  color: m.active ? '#fff' : 'var(--text-dim)',
+                  fontSize: 12.5, fontWeight: m.active ? 600 : 500,
+                  cursor: 'pointer',
+                }}>
+                  <Icon name={m.icon} size={15} color={m.active ? 'var(--secondary)' : 'currentColor'} />
+                  <span style={{ flex: 1 }}>{m.name}</span>
+                  {m.count && <span className="mono" style={{ fontSize: 10, color: 'var(--text-muted)' }}>{m.count}</span>}
+                </div>
+              ))}
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10 }}>
+                {[
+                  { label: 'Ingresos (mes)', val: '$' + (liveMetric / 100).toLocaleString('es', { maximumFractionDigits: 0 }), delta: '+18,4%', positive: true },
+                  { label: 'Pedidos hoy', val: '347', delta: '+12', positive: true },
+                  { label: 'Stock agotado', val: '2', delta: '-5', positive: true },
+                ].map(s => (
+                  <div key={s.label} style={{ padding: 14, border: '1px solid var(--line)', borderRadius: 12, background: 'rgba(255,255,255,0.015)' }}>
+                    <div style={{ fontSize: 10, color: 'var(--text-muted)', letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: 6 }}>{s.label}</div>
+                    <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
+                      <div style={{ fontSize: 20, fontWeight: 700, fontFamily: 'Manrope', letterSpacing: '-0.02em' }}>{s.val}</div>
+                      <div style={{ fontSize: 11, color: s.positive ? '#4ade80' : '#f87171', fontFamily: 'JetBrains Mono' }}>{s.delta}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div style={{ padding: 16, border: '1px solid var(--line)', borderRadius: 12, background: 'rgba(255,255,255,0.015)', flex: 1 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+                  <div>
+                    <div style={{ fontSize: 12, color: 'var(--text-dim)', marginBottom: 2 }}>Ingresos en todos los canales</div>
+                    <div style={{ fontSize: 10, color: 'var(--text-muted)', fontFamily: 'JetBrains Mono' }}>Últimos 30 días · $1,28M</div>
+                  </div>
+                  <div style={{ display: 'flex', gap: 4 }}>
+                    {['7D', '30D', '90D'].map((l, i) => (
+                      <span key={l} style={{ fontSize: 10, padding: '4px 8px', borderRadius: 6, background: i === 1 ? 'rgba(122,92,255,0.2)' : 'transparent', color: i === 1 ? '#cfc4ff' : 'var(--text-muted)', fontFamily: 'JetBrains Mono' }}>{l}</span>
+                    ))}
+                  </div>
+                </div>
+                <Sparkline />
+              </div>
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+              <div style={{ padding: 14, border: '1px solid rgba(122,92,255,0.35)', borderRadius: 12, background: 'linear-gradient(180deg, rgba(122,92,255,0.1), rgba(122,92,255,0.02))' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
+                  <div style={{ width: 22, height: 22, borderRadius: 6, background: 'linear-gradient(135deg, var(--secondary), var(--primary))', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <Icon name="sparkle" size={12} color="#fff" />
+                  </div>
+                  <div style={{ fontSize: 12, fontWeight: 600 }}>Agente OCTTO</div>
+                  <div className="animate-pulse-glow" style={{ marginLeft: 'auto', fontSize: 9, color: '#4ade80', fontFamily: 'JetBrains Mono' }}>● ACTIVO</div>
+                </div>
+                <div style={{ fontSize: 11.5, color: 'var(--text-dim)', lineHeight: 1.5 }}>
+                  Reordené automáticamente 14 SKUs. Detecté +23% en ventas de <span style={{ color: '#fff' }}>"Café Andes Mezcla"</span>. Precios actualizados.
+                </div>
+              </div>
+
+              <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 8, padding: 14, border: '1px solid var(--line)', borderRadius: 12, background: 'rgba(255,255,255,0.015)', overflow: 'hidden' }}>
+                <div style={{ fontSize: 10, color: 'var(--text-muted)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 4 }}>Actividad en vivo</div>
+                {[
+                  { ic: 'pos', t: 'Venta · $128.400', s: 'POS · Medellín #2', time: 'ahora' },
+                  { ic: 'invoice', t: 'Factura enviada a DIAN', s: 'INV-2847', time: '12s' },
+                  { ic: 'inventory', t: 'Alerta de stock resuelta', s: 'SKU-09812', time: '48s' },
+                  { ic: 'chatbot', t: 'IA · 3 leads calificados', s: 'WhatsApp', time: '1m' },
+                  { ic: 'logistics', t: 'Pedido enviado', s: 'ORD-38291', time: '2m' },
+                ].map((a, i) => (
+                  <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 11 }}>
+                    <div style={{ width: 22, height: 22, borderRadius: 6, background: 'rgba(255,255,255,0.04)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <Icon name={a.ic} size={11} color="var(--secondary)" />
+                    </div>
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div style={{ color: '#fff', fontSize: 11.5, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{a.t}</div>
+                      <div style={{ color: 'var(--text-muted)', fontSize: 10 }}>{a.s}</div>
+                    </div>
+                    <div className="mono" style={{ color: 'var(--text-muted)', fontSize: 10 }}>{a.time}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <style>{`
+        @media (max-width: 900px) {
+          .hero-dash-grid { grid-template-columns: 1fr !important; }
+          .nav-links { display: none !important; }
+        }
+      `}</style>
+    </div>
+  );
+};
+
+const Sparkline = () => {
+  const [data] = React.useState(() => {
+    const pts = [];
+    let y = 50;
+    for (let i = 0; i < 40; i++) {
+      y += (Math.random() - 0.4) * 8;
+      y = Math.max(25, Math.min(85, y));
+      pts.push(y);
+    }
+    return pts.map((v, i) => v - (i * 0.7));
+  });
+  const w = 100, h = 100;
+  const pathD = data.map((y, i) => {
+    const x = (i / (data.length - 1)) * w;
+    return `${i === 0 ? 'M' : 'L'} ${x} ${y}`;
+  }).join(' ');
+  const areaD = pathD + ` L ${w} ${h} L 0 ${h} Z`;
+  return (
+    <svg viewBox={`0 0 ${w} ${h}`} preserveAspectRatio="none" style={{ width: '100%', height: 180, display: 'block' }}>
+      <defs>
+        <linearGradient id="spark-fill" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#7A5CFF" stopOpacity="0.5" />
+          <stop offset="100%" stopColor="#7A5CFF" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient id="spark-stroke" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="#7A5CFF" />
+          <stop offset="100%" stopColor="#F5B841" />
+        </linearGradient>
+      </defs>
+      <path d={areaD} fill="url(#spark-fill)" />
+      <path d={pathD} stroke="url(#spark-stroke)" strokeWidth="1.2" fill="none" vectorEffect="non-scaling-stroke" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx={w} cy={data[data.length - 1]} r="1.6" fill="#F5B841" />
+      <circle cx={w} cy={data[data.length - 1]} r="3" fill="#F5B841" opacity="0.4" className="animate-pulse-glow" />
+    </svg>
+  );
+};
+
+Object.assign(window, { Hero });
+
+</script>
+<script type="text/babel" data-from="components/problem-solution.jsx">
+// Problem + Solution sections — Español
+
+const ProblemSection = () => {
+  const tools = [
+    { name: 'Shopify', c: '#95BF47' },
+    { name: 'QuickBooks', c: '#2CA01C' },
+    { name: 'HubSpot', c: '#FF7A59' },
+    { name: 'Siigo', c: '#004A8F' },
+    { name: 'WhatsApp', c: '#25D366' },
+    { name: 'Google Sheets', c: '#0F9D58' },
+    { name: 'Mailchimp', c: '#FFE01B' },
+    { name: 'Stripe', c: '#635BFF' },
+    { name: 'Zapier', c: '#FF4A00' },
+    { name: 'Notion', c: '#ffffff' },
+    { name: 'Slack', c: '#4A154B' },
+    { name: 'Zoho', c: '#E42527' },
+    { name: 'Alegra', c: '#00C389' },
+    { name: 'Trello', c: '#0079BF' },
+    { name: 'Excel', c: '#217346' },
+  ];
+
+  return (
+    <section className="section-pad" style={{ position: 'relative', overflow: 'hidden' }} id="problem">
+      <div className="container">
+        <div style={{ textAlign: 'center', marginBottom: 64 }}>
+          <div className="eyebrow" style={{ marginBottom: 14 }}>El problema que te está costando plata</div>
+          <h2 className="display" style={{ fontSize: 'clamp(36px, 5vw, 64px)', marginBottom: 20, maxWidth: 900, marginLeft: 'auto', marginRight: 'auto' }}>
+            Mientras vos digitás a mano, <span style={{ color: '#ff6b7a' }}>tu competencia ya usa IA.</span>
+          </h2>
+          <p style={{ color: 'var(--text-dim)', fontSize: 18, maxWidth: 640, margin: '0 auto', lineHeight: 1.55 }}>
+            Cada asiento contable a mano es dinero botado. Cada decisión sin datos en tiempo real es una venta que no ves venir. El problema no es que trabajes mucho — es que el software que usás no trabaja por vos.
+          </p>
+        </div>
+
+        <div style={{ position: 'relative', minHeight: 420, marginBottom: 64 }}>
+          <ChaosField tools={tools} />
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 16 }}>
+          {[
+            { n: '14 hrs', l: 'semanales que el dueño promedio pierde en tareas que la IA hace en segundos — facturación, conciliación, reportes', sub: 'Promedio dueño de PyME · Colombia' },
+            { n: '67%', l: 'de los negocios colombianos toman decisiones con información de ayer — sin IA, nunca sabés lo que pasa hoy', sub: 'Estudio PyMEs LATAM 2024' },
+            { n: '$8M', l: 'COP promedio que un negocio de 10 personas paga al mes en software que no se habla entre sí', sub: 'Contabilidad + tienda + WA + Excel + HR' },
+            { n: '1 de 4', l: 'ventas se pierden porque no había un humano disponible para responder — el chatbot IA de OCTTO nunca duerme', sub: 'Retail + e-commerce · Colombia' },
+          ].map((m, i) => (
+            <div key={i} className="card" style={{ padding: 24 }}>
+              <div className="display gradient-accent" style={{ fontSize: 44, marginBottom: 6, lineHeight: 1 }}>{m.n}</div>
+              <div style={{ color: 'var(--text)', fontSize: 14, marginBottom: 10, lineHeight: 1.45 }}>{m.l}</div>
+              <div className="mono" style={{ fontSize: 10, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>{m.sub}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const ChaosField = ({ tools }) => {
+  const positions = [
+    { x: 6, y: 10, r: -8 },   { x: 22, y: 30, r: 5 },
+    { x: 38, y: 8, r: 11 },   { x: 56, y: 22, r: -4 },
+    { x: 74, y: 4, r: 7 },    { x: 88, y: 28, r: -9 },
+    { x: 12, y: 55, r: 6 },   { x: 32, y: 68, r: -11 },
+    { x: 50, y: 52, r: 3 },   { x: 68, y: 64, r: -6 },
+    { x: 84, y: 58, r: 9 },   { x: 4, y: 82, r: -5 },
+    { x: 24, y: 88, r: 8 },   { x: 46, y: 84, r: -3 },
+    { x: 64, y: 92, r: 4 },
+  ];
+  return (
+    <div style={{ position: 'relative', width: '100%', height: 460 }}>
+      <svg style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none' }} preserveAspectRatio="none" viewBox="0 0 100 100">
+        {positions.flatMap((p, i) =>
+          positions.slice(i + 1, Math.min(i + 3, positions.length)).map((q, j) => (
+            <path
+              key={`${i}-${j}`}
+              d={`M ${p.x} ${p.y} Q ${(p.x + q.x) / 2 + (Math.sin(i) * 10)} ${(p.y + q.y) / 2 + (Math.cos(j) * 10)}, ${q.x} ${q.y}`}
+              stroke="rgba(255,107,122,0.18)"
+              strokeWidth="0.15"
+              fill="none"
+              strokeDasharray="0.6 0.4"
+            />
+          ))
+        )}
+      </svg>
+
+      {tools.map((t, i) => {
+        const p = positions[i] || { x: 50, y: 50, r: 0 };
+        return (
+          <div
+            key={t.name}
+            style={{
+              position: 'absolute',
+              left: `${p.x}%`, top: `${p.y}%`,
+              transform: `translate(-50%, -50%) rotate(${p.r}deg)`,
+              padding: '9px 14px',
+              borderRadius: 10,
+              background: 'rgba(255,255,255,0.04)',
+              border: '1px solid var(--line-strong)',
+              backdropFilter: 'blur(8px)',
+              display: 'flex', alignItems: 'center', gap: 8,
+              fontSize: 13, fontWeight: 600,
+              color: 'var(--text)',
+              whiteSpace: 'nowrap',
+            }}
+            className="animate-float"
+          >
+            <span style={{ width: 8, height: 8, borderRadius: 2, background: t.c, boxShadow: `0 0 8px ${t.c}40` }} />
+            {t.name}
+          </div>
+        );
+      })}
+
+      <div style={{
+        position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
+        padding: '14px 24px', borderRadius: 999,
+        background: 'rgba(11,15,26,0.9)',
+        border: '1px solid rgba(255,107,122,0.35)',
+        boxShadow: '0 0 40px rgba(255,107,122,0.3)',
+        display: 'flex', alignItems: 'center', gap: 10,
+        fontSize: 13, fontWeight: 600,
+        color: '#ffb5bd',
+      }}>
+        <span style={{ width: 8, height: 8, borderRadius: 50, background: '#ff6b7a' }} className="animate-pulse-glow" />
+        Fragmentado · Lento · Caro
+      </div>
+    </div>
+  );
+};
+
+const SolutionSection = () => {
+  const [activeModule, setActiveModule] = React.useState(0);
+  const modules = [
+    { icon: 'pos', name: 'Ventas & POS', desc: 'Registra ventas de forma ágil, controla inventario, optimiza y simplifica los procesos en tu punto de venta.' },
+    { icon: 'invoice', name: 'Facturación DIAN', desc: 'Emisión de factura de venta electrónica de forma fácil y segura, garantizando la entrega correcta y verificable ante la DIAN.' },
+    { icon: 'inventory', name: 'Inventario con IA', desc: 'La IA predice qué se agota, cuándo reordenar y qué estás perdiendo. Tu stock nunca vuelve a fallar.' },
+    { icon: 'crm', name: 'CRM Inteligente', desc: 'IA que recuerda cada cliente, detecta quién va a dejar de comprar y lanza campañas de retención sola.' },
+    { icon: 'ecommerce', name: 'E-commerce IA', desc: 'Tienda online que se optimiza sola: precios dinámicos, recuperación de carritos y envío de ofertas y notificaciones en automático.' },
+    { icon: 'finance', name: 'Finanzas Automáticas', desc: 'Actualización en línea de todos los registros contables y acceso a tableros financieros en línea.' },
+    { icon: 'hr', name: 'Nómina & RR.HH.', desc: 'Nómina calculada, liquidada y reportada a la DIAN de forma automática, con envío de comprobantes a los colaboradores.' },
+    { icon: 'chatbot', name: 'Chatbot con IA', desc: 'Chatbot con IA para ventas automatizadas por WhatsApp: atiende clientes, conecta con tu inventario en tiempo real e integra cada pedido directamente en tu ERP.' },
+  ];
+
+  return (
+    <section className="section-pad" style={{ position: 'relative', overflow: 'hidden' }} id="platform">
+      <div className="glow-orb" style={{ width: 600, height: 600, top: '20%', left: '50%', transform: 'translateX(-50%)', background: 'var(--primary)', opacity: 0.15 }} />
+
+      <div className="container" style={{ position: 'relative' }}>
+        <div style={{ textAlign: 'center', marginBottom: 72 }}>
+          <div className="eyebrow" style={{ marginBottom: 14 }}>El sistema operativo IA para tu negocio</div>
+          <h2 className="display" style={{ fontSize: 'clamp(36px, 5vw, 68px)', marginBottom: 20, maxWidth: 1000, marginLeft: 'auto', marginRight: 'auto' }}>
+            Un solo sistema. <span className="gradient-text">Un solo cerebro de IA.</span> Cero software desconectado.
+          </h2>
+          <p style={{ color: 'var(--text-dim)', fontSize: 18, maxWidth: 680, margin: '0 auto', lineHeight: 1.55 }}>
+            Con el software tradicional, vos registrás. Con OCTTO, la IA registra sola — y además vende, cobra, concilia, factura a la DIAN y te dice qué decisión tomar. La diferencia no es el software: es que OCTTO trabaja mientras vos dormís.
+          </p>
+        </div>
+
+        <EcosystemHub modules={modules} active={activeModule} setActive={setActiveModule} />
+
+        <div style={{ marginTop: 48, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 12 }}>
+          {modules.map((m, i) => (
+            <div
+              key={m.name}
+              onMouseEnter={() => setActiveModule(i)}
+              className="card"
+              style={{
+                padding: 18,
+                cursor: 'pointer',
+                transition: 'all .3s',
+                borderColor: activeModule === i ? 'rgba(122,92,255,0.45)' : 'var(--line)',
+                background: activeModule === i ? 'linear-gradient(180deg, rgba(122,92,255,0.1) 0%, rgba(122,92,255,0.02) 100%)' : undefined,
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
+                <div style={{
+                  width: 32, height: 32, borderRadius: 8,
+                  background: activeModule === i ? 'linear-gradient(135deg, var(--secondary), var(--primary))' : 'rgba(255,255,255,0.04)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  transition: 'all .3s',
+                }}>
+                  <Icon name={m.icon} size={16} color={activeModule === i ? '#fff' : 'var(--secondary)'} />
+                </div>
+                <div style={{ fontWeight: 600, fontSize: 14 }}>{m.name}</div>
+              </div>
+              <div style={{ fontSize: 12.5, color: 'var(--text-dim)', lineHeight: 1.5 }}>{m.desc}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const EcosystemHub = ({ modules, active, setActive }) => {
+  const size = 520;
+  const radius = 210;
+  return (
+    <div style={{ position: 'relative', width: '100%', maxWidth: size, margin: '0 auto', aspectRatio: '1/1' }}>
+      <svg style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }} viewBox={`0 0 ${size} ${size}`}>
+        <defs>
+          <linearGradient id="hub-ring" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="var(--secondary)" stopOpacity="0.6" />
+            <stop offset="50%" stopColor="var(--primary)" stopOpacity="0.15" />
+            <stop offset="100%" stopColor="var(--accent)" stopOpacity="0.3" />
+          </linearGradient>
+        </defs>
+        <g className="animate-spin-slow" style={{ transformOrigin: 'center' }}>
+          <circle cx={size/2} cy={size/2} r={radius + 30} fill="none" stroke="url(#hub-ring)" strokeWidth="1" strokeDasharray="2 4" />
+        </g>
+        <circle cx={size/2} cy={size/2} r={radius - 10} fill="none" stroke="var(--line)" strokeWidth="1" strokeDasharray="4 6" />
+        <circle cx={size/2} cy={size/2} r={110} fill="none" stroke="rgba(122,92,255,0.25)" strokeWidth="1" />
+
+        {modules.map((m, i) => {
+          const angle = (i / modules.length) * Math.PI * 2 - Math.PI / 2;
+          const x = size/2 + Math.cos(angle) * radius;
+          const y = size/2 + Math.sin(angle) * radius;
+          return (
+            <line
+              key={i}
+              x1={size/2} y1={size/2} x2={x} y2={y}
+              stroke={active === i ? 'var(--secondary)' : 'rgba(122,92,255,0.22)'}
+              strokeWidth={active === i ? 1.5 : 1}
+              strokeDasharray={active === i ? 'none' : '3 4'}
+              style={{ transition: 'all .3s' }}
+            />
+          );
+        })}
+      </svg>
+
+      {/* Center mascot with bright backdrop */}
+      <div style={{
+        position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
+        width: 240, height: 240, borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(140,110,255,0.65) 0%, rgba(100,70,220,0.4) 40%, transparent 75%)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        filter: 'blur(0px)',
+      }}>
+        <div style={{
+          position: 'absolute', width: 200, height: 200, borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(220,210,255,0.3) 0%, transparent 60%)',
+          filter: 'blur(12px)',
+        }} />
+        <img src="assets/octto-mascot-transparent.png" alt="OCTTO" className="animate-float" style={{
+          width: 180, height: 180, objectFit: 'contain', position: 'relative',
+          filter: 'drop-shadow(0 0 20px rgba(184,158,255,0.7)) drop-shadow(0 0 40px rgba(122,92,255,0.5))',
+        }} />
+      </div>
+
+      {modules.map((m, i) => {
+        const angle = (i / modules.length) * Math.PI * 2 - Math.PI / 2;
+        const x = 50 + Math.cos(angle) * (radius / size * 100);
+        const y = 50 + Math.sin(angle) * (radius / size * 100);
+        const isActive = active === i;
+        return (
+          <div
+            key={m.name}
+            onMouseEnter={() => setActive(i)}
+            style={{
+              position: 'absolute',
+              left: `${x}%`, top: `${y}%`,
+              transform: 'translate(-50%, -50%)',
+              width: 82, height: 82, borderRadius: 16,
+              background: isActive
+                ? 'linear-gradient(180deg, rgba(122,92,255,0.25), rgba(91,61,245,0.12))'
+                : 'rgba(18,26,46,0.9)',
+              border: isActive ? '1px solid rgba(122,92,255,0.55)' : '1px solid var(--line-strong)',
+              backdropFilter: 'blur(12px)',
+              display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+              gap: 6,
+              cursor: 'pointer',
+              transition: 'all .3s',
+              boxShadow: isActive ? '0 0 30px rgba(122,92,255,0.5)' : 'none',
+            }}
+          >
+            <Icon name={m.icon} size={22} color={isActive ? 'var(--secondary)' : 'var(--text-dim)'} />
+            <div style={{ fontSize: 9, fontWeight: 600, textAlign: 'center', lineHeight: 1.1, color: isActive ? '#fff' : 'var(--text-dim)', padding: '0 4px' }}>
+              {m.name}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+Object.assign(window, { ProblemSection, SolutionSection });
+
+</script>
+<script type="text/babel" data-from="components/services.jsx">
+// Services Section — 12 servicios con CTAs individuales + CTAs por grupo
+
+const ServicesSection = () => {
+  const [activeGroup, setActiveGroup] = React.useState(0);
+
+  const groups = [
+    {
+      key: 'core',
+      label: 'Plataforma Core',
+      subtitle: 'IA que vende, factura, contabiliza y controla tu inventario por ti.',
+      mascot: 'assets/octto-mascot-transparent.png',
+      mascotTag: 'Opera',
+      services: [
+        {
+          icon: 'pos',
+          title: 'Sistema POS con IA',
+          tagline: 'Cada venta, procesada por inteligencia artificial.',
+          desc: 'La IA cobra, aplica descuentos inteligentes, actualiza inventario y genera factura electrónica — todo en una sola acción. Cero errores humanos.',
+          bullets: ['Hardware opcional o BYOD', 'Split-payment y propinas', 'Cierre de caja automático'],
+          stat: '2,1s por venta promedio',
+          cta: 'Ver POS en acción',
+        },
+        {
+          icon: 'invoice',
+          title: 'Facturación Electrónica',
+          tagline: 'La IA genera, timbra y envía cada factura. Tú no tocas nada.',
+          desc: 'Cumplimiento DIAN automático en cada transacción. Notas crédito, débito y soportes generados por IA con validación previa. Cero rechazos.',
+          bullets: ['DIAN Colombia + SII Chile + SAT México', 'Numeración y resoluciones automáticas', 'Archivo fiscal por 10 años'],
+          stat: '99,97% de aceptación',
+          cta: 'Ver cómo funciona',
+        },
+        {
+          icon: 'inventory',
+          title: 'Inventario controlado por IA',
+          tagline: 'La IA decide qué reordenar, cuándo y cuánto.',
+          desc: 'Stock en tiempo real en todas tus sedes. La IA predice agotamientos, detecta pérdidas al instante y reordena automáticamente antes de que falte.',
+          bullets: ['Multi-bodega y multi-unidad', 'Códigos de barras + QR', 'Pérdidas detectadas al instante'],
+          stat: '−47% de stock muerto',
+          cta: 'Probar inventario',
+        },
+        {
+          icon: 'finance',
+          title: 'Contabilidad integrada 360°',
+          tagline: 'Cada venta, compra y pago genera su asiento contable — solo.',
+          desc: 'El motor contable de OCTTO se conecta con POS, compras, nómina e inventario. Cada movimiento crea su asiento automáticamente. Tu contador analiza y decide — la IA digita por él.',
+          bullets: ['Asistente contable IA: pregunta el estado financiero en lenguaje natural', 'Informes DIAN: exógena, retenciones, RADIAN integrado', 'Balance general, P&G y flujo de caja en tiempo real'],
+          stat: '0 digitación manual · asientos 100% automáticos',
+          cta: 'Ver contabilidad 360°',
+        },
+        {
+          icon: 'crm',
+          title: 'CRM potenciado por IA',
+          tagline: 'La IA recuerda, segmenta y reactiva clientes por ti.',
+          desc: 'IA que unifica cada interacción, detecta clientes que van a abandonar y lanza campañas de retención automáticas. Más recompra, menos esfuerzo.',
+          bullets: ['Unificación WhatsApp + email + punto de venta', 'Puntos y programa de fidelización', 'Automatizaciones por comportamiento'],
+          stat: '+38% en recompra',
+          cta: 'Conocer CRM',
+        },
+        {
+          icon: 'chatbot',
+          title: 'Agente de ventas IA para WhatsApp',
+          tagline: 'Atiende, vende y cobra por WhatsApp — 24/7, sin que estés.',
+          desc: 'Un agente de IA entrenado con tu catálogo, precios e inventario real que atiende a tus clientes por WhatsApp: responde, recomienda, toma el pedido y cobra. Cuando hace falta, escala a un humano con todo el contexto de la conversación.',
+          bullets: ['Conectado a tu inventario y ERP en vivo', 'Toma pedidos y cobra dentro del chat de WhatsApp', 'Escalamiento a humano con historial completo'],
+          stat: '73% de las ventas resueltas sin intervención humana',
+          cta: 'Activar agente de WhatsApp',
+        },
+      ],
+    },
+    {
+      key: 'ops',
+      label: 'Operación completa',
+      subtitle: 'IA que automatiza tu nómina, tienda online, envíos y e-commerce.',
+      mascot: 'assets/octto-books.png',
+      mascotTag: 'Organiza',
+      services: [
+        {
+          icon: 'ecommerce',
+          title: 'E-commerce con IA',
+          tagline: 'Una tienda online que se optimiza sola.',
+          desc: 'IA que ajusta precios, recupera carritos abandonados y recomienda productos personalizados. Conectada a tu inventario físico — vende 24/7 sin intervención.',
+          bullets: ['Dominio propio + SEO listo', 'Pagos locales e internacionales', 'Sincronización con marketplaces'],
+          stat: '+127% de conversión móvil',
+          cta: 'Lanzar mi tienda',
+        },
+        {
+          icon: 'hr',
+          title: 'Nómina & RRHH con IA',
+          tagline: 'Nómina calculada, liquidada y reportada sin humanos.',
+          desc: 'La IA procesa nómina electrónica, calcula comisiones sobre ventas reales, liquida aportes y genera PILA automáticamente.',
+          bullets: ['Nómina electrónica DIAN', 'App móvil del empleado', 'PILA y seguridad social autoliquidadas'],
+          stat: '−83% tiempo de nómina',
+          cta: 'Automatizar nómina',
+        },
+        {
+          icon: 'logistics',
+          title: 'Logística inteligente',
+          tagline: 'La IA elige la ruta más barata y rápida por ti.',
+          desc: 'Generación de guías automática, ruteo inteligente y tracking unificado. La IA selecciona transportadora, optimiza picking y gestiona devoluciones.',
+          bullets: ['Integración con 20+ transportadoras', 'Tracking unificado por cliente', 'Devoluciones con 1 click'],
+          stat: '−34% costo por envío',
+          cta: 'Optimizar envíos',
+        },
+      ],
+    },
+    {
+      key: 'ai',
+      label: 'Capa de IA',
+      subtitle: 'El motor de IA que piensa, decide y ejecuta por ti.',
+      mascot: 'assets/octto-idea.png',
+      mascotTag: 'Opera por ti',
+      services: [
+        {
+          icon: 'chatbot',
+          title: 'Agente de ventas IA para WhatsApp',
+          tagline: 'Cierra ventas por WhatsApp mientras dormís.',
+          desc: 'Agente de IA entrenado con tu catálogo, precios e inventario real que atiende a tus clientes por WhatsApp: responde, recomienda, toma pedidos y cobra. Escala a un humano cuando hace falta, con todo el contexto.',
+          bullets: ['Toma pedidos y cobra en el chat de WhatsApp', 'Escalamiento a humano con contexto completo', 'Multilingüe · ES / EN / PT'],
+          stat: '73% de las ventas sin intervención humana',
+          cta: 'Activar agente de WhatsApp',
+        },
+        {
+          icon: 'zap',
+          title: 'Automatización total',
+          tagline: 'La IA elimina el trabajo manual de tu operación.',
+          desc: 'Carga facturas con una foto, actualiza precios automáticamente, concilia bancos y reabastece SKUs. La IA observa, aprende y ejecuta.',
+          bullets: ['Cargador de facturas por foto', 'Reglas sin código, arrastrar y soltar', 'Webhooks y API completos'],
+          stat: '94% menos trabajo manual',
+          cta: 'Ver automatizaciones',
+        },
+        {
+          icon: 'sparkle',
+          title: 'Insights predictivos',
+          tagline: 'La IA te dice qué va a pasar antes de que pase.',
+          desc: 'Análisis predictivo, detección de anomalías y recomendaciones accionables. No otro dashboard — IA que te dice qué hacer y lo ejecuta por ti.',
+          bullets: ['Alertas proactivas por email/WA', 'Detección de fugas de margen', 'Benchmarks vs tu industria'],
+          stat: '+21% ingresos en 90 días',
+          cta: 'Ver un reporte real',
+        },
+        {
+          icon: 'cpu',
+          title: 'Ecosistema IA unificado',
+          tagline: 'Un solo sistema. Un solo cerebro. Cero silos.',
+          desc: 'Todos los servicios conectados por un motor de IA que comparte datos en tiempo real. Reemplaza 8–12 herramientas desconectadas con inteligencia pura.',
+          bullets: ['SSO, permisos granulares, auditoría', 'API y SDK públicos', 'SLA 99,95% con soporte 24/7'],
+          stat: '−61% gasto en software',
+          cta: 'Ver el ecosistema',
+        },
+      ],
+    },
+  ];
+
+  const g = groups[activeGroup];
+
+  return (
+    <section className="section-pad" id="servicios" style={{ position: 'relative', overflow: 'hidden' }}>
+      <div className="glow-orb" style={{ width: 520, height: 520, top: '20%', left: '-10%', background: 'var(--primary)', opacity: 0.22 }} />
+      <div className="glow-orb" style={{ width: 480, height: 480, bottom: '10%', right: '-10%', background: 'var(--secondary)', opacity: 0.2 }} />
+
+      <div className="container" style={{ position: 'relative' }}>
+        <div style={{ textAlign: 'center', marginBottom: 56, maxWidth: 920, marginLeft: 'auto', marginRight: 'auto' }}>
+          <div className="eyebrow" style={{ marginBottom: 14, color: '#cfc4ff' }}>✦ 12 módulos con IA nativa · 1 solo cerebro · 0 integraciones rotas</div>
+          <h2 className="display" style={{ fontSize: 'clamp(40px, 5.2vw, 72px)', marginBottom: 20, lineHeight: 0.98 }}>
+            Reemplazá 8 herramientas con una. <span className="gradient-text">La que piensa.</span>
+          </h2>
+          <p style={{ color: 'var(--text-dim)', fontSize: 18, lineHeight: 1.55, maxWidth: 680, margin: '0 auto' }}>
+            No es un ERP con un chatbot pegado. Es inteligencia artificial que vive en cada módulo: el inventario anticipa, el CRM reactiva, la contabilidad cierra sola y el agente de WhatsApp vende mientras dormís. La IA no es una función de OCTTO — es la razón por la que existe.
+          </p>
+        </div>
+
+        {/* Group tabs */}
+        <div style={{ display: 'flex', justifyContent: 'center', gap: 8, marginBottom: 40, flexWrap: 'wrap' }}>
+          {groups.map((grp, i) => (
+            <button
+              key={grp.key}
+              onClick={() => setActiveGroup(i)}
+              style={{
+                padding: '12px 22px',
+                borderRadius: 999,
+                background: activeGroup === i ? 'linear-gradient(180deg, rgba(122,92,255,0.3), rgba(91,61,245,0.18))' : 'rgba(255,255,255,0.025)',
+                border: activeGroup === i ? '1px solid rgba(122,92,255,0.55)' : '1px solid var(--line)',
+                color: activeGroup === i ? '#fff' : 'var(--text-dim)',
+                fontWeight: 600, fontSize: 14,
+                cursor: 'pointer', transition: 'all .25s',
+                fontFamily: 'inherit',
+                boxShadow: activeGroup === i ? '0 0 28px rgba(122,92,255,0.4)' : 'none',
+                display: 'inline-flex', alignItems: 'center', gap: 10,
+              }}
+            >
+              <span style={{
+                width: 22, height: 22, borderRadius: 6,
+                background: activeGroup === i ? 'linear-gradient(135deg, var(--secondary), var(--primary))' : 'rgba(255,255,255,0.04)',
+                display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                fontSize: 11, fontWeight: 700,
+                color: activeGroup === i ? '#fff' : 'var(--text-muted)',
+              }}>{i + 1}</span>
+              {grp.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Group header with mascot */}
+        <div className="card" style={{
+          padding: 0,
+          background: 'linear-gradient(135deg, rgba(122,92,255,0.18) 0%, rgba(91,61,245,0.05) 100%)',
+          borderColor: 'rgba(122,92,255,0.3)',
+          marginBottom: 20,
+          overflow: 'hidden',
+          display: 'grid',
+          gridTemplateColumns: '1fr auto',
+          alignItems: 'center',
+        }}>
+          <div style={{ padding: '32px 40px' }}>
+            <div className="mono" style={{ fontSize: 10, letterSpacing: '0.18em', color: 'var(--secondary)', marginBottom: 10 }}>
+              ↳ GRUPO {String(activeGroup + 1).padStart(2, '0')} · {g.label.toUpperCase()}
+            </div>
+            <h3 className="display" style={{ fontSize: 'clamp(24px, 2.6vw, 34px)', marginBottom: 6, lineHeight: 1.1 }}>
+              {g.subtitle}
+            </h3>
+            <p style={{ color: 'var(--text-dim)', fontSize: 14, margin: 0 }}>
+              {g.services.length} servicios en este grupo · disponibles por separado o en paquete completo.
+            </p>
+          </div>
+          <div style={{ position: 'relative', padding: '10px 30px 10px 0', minWidth: 180 }}>
+            <div style={{
+              position: 'absolute', top: '50%', right: 60, transform: 'translateY(-50%)',
+              width: 180, height: 180, borderRadius: '50%',
+              background: 'radial-gradient(circle, rgba(140,110,255,0.6) 0%, rgba(100,70,220,0.35) 45%, transparent 75%)',
+              filter: 'blur(18px)',
+            }} />
+            <div style={{
+              position: 'absolute', top: '50%', right: 75, transform: 'translateY(-50%)',
+              width: 130, height: 130, borderRadius: '50%',
+              background: 'radial-gradient(circle, rgba(220,210,255,0.25) 0%, transparent 60%)',
+              filter: 'blur(10px)',
+            }} />
+            <img src={g.mascot} alt={g.label} className="animate-float" style={{
+              position: 'relative',
+              width: 160, height: 160, objectFit: 'contain',
+              filter: 'drop-shadow(0 10px 20px rgba(0,0,0,0.4)) drop-shadow(0 0 25px rgba(184,158,255,0.6))',
+            }} />
+            <div style={{
+              position: 'absolute', top: 16, right: 16,
+              padding: '5px 10px',
+              borderRadius: 999,
+              background: 'rgba(245,184,65,0.12)',
+              border: '1px solid rgba(245,184,65,0.35)',
+              fontSize: 10.5, fontWeight: 700, color: 'var(--accent)',
+              letterSpacing: '0.08em', textTransform: 'uppercase',
+            }}>{g.mascotTag}</div>
+          </div>
+        </div>
+
+        {/* Services grid */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16 }} className="services-grid">
+          {g.services.map((s, i) => (
+            <article key={s.title} className="service-card card" style={{
+              padding: 28,
+              display: 'flex', flexDirection: 'column',
+              position: 'relative',
+              overflow: 'hidden',
+              transition: 'all .3s ease',
+            }}>
+              <div style={{
+                position: 'absolute', top: -60, right: -60, width: 200, height: 200,
+                borderRadius: '50%',
+                background: 'radial-gradient(circle, rgba(122,92,255,0.12), transparent 70%)',
+                pointerEvents: 'none',
+                opacity: 0.7,
+              }} />
+
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: 14, marginBottom: 16, position: 'relative' }}>
+                <div style={{
+                  width: 44, height: 44, borderRadius: 11,
+                  background: 'linear-gradient(135deg, rgba(122,92,255,0.3), rgba(91,61,245,0.12))',
+                  border: '1px solid rgba(122,92,255,0.35)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  flexShrink: 0,
+                  boxShadow: '0 0 18px rgba(122,92,255,0.3)',
+                }}>
+                  <Icon name={s.icon} size={20} color="#cfc4ff" />
+                </div>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div className="mono" style={{ fontSize: 10, letterSpacing: '0.12em', color: 'var(--text-muted)', marginBottom: 4 }}>
+                    SERVICIO {String(activeGroup * 4 + i + 1).padStart(2, '0')}
+                  </div>
+                  <h4 style={{ fontSize: 19, fontWeight: 700, color: '#fff', margin: 0, lineHeight: 1.2, letterSpacing: '-0.01em', fontFamily: 'Manrope' }}>
+                    {s.title}
+                  </h4>
+                </div>
+              </div>
+
+              <div style={{ fontSize: 14, color: 'var(--accent)', fontWeight: 600, marginBottom: 10, letterSpacing: '-0.005em', position: 'relative' }}>
+                {s.tagline}
+              </div>
+              <p style={{ fontSize: 13.5, color: 'var(--text-dim)', lineHeight: 1.55, margin: '0 0 16px', position: 'relative' }}>
+                {s.desc}
+              </p>
+
+              <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 18px', display: 'flex', flexDirection: 'column', gap: 7, position: 'relative' }}>
+                {s.bullets.map(b => (
+                  <li key={b} style={{ display: 'flex', gap: 8, alignItems: 'flex-start', fontSize: 12.5, color: 'var(--text)' }}>
+                    <span style={{ flexShrink: 0, width: 14, height: 14, borderRadius: 50, background: 'rgba(74,222,128,0.12)', border: '1px solid rgba(74,222,128,0.3)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', marginTop: 2 }}>
+                      <Icon name="check" size={9} color="#4ade80" />
+                    </span>
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div style={{ flex: 1 }} />
+
+              <div style={{
+                display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                gap: 12,
+                paddingTop: 16,
+                borderTop: '1px solid var(--line)',
+                position: 'relative',
+              }}>
+                <div style={{
+                  display: 'inline-flex', alignItems: 'center', gap: 6,
+                  padding: '5px 10px',
+                  borderRadius: 7,
+                  background: 'rgba(245,184,65,0.08)',
+                  border: '1px solid rgba(245,184,65,0.2)',
+                  fontSize: 11, fontWeight: 600, color: 'var(--accent)',
+                }}>
+                  <Icon name="trending" size={11} color="var(--accent)" />
+                  {s.stat}
+                </div>
+                <a href="https://wa.me/573209921580?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20OCTTO.%20%C2%BFPueden%20ayudarme%3F%20%F0%9F%91%8B" target="_blank" className="service-cta" style={{
+                  display: 'inline-flex', alignItems: 'center', gap: 6,
+                  fontSize: 12.5, fontWeight: 600, color: '#cfc4ff',
+                  textDecoration: 'none',
+                  transition: 'color .2s',
+                }}>
+                  {s.cta}
+                  <Icon name="arrow-right" size={12} />
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        {/* Group-level CTA */}
+        <div style={{
+          marginTop: 28,
+          padding: '22px 28px',
+          borderRadius: 18,
+          background: 'linear-gradient(135deg, rgba(245,184,65,0.08) 0%, rgba(122,92,255,0.12) 100%)',
+          border: '1px solid rgba(245,184,65,0.25)',
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 20, flexWrap: 'wrap',
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+            <div style={{
+              width: 44, height: 44, borderRadius: 12,
+              background: 'linear-gradient(135deg, var(--accent), #e0a830)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              boxShadow: '0 0 20px rgba(245,184,65,0.4)',
+              flexShrink: 0,
+            }}>
+              <Icon name="sparkle" size={20} color="#1a1030" />
+            </div>
+            <div>
+              <div style={{ fontSize: 16, fontWeight: 700, color: '#fff', marginBottom: 2, fontFamily: 'Manrope' }}>
+                Activa los {g.services.length} servicios de {g.label} como paquete
+              </div>
+              <div style={{ fontSize: 13, color: 'var(--text-dim)' }}>
+                Migración guiada, datos importados y tu equipo capacitado — todo en 7 días.
+              </div>
+            </div>
+          </div>
+          <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+            <a href="https://wa.me/573209921580?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20OCTTO.%20%C2%BFPueden%20ayudarme%3F%20%F0%9F%91%8B" target="_blank" className="btn btn-primary" style={{ padding: '11px 20px', fontSize: 13 }}>
+              Agendar demo del grupo
+              <Icon name="arrow-right" size={13} />
+            </a>
+            <a href="#pricing" className="btn btn-ghost" style={{ padding: '11px 20px', fontSize: 13 }}>
+              Ver precio del paquete
+            </a>
+          </div>
+        </div>
+
+        {/* Cross-group summary row */}
+        <div style={{
+          marginTop: 56,
+          padding: '28px 32px',
+          borderRadius: 20,
+          background: 'rgba(255,255,255,0.02)',
+          border: '1px solid var(--line)',
+          display: 'grid',
+          gridTemplateColumns: 'auto 1fr auto',
+          alignItems: 'center',
+          gap: 28,
+        }} className="services-summary">
+          <div style={{ position: 'relative', width: 110, height: 110 }}>
+            <div style={{
+              position: 'absolute', inset: -10, borderRadius: '50%',
+              background: 'radial-gradient(circle, rgba(140,110,255,0.6) 0%, rgba(100,70,220,0.3) 50%, transparent 75%)',
+              filter: 'blur(14px)',
+            }} />
+            <div style={{
+              position: 'absolute', inset: 5, borderRadius: '50%',
+              background: 'radial-gradient(circle, rgba(220,210,255,0.25) 0%, transparent 55%)',
+              filter: 'blur(8px)',
+            }} />
+            <img src="assets/octto-search.png" alt="OCTTO" style={{
+              position: 'relative', width: '100%', height: '100%', objectFit: 'contain',
+              filter: 'drop-shadow(0 0 15px rgba(184,158,255,0.6))',
+            }} />
+          </div>
+          <div>
+            <div className="mono" style={{ fontSize: 10, letterSpacing: '0.18em', color: 'var(--secondary)', marginBottom: 8 }}>
+              ↳ ¿NO SABES POR DÓNDE EMPEZAR?
+            </div>
+            <div style={{ fontSize: 20, fontWeight: 700, color: '#fff', marginBottom: 6, fontFamily: 'Manrope', letterSpacing: '-0.01em' }}>
+              Diagnóstico IA gratuito en 15 minutos.
+            </div>
+            <div style={{ fontSize: 14, color: 'var(--text-dim)', lineHeight: 1.55 }}>
+              La IA analiza tu operación actual, identifica cuánto pierdes y te muestra exactamente qué automatizar primero para ver resultados en 7 días.
+            </div>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+            <a href="https://wa.me/573209921580?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20OCTTO.%20%C2%BFPueden%20ayudarme%3F%20%F0%9F%91%8B" target="_blank" className="btn btn-primary" style={{ padding: '12px 22px', fontSize: 13 }}>
+              Agendar diagnóstico
+              <Icon name="arrow-right" size={13} />
+            </a>
+            <a href="https://wa.me/573209921580?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20OCTTO.%20%C2%BFPueden%20ayudarme%3F%20%F0%9F%91%8B" target="_blank" style={{ fontSize: 12, color: 'var(--text-dim)', textAlign: 'center', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 6, justifyContent: 'center' }}>
+              <Icon name="chatbot" size={12} />
+              o mirá una demo del agente de WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <style>{`
+        .service-card:hover {
+          border-color: rgba(122,92,255,0.5) !important;
+          background: rgba(122,92,255,0.04) !important;
+          transform: translateY(-2px);
+          box-shadow: 0 20px 40px -20px rgba(91,61,245,0.4);
+        }
+        .service-cta:hover {
+          color: #fff !important;
+        }
+        @media (max-width: 900px) {
+          .services-grid { grid-template-columns: 1fr !important; }
+          .services-summary { grid-template-columns: 1fr !important; text-align: center; }
+          .services-summary > div:first-child { margin: 0 auto; }
+        }
+      `}</style>
+    </section>
+  );
+};
+
+Object.assign(window, { ServicesSection });
+
+</script>
+<script type="text/babel" data-from="components/sections.jsx">
+// sections.jsx — AIFeaturesSection, BenefitsSection, IntegrationsSection, CTASection, Footer
+
+const AIFeaturesSection = () => {
+  const [active, setActive] = React.useState(0);
+
+  const features = [
+    {
+      icon: 'sparkle',
+      title: 'Agente autónomo 24/7',
+      desc: 'La IA monitorea tu negocio mientras dormís. Detecta anomalías, ejecuta acciones y te avisa solo cuando necesitás decidir algo importante.',
+      detail: 'Más de 200 reglas preconfiguradas para retail, restaurantes, e-commerce y servicios. El agente aprende de tus patrones y mejora cada semana.',
+      metric: '94% de tareas sin intervención humana',
+    },
+    {
+      icon: 'cpu',
+      title: 'IA entrenada en tu negocio',
+      desc: 'No es IA genérica. OCTTO entrena modelos específicos con tus datos: precios, clientes, patrones de venta e inventario.',
+      detail: 'El modelo aprende en 7 días y genera predicciones con 89% de precisión en reabastecimiento, demanda y retención de clientes.',
+      metric: '89% de precisión en predicciones',
+    },
+    {
+      icon: 'chatbot',
+      title: 'Lenguaje natural para operar',
+      desc: 'Escribile al agente como si fuera un empleado. "¿Cuánto vendí ayer?" o "Reordenáme los SKUs con menos de 5 unidades" — y lo hace.',
+      detail: 'Compatible con WhatsApp Business, Slack y la app de OCTTO. Responde en segundos con datos reales de tu operación.',
+      metric: '2s de respuesta promedio',
+    },
+    {
+      icon: 'insights',
+      title: 'Decisiones, no dashboards',
+      desc: 'En lugar de gráficos que interpretás vos, OCTTO te dice exactamente qué hacer: "Subí el precio de X un 8%, tu margen mejoraría $420.000".',
+      detail: 'Recomendaciones diarias basadas en análisis de mercado, estacionalidad, comportamiento de clientes y tendencias de tu sector.',
+      metric: '+21% de ingresos en los primeros 90 días',
+    },
+  ];
+
+  const f = features[active];
+
+  return (
+    <section className="section-pad" id="ai" style={{ position: 'relative', overflow: 'hidden' }}>
+      <div className="glow-orb" style={{ width: 700, height: 700, top: '10%', right: '-20%', background: 'var(--secondary)', opacity: 0.13 }} />
+
+      <div className="container" style={{ position: 'relative' }}>
+        <div style={{ textAlign: 'center', marginBottom: 72 }}>
+          <div className="eyebrow" style={{ marginBottom: 14 }}>Inteligencia artificial</div>
+          <h2 className="display" style={{ fontSize: 'clamp(36px, 5vw, 68px)', marginBottom: 20, maxWidth: 900, marginLeft: 'auto', marginRight: 'auto' }}>
+            No es IA de juguete. <span className="gradient-text">Es IA que opera.</span>
+          </h2>
+          <p style={{ color: 'var(--text-dim)', fontSize: 18, maxWidth: 620, margin: '0 auto', lineHeight: 1.55 }}>
+            Cada módulo de OCTTO tiene un motor de IA que aprende, decide y ejecuta. No te muestra datos — toma acciones.
+          </p>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 32, alignItems: 'start' }} className="ai-grid">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+            {features.map((feat, i) => (
+              <div
+                key={feat.title}
+                onClick={() => setActive(i)}
+                style={{
+                  padding: '20px 24px',
+                  borderRadius: 14,
+                  background: active === i ? 'linear-gradient(135deg, rgba(122,92,255,0.18), rgba(91,61,245,0.06))' : 'rgba(255,255,255,0.018)',
+                  border: active === i ? '1px solid rgba(122,92,255,0.45)' : '1px solid var(--line)',
+                  cursor: 'pointer',
+                  transition: 'all .25s',
+                  boxShadow: active === i ? '0 8px 32px -8px rgba(91,61,245,0.4)' : 'none',
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                  <div style={{
+                    width: 38, height: 38, borderRadius: 10,
+                    background: active === i ? 'linear-gradient(135deg, var(--secondary), var(--primary))' : 'rgba(255,255,255,0.04)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    flexShrink: 0, transition: 'all .25s',
+                  }}>
+                    <Icon name={feat.icon} size={17} color={active === i ? '#fff' : 'var(--secondary)'} />
+                  </div>
+                  <div>
+                    <div style={{ fontWeight: 700, fontSize: 15, color: active === i ? '#fff' : 'var(--text)', marginBottom: 3, fontFamily: 'Manrope' }}>{feat.title}</div>
+                    <div style={{ fontSize: 12.5, color: 'var(--text-dim)', lineHeight: 1.4 }}>{feat.desc}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ position: 'sticky', top: 100 }}>
+            <div style={{
+              padding: 32,
+              borderRadius: 20,
+              background: 'linear-gradient(180deg, rgba(122,92,255,0.14) 0%, rgba(11,15,26,0.95) 100%)',
+              border: '1px solid rgba(122,92,255,0.3)',
+              boxShadow: '0 40px 80px -20px rgba(91,61,245,0.3)',
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
+                <div style={{
+                  width: 48, height: 48, borderRadius: 13,
+                  background: 'linear-gradient(135deg, var(--secondary), var(--primary))',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  boxShadow: '0 0 24px rgba(122,92,255,0.5)',
+                }}>
+                  <Icon name={f.icon} size={22} color="#fff" />
+                </div>
+                <div>
+                  <div style={{ fontWeight: 800, fontSize: 19, color: '#fff', fontFamily: 'Manrope' }}>{f.title}</div>
+                  <div className="animate-pulse-glow" style={{ fontSize: 11, color: '#4ade80', fontFamily: 'JetBrains Mono', marginTop: 2 }}>● EN VIVO</div>
+                </div>
+              </div>
+
+              <p style={{ fontSize: 14.5, color: 'var(--text-dim)', lineHeight: 1.6, marginBottom: 20 }}>{f.detail}</p>
+
+              <div style={{
+                padding: '14px 18px',
+                borderRadius: 12,
+                background: 'rgba(245,184,65,0.08)',
+                border: '1px solid rgba(245,184,65,0.25)',
+                display: 'flex', alignItems: 'center', gap: 10,
+              }}>
+                <Icon name="trending" size={16} color="var(--accent)" />
+                <span style={{ fontSize: 13, fontWeight: 700, color: 'var(--accent)' }}>{f.metric}</span>
+              </div>
+
+              <div style={{ marginTop: 20, paddingTop: 20, borderTop: '1px solid var(--line)' }}>
+                <div style={{ fontSize: 11, color: 'var(--text-muted)', marginBottom: 10, fontFamily: 'JetBrains Mono', letterSpacing: '0.06em' }}>OCTTO AGENTE · EJECUTANDO</div>
+                <div style={{
+                  background: 'rgba(0,0,0,0.4)',
+                  borderRadius: 8,
+                  padding: '12px 14px',
+                  fontFamily: 'JetBrains Mono',
+                  fontSize: 11.5,
+                  lineHeight: 1.7,
+                  color: '#cfc4ff',
+                }}>
+                  <div style={{ color: '#4ade80' }}>✓ Análisis de datos completado</div>
+                  <div style={{ color: '#4ade80' }}>✓ Patrones detectados: 14 items</div>
+                  <div style={{ color: 'var(--accent)' }}>→ Acción ejecutada automáticamente</div>
+                  <div style={{ color: 'var(--text-muted)' }}>Sin intervención humana requerida</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <style>{`
+        @media (max-width: 900px) {
+          .ai-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
+    </section>
+  );
+};
+
+const BenefitsSection = () => {
+  const benefits = [
+    { icon: 'zap', val: '−61%', label: 'Reducción de costos en software', sub: 'vs. stack desconectado', color: '#7A5CFF' },
+    { icon: 'trending', val: '+38%', label: 'Aumento en recompra de clientes', sub: 'CRM + IA activado', color: '#F5B841' },
+    { icon: 'shield', val: '99,95%', label: 'Uptime garantizado con SLA', sub: 'Soporte 24/7 incluido', color: '#4ade80' },
+    { icon: 'sparkle', val: '7 días', label: 'Para ver los primeros resultados', sub: 'Onboarding guiado', color: '#cfc4ff' },
+  ];
+
+  const testimonials = [
+    {
+      name: 'Camila R.',
+      role: 'Dueña · Tienda de ropa, Medellín',
+      text: 'Antes perdía 3 horas diarias conciliando ventas a mano. Ahora OCTTO lo hace solo. Recuperé mi tiempo y mi margen mejoró 22% en el primer mes.',
+      rating: 5,
+    },
+    {
+      name: 'Martín O.',
+      role: 'Gerente · Distribuidora, Bogotá',
+      text: 'Teníamos 4 sistemas sin conectar — contabilidad, inventario, tienda y atención al cliente. OCTTO los reemplazó a todos. Ahorro $8M al mes solo en software y tiempo de mi equipo.',
+      rating: 5,
+    },
+    {
+      name: 'Sofía L.',
+      role: 'Fundadora · Restaurante con 4 sedes',
+      text: 'El chatbot de OCTTO atiende pedidos por WhatsApp mientras yo duermo. El mes pasado cerró 340 pedidos sin que yo tocara nada.',
+      rating: 5,
+    },
+  ];
+
+  return (
+    <section className="section-pad" style={{ position: 'relative', overflow: 'hidden' }}>
+      <div className="glow-orb" style={{ width: 500, height: 500, top: '0%', left: '50%', transform: 'translateX(-50%)', background: 'var(--accent)', opacity: 0.06 }} />
+
+      <div className="container" style={{ position: 'relative' }}>
+        <div style={{ textAlign: 'center', marginBottom: 64 }}>
+          <div className="eyebrow" style={{ marginBottom: 14 }}>Resultados reales</div>
+          <h2 className="display" style={{ fontSize: 'clamp(36px, 5vw, 64px)', marginBottom: 20 }}>
+            Números que no <span className="gradient-accent">mienten.</span>
+          </h2>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16, marginBottom: 64 }} className="benefits-grid">
+          {benefits.map((b) => (
+            <div key={b.val} className="card" style={{ padding: 28, textAlign: 'center' }}>
+              <div style={{
+                width: 48, height: 48, borderRadius: 13, margin: '0 auto 16px',
+                background: `${b.color}18`,
+                border: `1px solid ${b.color}35`,
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+              }}>
+                <Icon name={b.icon} size={20} color={b.color} />
+              </div>
+              <div className="display gradient-text" style={{ fontSize: 40, lineHeight: 1, marginBottom: 8 }}>{b.val}</div>
+              <div style={{ fontSize: 14, fontWeight: 600, color: 'var(--text)', marginBottom: 6, lineHeight: 1.3 }}>{b.label}</div>
+              <div className="mono" style={{ fontSize: 10, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>{b.sub}</div>
+            </div>
+          ))}
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }} className="testimonials-grid">
+          {testimonials.map((t) => (
+            <div key={t.name} className="card" style={{ padding: 28 }}>
+              <div style={{ display: 'flex', gap: 3, marginBottom: 16 }}>
+                {Array.from({ length: t.rating }).map((_, i) => (
+                  <span key={i} style={{ color: 'var(--accent)', fontSize: 14 }}>★</span>
+                ))}
+              </div>
+              <p style={{ fontSize: 14, color: 'var(--text)', lineHeight: 1.6, marginBottom: 20, fontStyle: 'italic' }}>
+                "{t.text}"
+              </p>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, paddingTop: 16, borderTop: '1px solid var(--line)' }}>
+                <div style={{
+                  width: 36, height: 36, borderRadius: '50%',
+                  background: 'linear-gradient(135deg, var(--secondary), var(--primary))',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  fontSize: 14, fontWeight: 700, color: '#fff', flexShrink: 0,
+                }}>
+                  {t.name[0]}
+                </div>
+                <div>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: '#fff' }}>{t.name}</div>
+                  <div style={{ fontSize: 11.5, color: 'var(--text-muted)' }}>{t.role}</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <style>{`
+        @media (max-width: 900px) {
+          .benefits-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .testimonials-grid { grid-template-columns: 1fr !important; }
+        }
+        @media (max-width: 480px) {
+          .benefits-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
+    </section>
+  );
+};
+
+const IntegrationsSection = () => {
+  const integrations = [
+    { name: 'DIAN', cat: 'Tributario', color: '#004481' },
+    { name: 'Wompi', cat: 'Pagos', color: '#FF5858' },
+    { name: 'E-commerce', cat: 'Tienda Online', color: '#95BF47' },
+    { name: 'Simple', cat: 'Pagos', color: '#6C47FF' },
+    { name: 'Meta API', cat: 'Marketing', color: '#0081FB' },
+    { name: 'Bold', cat: 'Pagos', color: '#FF4C4C' },
+    { name: 'Mercado Pago', cat: 'Pagos', color: '#009EE3' },
+    { name: 'Google Sheets', cat: 'Datos', color: '#0F9D58' },
+    { name: 'PayPal', cat: 'Pagos', color: '#003087' },
+    { name: 'CRM', cat: 'Clientes', color: '#5B3DF5' },
+    { name: 'Google Calendar', cat: 'Productividad', color: '#4285F4' },
+    { name: 'WhatsApp Business', cat: 'Mensajería', color: '#25D366' },
+    { name: 'MiPaquete.com', cat: 'Logística', color: '#FF6B00' },
+    { name: 'OpenAI', cat: 'IA', color: '#10A37F' },
+    { name: 'Gemini', cat: 'IA', color: '#4285F4' },
+    { name: 'N8N', cat: 'Automatización', color: '#EA4B71' },
+    { name: 'Evolution API', cat: 'Mensajería', color: '#25D366' },
+    { name: 'Google Maps', cat: 'Ubicación', color: '#34A853' },
+    { name: 'Twilio', cat: 'Comunicación', color: '#F22F46' },
+  ];
+
+  const row1 = integrations.slice(0, 9);
+  const row2 = integrations.slice(9);
+
+  const Row = ({ items, reverse }) => (
+    <div style={{ overflow: 'hidden', maskImage: 'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)' }}>
+      <div style={{
+        display: 'flex', gap: 12,
+        animation: `scroll-${reverse ? 'right' : 'left'} 30s linear infinite`,
+        width: 'max-content',
+      }}>
+        {[...items, ...items].map((int, i) => (
+          <div key={`${int.name}-${i}`} style={{
+            display: 'flex', alignItems: 'center', gap: 8,
+            padding: '10px 16px',
+            borderRadius: 12,
+            background: 'rgba(255,255,255,0.03)',
+            border: '1px solid var(--line-strong)',
+            whiteSpace: 'nowrap',
+            flexShrink: 0,
+          }}>
+            <span style={{ width: 8, height: 8, borderRadius: 2, background: int.color, boxShadow: `0 0 8px ${int.color}60`, flexShrink: 0 }} />
+            <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--text)' }}>{int.name}</span>
+            <span style={{ fontSize: 10.5, color: 'var(--text-muted)', background: 'rgba(255,255,255,0.04)', padding: '2px 6px', borderRadius: 4 }}>{int.cat}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
+  return (
+    <section className="section-pad" id="integrations" style={{ position: 'relative', overflow: 'hidden' }}>
+      <div className="container" style={{ position: 'relative' }}>
+        <div style={{ textAlign: 'center', marginBottom: 56 }}>
+          <div className="eyebrow" style={{ marginBottom: 14 }}>Ecosistema conectado</div>
+          <h2 className="display" style={{ fontSize: 'clamp(36px, 5vw, 64px)', marginBottom: 20 }}>
+            Se conecta con todo lo que <span className="gradient-text">ya usás.</span>
+          </h2>
+          <p style={{ color: 'var(--text-dim)', fontSize: 18, maxWidth: 600, margin: '0 auto', lineHeight: 1.55 }}>
+            Conectores nativos con las herramientas que ya usás en Colombia. Sin desarrollo, sin fricción — tu stack funciona desde el día uno.
+          </p>
+        </div>
+      </div>
+
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 56 }}>
+        <Row items={row1} reverse={false} />
+        <Row items={row2} reverse={true} />
+      </div>
+
+      <div className="container">
+        <div style={{
+          display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16,
+          padding: '32px', borderRadius: 20,
+          background: 'rgba(255,255,255,0.018)', border: '1px solid var(--line)',
+        }} className="integrations-stats">
+          {[
+            { val: 'Nativas', label: 'WhatsApp, DIAN, Shopify, transportadoras y más', icon: 'globe' },
+            { val: 'API REST', label: 'Pública + webhooks en tiempo real', icon: 'zap' },
+            { val: 'SDK', label: 'Para equipos que construyen sobre OCTTO', icon: 'cpu' },
+          ].map((s) => (
+            <div key={s.val} style={{ textAlign: 'center', padding: '16px 0' }}>
+              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 12 }}>
+                <Icon name={s.icon} size={22} color="var(--secondary)" />
+              </div>
+              <div style={{ fontSize: 24, fontWeight: 800, color: '#fff', fontFamily: 'Manrope', marginBottom: 6 }}>{s.val}</div>
+              <div style={{ fontSize: 13, color: 'var(--text-dim)' }}>{s.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <style>{`
+        @keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(24px) scale(0.97) } to { opacity: 1; transform: translateY(0) scale(1) } }
+        @keyframes scroll-left {
+          from { transform: translateX(0); }
+          to { transform: translateX(-50%); }
+        }
+        @keyframes scroll-right {
+          from { transform: translateX(-50%); }
+          to { transform: translateX(0); }
+        }
+        @media (max-width: 700px) {
+          .integrations-stats { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
+    </section>
+  );
+};
+
+const CTASection = () => {
+  return (
+    <section className="section-pad" id="demo" style={{ position: 'relative', overflow: 'hidden' }}>
+      <div className="glow-orb" style={{ width: 800, height: 800, top: '50%', left: '50%', transform: 'translate(-50%, -50%)', background: 'var(--primary)', opacity: 0.2 }} />
+      <div className="glow-orb" style={{ width: 500, height: 500, top: '20%', right: '-10%', background: 'var(--accent)', opacity: 0.07 }} />
+
+      <div className="container" style={{ position: 'relative' }}>
+        <div style={{
+          maxWidth: 920,
+          margin: '0 auto',
+          padding: '64px 56px',
+          borderRadius: 28,
+          background: 'linear-gradient(135deg, rgba(122,92,255,0.18) 0%, rgba(91,61,245,0.06) 50%, rgba(245,184,65,0.06) 100%)',
+          border: '1px solid rgba(122,92,255,0.3)',
+          boxShadow: '0 60px 120px -30px rgba(91,61,245,0.4), 0 0 0 1px rgba(255,255,255,0.03) inset',
+          textAlign: 'center',
+          position: 'relative',
+          overflow: 'hidden',
+        }}>
+          <div style={{
+            position: 'absolute', top: -80, left: '50%', transform: 'translateX(-50%)',
+            width: 300, height: 300,
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(122,92,255,0.35), transparent 70%)',
+            filter: 'blur(40px)',
+            pointerEvents: 'none',
+          }} />
+
+          <div style={{ position: 'relative' }}>
+            <div style={{
+              display: 'inline-flex', alignItems: 'center', gap: 8,
+              padding: '6px 14px', borderRadius: 999,
+              background: 'rgba(245,184,65,0.12)',
+              border: '1px solid rgba(245,184,65,0.3)',
+              fontSize: 12, fontWeight: 700, color: 'var(--accent)',
+              letterSpacing: '0.06em',
+              marginBottom: 28,
+            }}>
+              <span className="animate-pulse-glow" style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--accent)' }} />
+              🔥 DEMO EN VIVO · 30 MINUTOS · GRATIS
+            </div>
+
+            <h2 className="display" style={{ fontSize: 'clamp(40px, 5.5vw, 76px)', marginBottom: 20, lineHeight: 0.97 }}>
+              <span style={{ color: '#fff' }}>Cada día sin OCTTO</span>
+              <br />
+              <span className="gradient-text">es plata que regalás.</span>
+            </h2>
+
+            <p style={{ color: 'var(--text-dim)', fontSize: 18, maxWidth: 600, margin: '0 auto 16px', lineHeight: 1.55 }}>
+              En 30 minutos te mostramos tu negocio corriendo con IA — contabilidad sola, ventas automatizadas, inventario predicho, DIAN en regla. Sin configurar nada. Con tus datos reales.
+            </p>
+            <p style={{ color: 'rgba(245,184,65,0.8)', fontSize: 14, fontWeight: 600, marginBottom: 36 }}>
+              El especialista que te atiende diseña tu plan de implementación en la misma llamada. En 7 días estás operando.
+            </p>
+
+            <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 32 }}>
+              <a href="https://wa.me/573209921580?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20OCTTO.%20%C2%BFPueden%20ayudarme%3F%20%F0%9F%91%8B" target="_blank" className="btn btn-primary" style={{ padding: '16px 32px', fontSize: 16, boxShadow: '0 0 40px rgba(122,92,255,0.5)' }}>
+                Activar mi demo gratuita ahora
+                <Icon name="arrow-right" size={17} />
+              </a>
+            </div>
+
+            <div style={{ display: 'flex', justifyContent: 'center', gap: 28, flexWrap: 'wrap' }}>
+              {[
+                { icon: 'check', text: 'Sin tarjeta de crédito' },
+                { icon: 'check', text: 'Operativo en 7 días' },
+                { icon: 'check', text: 'Te contactamos en menos de 2 horas' },
+              ].map((item) => (
+                <div key={item.text} style={{ display: 'flex', alignItems: 'center', gap: 7, fontSize: 13, color: 'var(--text-dim)' }}>
+                  <div style={{
+                    width: 16, height: 16, borderRadius: '50%',
+                    background: 'rgba(74,222,128,0.15)',
+                    border: '1px solid rgba(74,222,128,0.35)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    flexShrink: 0,
+                  }}>
+                    <Icon name={item.icon} size={9} color="#4ade80" />
+                  </div>
+                  {item.text}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const Footer = () => {
+  const links = {
+    'Plataforma': { href: '#platform', items: ['POS & Ventas', 'Inventario', 'Facturación DIAN', 'CRM', 'E-commerce', 'Finanzas', 'Nómina', 'Logística'] },
+    'Inteligencia IA': { href: '#ai', items: ['Agente Autónomo', 'Chatbot de ventas', 'Predicción de demanda', 'Automatización', 'Insights', 'API & SDK'] },
+    'Empresa': { href: '#solutions', items: ['Sobre OCTTO', 'Blog', 'Casos de éxito', 'Prensa', 'Socios', 'Trabaja con nosotros'] },
+    'Soporte': { href: 'https://wa.me/573209921580?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20OCTTO.%20%C2%BFPueden%20ayudarme%3F%20%F0%9F%91%8B', items: ['Centro de ayuda', 'Estado del sistema', 'Seguridad & GDPR', 'Términos', 'Privacidad', 'Contacto'] },
+  };
+
+  return (
+    <footer style={{ borderTop: '1px solid var(--line)', paddingTop: 64, paddingBottom: 40, position: 'relative' }}>
+      <div className="container">
+        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr 1fr', gap: 40, marginBottom: 56 }} className="footer-grid">
+          <div>
+            <Logo size={26} />
+            <p style={{ color: 'var(--text-dim)', fontSize: 14, lineHeight: 1.6, marginTop: 16, maxWidth: 280 }}>
+              El sistema operativo IA para negocios latinoamericanos. Ventas, inventario, finanzas y logística en piloto automático.
+            </p>
+            <div style={{ display: 'flex', gap: 10, marginTop: 20 }}>
+              {[
+                { n: 'WhatsApp', url: '#demo' },
+                { n: 'LinkedIn', url: '#demo' },
+                { n: 'Instagram', url: '#demo' },
+              ].map((sn) => (
+                <a key={sn.n} href={sn.url} aria-label={sn.n} style={{
+                  width: 36, height: 36, borderRadius: 9,
+                  background: 'rgba(255,255,255,0.04)',
+                  border: '1px solid var(--line)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  color: 'var(--text-dim)', fontSize: 10, fontWeight: 700,
+                  textDecoration: 'none', transition: 'all .2s',
+                  letterSpacing: '-0.02em',
+                }}>
+                  {sn.n[0]}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {Object.entries(links).map(([section, group]) => (
+            <div key={section}>
+              <div style={{ fontSize: 12, fontWeight: 700, color: '#fff', letterSpacing: '0.04em', marginBottom: 16, textTransform: 'uppercase' }}>{section}</div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                {group.items.map((item) => (
+                  <a key={item} href={group.href} style={{ color: 'var(--text-dim)', textDecoration: 'none', fontSize: 13.5, transition: 'color .2s' }}
+                     onMouseEnter={e => e.target.style.color = '#fff'}
+                     onMouseLeave={e => e.target.style.color = 'var(--text-dim)'}>
+                    {item}
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div style={{ paddingTop: 24, borderTop: '1px solid var(--line)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
+          <div style={{ fontSize: 13, color: 'var(--text-muted)' }}>
+            © 2025 OCTTO Technologies S.A.S. · Bogotá, Colombia · NIT 901.234.567-8
+          </div>
+          <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+            <div style={{ fontSize: 11, color: 'var(--text-muted)', fontFamily: 'JetBrains Mono', display: 'flex', alignItems: 'center', gap: 6 }}>
+              <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#4ade80', boxShadow: '0 0 8px #4ade80' }} />
+              Todos los sistemas operativos · 99,95% uptime
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <style>{`
+        @media (max-width: 1024px) {
+          .footer-grid { grid-template-columns: 1fr 1fr 1fr !important; }
+          .footer-grid > div:first-child { grid-column: 1 / -1; }
+        }
+        @media (max-width: 640px) {
+          .footer-grid { grid-template-columns: 1fr 1fr !important; }
+        }
+        a:hover { color: #fff; }
+      `}</style>
+    </footer>
+  );
+};
+
+const HowItWorksSection = () => {
+  const steps = [
+    { num: '01', icon: 'sparkle', title: 'Diagnóstico gratuito', desc: 'Un especialista analiza tu operación, identifica los cuellos de botella y diseña tu plan de implementación personalizado.', duration: '30 minutos', color: '#7A5CFF' },
+    { num: '02', icon: 'cpu', title: 'Configuración personalizada', desc: 'Nuestro equipo carga tu catálogo, migra tus datos y conecta las integraciones que ya usás. Sin que vos toques nada.', duration: '3 a 5 días', color: '#5B3DF5' },
+    { num: '03', icon: 'hr', title: 'Capacitación express', desc: 'Entrenamos a tu equipo en menos de un día. OCTTO es tan simple que cualquier empleado puede dominarlo sin experiencia técnica.', duration: '1 día', color: '#F5B841' },
+    { num: '04', icon: 'automation', title: 'Piloto automático', desc: 'La IA aprende tus patrones, automatiza las tareas repetitivas y te libera para enfocarte en crecer, no en operar.', duration: 'Desde el día 7', color: '#4ade80' },
+  ];
+
+  return (
+    <section className="section-pad" id="how-it-works" style={{ position: 'relative', overflow: 'hidden' }}>
+      <div className="glow-orb" style={{ width: 600, height: 600, top: '50%', left: '50%', transform: 'translate(-50%, -50%)', background: 'var(--primary)', opacity: 0.08 }} />
+      <div className="container" style={{ position: 'relative' }}>
+        <div style={{ textAlign: 'center', marginBottom: 72 }}>
+          <div className="eyebrow" style={{ marginBottom: 14 }}>¿Cómo funciona?</div>
+          <h2 className="display" style={{ fontSize: 'clamp(36px, 5vw, 68px)', marginBottom: 20, maxWidth: 800, marginLeft: 'auto', marginRight: 'auto' }}>
+            De cero a <span className="gradient-text">piloto automático</span> en 7 días.
+          </h2>
+          <p style={{ color: 'var(--text-dim)', fontSize: 18, maxWidth: 580, margin: '0 auto', lineHeight: 1.55 }}>
+            No necesitás ser técnico ni contratar consultores. Nuestro equipo se encarga de todo.
+          </p>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 20 }} className="how-grid">
+          {steps.map((step) => (
+            <div key={step.num} className="card" style={{ padding: '28px 24px', position: 'relative', overflow: 'hidden' }}>
+              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: `linear-gradient(to right, ${step.color}60, ${step.color})`, borderRadius: '20px 20px 0 0' }} />
+              <div style={{ width: 48, height: 48, borderRadius: 14, background: `${step.color}14`, border: `1px solid ${step.color}35`, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 16 }}>
+                <Icon name={step.icon} size={22} color={step.color} />
+              </div>
+              <div className="mono" style={{ fontSize: 11, color: 'var(--text-muted)', letterSpacing: '0.08em', marginBottom: 8 }}>PASO {step.num}</div>
+              <h3 style={{ fontSize: 17, fontWeight: 800, color: '#fff', fontFamily: 'Manrope', marginBottom: 12, lineHeight: 1.25 }}>{step.title}</h3>
+              <p style={{ fontSize: 13.5, color: 'var(--text-dim)', lineHeight: 1.6, marginBottom: 20 }}>{step.desc}</p>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '5px 12px', borderRadius: 999, background: `${step.color}12`, border: `1px solid ${step.color}30` }}>
+                <Icon name="zap" size={11} color={step.color} />
+                <span style={{ fontSize: 11.5, fontWeight: 700, color: step.color, fontFamily: 'JetBrains Mono' }}>{step.duration}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div style={{ marginTop: 48, textAlign: 'center' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12, padding: '14px 28px', borderRadius: 14, background: 'rgba(122,92,255,0.08)', border: '1px solid rgba(122,92,255,0.25)' }}>
+            <Icon name="shield" size={16} color="var(--secondary)" />
+            <span style={{ fontSize: 14, color: 'var(--text-dim)' }}>
+              Si en 30 días no ves resultados, <strong style={{ color: '#fff' }}>te devolvemos el dinero.</strong> Sin preguntas.
+            </span>
+          </div>
+        </div>
+      </div>
+      <style>{`
+        @media (max-width: 900px) { .how-grid { grid-template-columns: repeat(2, 1fr) !important; } }
+        @media (max-width: 560px) { .how-grid { grid-template-columns: 1fr !important; } }
+      `}</style>
+    </section>
+  );
+};
+
+const IndustriesSection = () => {
+  const [active, setActive] = React.useState(0);
+
+  const industries = [
+    { icon: 'pos', title: 'Retail & Tiendas', tag: 'Más popular', desc: 'Control de inventario en tiempo real, facturación electrónica DIAN, y un vendedor digital que atiende por WhatsApp sin que vos estés presente.', stats: [{ val: '-43%', label: 'merma de inventario' }, { val: '+29%', label: 'ticket promedio' }], features: ['POS táctil con modo offline', 'Multi-sede sincronizado', 'Catálogo en WhatsApp', 'Alertas de reabastecimiento'], color: '#7A5CFF' },
+    { icon: 'ecommerce', title: 'Moda & Textiles', tag: 'Tendencia', desc: 'Gestión de tallas, colores y temporadas. Sincronización automática entre tienda física, web e Instagram Shopping.', stats: [{ val: '+52%', label: 'ventas online' }, { val: '-38%', label: 'ropa sin vender' }], features: ['Variantes de talla y color', 'Sync Instagram Shopping', 'Liquidación inteligente', 'Temporadas automáticas'], color: '#F5B841' },
+    { icon: 'inventory', title: 'Restaurantes & Food', tag: '', desc: 'Comandas digitales, gestión de mesa, pedidos por WhatsApp y delivery integrado. Control de mermas y recetas con costeo automático.', stats: [{ val: '+34%', label: 'pedidos WhatsApp' }, { val: '-22%', label: 'costo de mermas' }], features: ['Comandas en tablet', 'Reservas automáticas', 'Recetario con costeo', 'Delivery multi-plataforma'], color: '#FF6B6B' },
+    { icon: 'hr', title: 'Salones & Barberías', tag: '', desc: 'Agenda de citas automatizada, recordatorios por WhatsApp, gestión de estilistas y comisiones. Historial completo por cliente.', stats: [{ val: '-71%', label: 'citas canceladas' }, { val: '+41%', label: 'retención clientes' }], features: ['Agenda online 24/7', 'Recordatorios automáticos', 'Comisiones por estilista', 'Historial de clientes'], color: '#4ade80' },
+    { icon: 'logistics', title: 'Distribuidoras', tag: '', desc: 'Gestión de rutas, pedidos mayoristas, cartera de clientes y despacho. Conectado con las principales transportadoras de Colombia.', stats: [{ val: '+28%', label: 'eficiencia en rutas' }, { val: '-45%', label: 'cartera vencida' }], features: ['Pedidos mayoristas', 'Gestión de rutas', 'Cartera y cobros', 'Despacho integrado'], color: '#60a5fa' },
+    { icon: 'crm', title: 'E-commerce & D2C', tag: '', desc: 'Sincronización automática con Shopify, WooCommerce y Mercado Libre. Gestión unificada de pedidos, inventario y devoluciones.', stats: [{ val: '+67%', label: 'conversión en web' }, { val: '-33%', label: 'tiempo en picking' }], features: ['Sync multi-canal', 'Stock en tiempo real', 'Devoluciones fáciles', 'Métricas unificadas'], color: '#c084fc' },
+  ];
+
+  const ind = industries[active];
+
+  return (
+    <section className="section-pad" id="solutions" style={{ position: 'relative', overflow: 'hidden' }}>
+      <div className="glow-orb" style={{ width: 700, height: 700, top: '30%', left: '-15%', background: 'var(--accent)', opacity: 0.07 }} />
+      <div className="container" style={{ position: 'relative' }}>
+        <div style={{ textAlign: 'center', marginBottom: 56 }}>
+          <div className="eyebrow" style={{ marginBottom: 14 }}>✦ Una sola IA · cualquier negocio</div>
+          <h2 className="display" style={{ fontSize: 'clamp(36px, 5vw, 68px)', marginBottom: 20 }}>
+            No importa qué vendas. <span className="gradient-accent">La IA lo opera.</span>
+          </h2>
+          <p style={{ color: 'var(--text-dim)', fontSize: 18, maxWidth: 640, margin: '0 auto', lineHeight: 1.55 }}>
+            El mismo cerebro de IA que controla una tienda de retail opera tu restaurante, tu salón, tu distribuidora o tu e-commerce. Se entrena con TU negocio y automatiza TU operación — sin importar el rubro.
+          </p>
+        </div>
+
+        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'center', marginBottom: 48 }}>
+          {industries.map((item, i) => (
+            <button key={item.title} onClick={() => setActive(i)} style={{ padding: '10px 18px', borderRadius: 999, background: active === i ? 'var(--secondary)' : 'rgba(255,255,255,0.04)', border: active === i ? '1px solid var(--secondary)' : '1px solid var(--line)', color: active === i ? '#fff' : 'var(--text-dim)', fontSize: 13.5, fontWeight: 600, cursor: 'pointer', transition: 'all .2s', fontFamily: 'Inter', display: 'flex', alignItems: 'center', gap: 7 }}>
+              <Icon name={item.icon} size={14} color={active === i ? '#fff' : 'var(--text-dim)'} />
+              {item.title}
+              {item.tag && <span style={{ fontSize: 9, padding: '2px 6px', borderRadius: 999, background: 'rgba(245,184,65,0.2)', color: 'var(--accent)', fontWeight: 700, letterSpacing: '0.04em' }}>{item.tag.toUpperCase()}</span>}
+            </button>
+          ))}
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 40, alignItems: 'center' }} className="industry-detail">
+          <div>
+            <div style={{ width: 56, height: 56, borderRadius: 16, background: `${ind.color}18`, border: `1px solid ${ind.color}35`, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 20 }}>
+              <Icon name={ind.icon} size={26} color={ind.color} />
+            </div>
+            <h3 style={{ fontSize: 32, fontWeight: 800, color: '#fff', fontFamily: 'Manrope', marginBottom: 14, lineHeight: 1.1 }}>OCTTO para<br />{ind.title}</h3>
+            <p style={{ fontSize: 15.5, color: 'var(--text-dim)', lineHeight: 1.65, marginBottom: 28 }}>{ind.desc}</p>
+            <div style={{ display: 'flex', gap: 16, marginBottom: 32 }}>
+              {ind.stats.map((s) => (
+                <div key={s.val} style={{ flex: 1, padding: 18, borderRadius: 14, background: `${ind.color}0c`, border: `1px solid ${ind.color}28`, textAlign: 'center' }}>
+                  <div style={{ fontSize: 28, fontWeight: 800, color: ind.color, fontFamily: 'Manrope', lineHeight: 1, marginBottom: 6 }}>{s.val}</div>
+                  <div style={{ fontSize: 11.5, color: 'var(--text-muted)' }}>{s.label}</div>
+                </div>
+              ))}
+            </div>
+            <a href="https://wa.me/573209921580?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20OCTTO.%20%C2%BFPueden%20ayudarme%3F%20%F0%9F%91%8B" target="_blank" className="btn btn-primary" style={{ padding: '13px 24px', fontSize: 14 }}>
+              Ver demo para {ind.title}<Icon name="arrow-right" size={14} />
+            </a>
+          </div>
+
+          <div className="card" style={{ padding: 28 }}>
+            <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-muted)', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 16 }}>Funciones incluidas</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+              {ind.features.map((feat) => (
+                <div key={feat} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 14px', borderRadius: 10, background: 'rgba(255,255,255,0.03)', border: '1px solid var(--line)' }}>
+                  <div style={{ width: 20, height: 20, borderRadius: '50%', flexShrink: 0, background: `${ind.color}18`, border: `1px solid ${ind.color}40`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <Icon name="check" size={10} color={ind.color} />
+                  </div>
+                  <span style={{ fontSize: 14, color: 'var(--text)', fontWeight: 500 }}>{feat}</span>
+                </div>
+              ))}
+            </div>
+            <div style={{ marginTop: 20, paddingTop: 16, borderTop: '1px solid var(--line)', fontSize: 12, color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: 6 }}>
+              <Icon name="sparkle" size={13} color="var(--secondary)" />
+              + Motor de IA, chatbot y todos los módulos base incluidos en cada industria
+            </div>
+          </div>
+        </div>
+      </div>
+      <style>{`
+        @media (max-width: 800px) { .industry-detail { grid-template-columns: 1fr !important; } }
+      `}</style>
+    </section>
+  );
+};
+
+const PricingSection = () => {
+  const [annual, setAnnual] = React.useState(false);
+
+  const plans = [
+    {
+      name: 'Portales Electrónicos', desc: 'Cumplimiento DIAN básico para negocios que empiezan a digitalizar.',
+      monthly: 49, yr: 42, highlight: false, badge: '', href: 'https://wa.me/573209921580?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20OCTTO.%20%C2%BFPueden%20ayudarme%3F%20%F0%9F%91%8B', note: 'Activación única desde $200.000 COP', cta: 'Empezar ahora',
+      features: ['Facturación electrónica DIAN', 'Nómina electrónica', 'Documentos soporte electrónicos', 'Recepción RADIAN'],
+    },
+    {
+      name: 'POS + Contabilidad', desc: 'La plataforma completa con IA para empresas en crecimiento.',
+      monthly: 69, yr: 59, highlight: true, badge: 'Más elegido', href: 'https://wa.me/573209921580?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20OCTTO.%20%C2%BFPueden%20ayudarme%3F%20%F0%9F%91%8B', note: 'Activación desde $600.000 · incluye 8h capacitación', cta: 'Agendar demo',
+      features: ['POS Comercial completo', 'Módulo Contabilidad IA 360°', 'Control de inventario', 'Todos los documentos electrónicos', 'Chatbot con IA (WhatsApp + web)', 'Soporte prioritario'],
+    },
+    {
+      name: 'ERP Empresas', desc: 'Automatización total 360° para operaciones de escala.',
+      monthly: 122, yr: 104, highlight: false, badge: '', href: 'https://wa.me/573209921580?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20OCTTO.%20%C2%BFPueden%20ayudarme%3F%20%F0%9F%91%8B', note: 'Activación desde $2.000.000 · incluye 10h capacitación · 3 usuarios base', cta: 'Hablar con ventas',
+      features: ['ERP completo multi-módulo', 'Contabilidad integrada 360° + nómina', 'Producción MRP', 'Asistente IA avanzado 24/7', 'API pública + SDK', 'SLA 99,95% garantizado'],
+    },
+  ];
+
+  return (
+    <section className="section-pad" id="pricing" style={{ position: 'relative', overflow: 'hidden' }}>
+      <div className="glow-orb" style={{ width: 600, height: 600, top: '20%', left: '50%', transform: 'translateX(-50%)', background: 'var(--secondary)', opacity: 0.1 }} />
+      <div className="container" style={{ position: 'relative' }}>
+        <div style={{ textAlign: 'center', marginBottom: 56 }}>
+          <div className="eyebrow" style={{ marginBottom: 14 }}>Precios</div>
+          <h2 className="display" style={{ fontSize: 'clamp(36px, 5vw, 68px)', marginBottom: 20 }}>
+            Sin sorpresas. <span className="gradient-text">Sin letra chica.</span>
+          </h2>
+          <p style={{ color: 'var(--text-dim)', fontSize: 18, maxWidth: 560, margin: '0 auto 32px', lineHeight: 1.55 }}>
+            Todos los precios en COP, excluidos de IVA. Cancelás cuando quieras, sin penalidades.
+          </p>
+          <div style={{ display: 'inline-flex', alignItems: 'center', padding: 6, borderRadius: 999, background: 'rgba(255,255,255,0.04)', border: '1px solid var(--line)' }}>
+            <button onClick={() => setAnnual(false)} style={{ padding: '8px 20px', borderRadius: 999, border: 'none', cursor: 'pointer', background: !annual ? 'rgba(122,92,255,0.3)' : 'transparent', color: !annual ? '#fff' : 'var(--text-dim)', fontSize: 13.5, fontWeight: 600, transition: 'all .2s', fontFamily: 'Inter' }}>Mensual</button>
+            <button onClick={() => setAnnual(true)} style={{ padding: '8px 20px', borderRadius: 999, border: 'none', cursor: 'pointer', background: annual ? 'rgba(122,92,255,0.3)' : 'transparent', color: annual ? '#fff' : 'var(--text-dim)', fontSize: 13.5, fontWeight: 600, transition: 'all .2s', fontFamily: 'Inter', display: 'flex', alignItems: 'center', gap: 8 }}>
+              Anual
+              <span style={{ fontSize: 10, padding: '2px 8px', borderRadius: 999, background: 'rgba(74,222,128,0.15)', color: '#4ade80', fontWeight: 700, border: '1px solid rgba(74,222,128,0.3)' }}>AHORRÁ 20%</span>
+            </button>
+          </div>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20, alignItems: 'start' }} className="pricing-grid">
+          {plans.map((plan) => {
+            const price = annual ? plan.yr : plan.monthly;
+            return (
+              <div key={plan.name} style={{ borderRadius: 20, padding: plan.highlight ? '32px 28px' : '28px 24px', background: plan.highlight ? 'linear-gradient(180deg, rgba(122,92,255,0.18) 0%, rgba(11,15,26,0.97) 100%)' : 'rgba(255,255,255,0.022)', border: plan.highlight ? '1px solid rgba(122,92,255,0.5)' : '1px solid var(--line)', boxShadow: plan.highlight ? '0 40px 80px -20px rgba(91,61,245,0.4)' : 'none', position: 'relative', overflow: 'hidden', transform: plan.highlight ? 'scale(1.03)' : 'scale(1)' }}>
+                {plan.highlight && <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: 'linear-gradient(to right, var(--secondary), var(--primary))' }} />}
+                {plan.badge && (
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '4px 12px', borderRadius: 999, marginBottom: 16, background: 'rgba(122,92,255,0.18)', border: '1px solid rgba(122,92,255,0.4)', fontSize: 11, fontWeight: 700, color: 'var(--secondary)', letterSpacing: '0.05em' }}>
+                    <span className="animate-pulse-glow" style={{ width: 5, height: 5, borderRadius: '50%', background: 'var(--secondary)' }} />
+                    {plan.badge.toUpperCase()}
+                  </div>
+                )}
+                <div style={{ marginBottom: 20 }}>
+                  <div style={{ fontSize: 20, fontWeight: 800, color: '#fff', fontFamily: 'Manrope', marginBottom: 6 }}>{plan.name}</div>
+                  <div style={{ fontSize: 13, color: 'var(--text-dim)', lineHeight: 1.5 }}>{plan.desc}</div>
+                </div>
+                {price ? (
+                  <div style={{ marginBottom: 24 }}>
+                    <div style={{ display: 'flex', alignItems: 'baseline', gap: 4 }}>
+                      <span style={{ fontSize: 44, fontWeight: 800, color: '#fff', fontFamily: 'Manrope', lineHeight: 1 }}>${price.toLocaleString('es-CO')}</span>
+                      <span style={{ fontSize: 16, color: '#ffffff', fontWeight: 700 }}>.000 COP/mes</span>
+                    </div>
+                    {annual && plan.monthly && (
+                      <div style={{ fontSize: 12, color: '#4ade80', marginTop: 4, display: 'flex', alignItems: 'center', gap: 5 }}>
+                        <Icon name="trending" size={11} color="#4ade80" />
+                        Ahorrás ${((plan.monthly - plan.yr) * 12).toLocaleString('es-CO')}.000 al año
+                      </div>
+                    )}
+                    <div style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 4 }}>Excluido de IVA</div>
+                  </div>
+                ) : (
+                  <div style={{ marginBottom: 24 }}>
+                    <div style={{ fontSize: 32, fontWeight: 800, color: 'var(--accent)', fontFamily: 'Manrope', lineHeight: 1.1 }}>A consultar</div>
+                    <div style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 4 }}>Según volumen y módulos</div>
+                  </div>
+                )}
+                <a href={plan.href} className={plan.highlight ? 'btn btn-primary' : 'btn btn-ghost'} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 8, padding: '13px 20px', fontSize: 14, marginBottom: 16, width: '100%', boxSizing: 'border-box' }}>
+                  {plan.cta}<Icon name="arrow-right" size={14} />
+                </a>
+                <div style={{ fontSize: 13, color: 'var(--text-secondary)', textAlign: 'center', marginBottom: 20 }}>{plan.note}</div>
+                <div style={{ borderTop: '1px solid var(--line)', paddingTop: 20 }}>
+                  <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-muted)', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 12 }}>Incluye</div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 9 }}>
+                    {plan.features.map((feat) => (
+                      <div key={feat} style={{ display: 'flex', alignItems: 'flex-start', gap: 9 }}>
+                        <div style={{ width: 16, height: 16, borderRadius: '50%', flexShrink: 0, marginTop: 1, background: 'rgba(122,92,255,0.15)', border: '1px solid rgba(122,92,255,0.35)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                          <Icon name="check" size={9} color="var(--secondary)" />
+                        </div>
+                        <span style={{ fontSize: 13, color: 'var(--text-dim)', lineHeight: 1.45 }}>{feat}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <div style={{ marginTop: 36, textAlign: 'center' }}>
+          <p style={{ fontSize: 13, color: 'var(--text-muted)' }}>
+            ¿Necesitás funciones específicas?{' '}
+            <a href="https://wa.me/573209921580?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20OCTTO.%20%C2%BFPueden%20ayudarme%3F%20%F0%9F%91%8B" target="_blank" style={{ color: 'var(--secondary)', textDecoration: 'none', fontWeight: 600 }}>Hablamos y armamos un plan a medida.</a>
+          </p>
+        </div>
+      </div>
+      <style>{`
+        @media (max-width: 960px) {
+          .pricing-grid { grid-template-columns: 1fr !important; }
+          .pricing-grid > div { transform: scale(1) !important; }
+        }
+      `}</style>
+    </section>
+  );
+};
+
+const FAQSection = () => {
+  const [open, setOpen] = React.useState(0);
+
+  const faqs = [
+    { q: '¿Por qué OCTTO y no otro software de gestión?', a: 'Los sistemas de gestión tradicionales hacen lo que vos les decís. OCTTO es diferente: la IA contabiliza sola cada venta, compra y pago — sin que tu contador o vos toquen nada. Los otros no tienen POS con IA, ni chatbot de ventas para WhatsApp, ni CRM inteligente, ni predicción de inventario, ni geo-marketing. OCTTO no es un software con extras de IA: es un sistema operativo completo donde la inteligencia artificial reemplaza trabajo humano real en cada módulo.' },
+    { q: '¿OCTTO está habilitado para facturación electrónica DIAN?', a: 'Sí. OCTTO es proveedor tecnológico habilitado por la DIAN para emitir facturas electrónicas, notas crédito y documentos equivalentes. Tu operación queda 100% en regla desde el primer día, sin necesidad de contratar un proveedor externo.' },
+    { q: '¿Cuánto tiempo tarda la implementación?', a: 'El promedio de nuestros clientes está operativo en 3 a 7 días hábiles. El proceso incluye: carga de catálogo y precios, migración de clientes y proveedores, configuración según tu industria y capacitación de tu equipo. Nuestro equipo se encarga de todo.' },
+    { q: '¿Puedo migrar mis datos desde mi sistema actual?', a: 'Sí. Tenemos conectores para los sistemas más usados en Colombia y LATAM, además de importación desde Excel y CSV. Si usás otro sistema, nuestro equipo de datos hace la migración sin costo adicional.' },
+    { q: '¿Hay contrato de permanencia mínima?', a: 'No. Pagás tu plan de usuarios mes a mes sin penalidades, o anual con 15% de descuento. La activación es un pago único inicial. Apostamos a que te quedés porque OCTTO genera valor real, no porque estés atado.' },
+    { q: '¿Cómo funciona el soporte técnico?', a: 'Todos los planes incluyen soporte técnico permanente y personalizado por WhatsApp, teléfono y conexión remota (5x8 y 7x24 para contingencias), más actualizaciones permanentes del sistema. El plan ERP Empresas suma un account manager dedicado.' },
+    { q: '¿Mis empleados necesitan experiencia técnica?', a: 'No. OCTTO fue diseñado para que cualquier persona pueda dominarlo en menos de 1 día. La interfaz es táctil, en español, con guías en video para cada función. Y si alguien tiene dudas, puede preguntarle al agente IA directamente en lenguaje natural.' },
+    { q: '¿Qué pasa con mis datos si cancelo?', a: 'Tus datos son tuyos. Si cancelás, tenés 60 días para exportar toda tu información en formatos estándar (CSV, Excel, PDF). Nunca vendemos ni compartimos tus datos comerciales con terceros. Cumplimos con la Ley 1581 de Habeas Data de Colombia.' },
+    { q: '¿OCTTO funciona sin conexión a internet?', a: 'El módulo POS funciona en modo offline para ventas y cobros básicos. Cuando se restaura la conexión, sincroniza automáticamente. Los demás módulos requieren conexión, pero tenemos app móvil para consultas en campo.' },
+  ];
+
+  return (
+    <section className="section-pad" id="faq" style={{ position: 'relative', overflow: 'hidden' }}>
+      <div className="glow-orb" style={{ width: 500, height: 500, bottom: 0, right: 0, background: 'var(--primary)', opacity: 0.08 }} />
+      <div className="container" style={{ position: 'relative' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.6fr', gap: 64, alignItems: 'start' }} className="faq-grid">
+          <div>
+            <div className="eyebrow" style={{ marginBottom: 14 }}>FAQ</div>
+            <h2 className="display" style={{ fontSize: 'clamp(32px, 4vw, 54px)', marginBottom: 20, lineHeight: 1.05 }}>
+              Preguntas que siempre nos hacen.
+            </h2>
+            <p style={{ color: 'var(--text-dim)', fontSize: 15, lineHeight: 1.65, marginBottom: 32 }}>
+              Si tenés alguna pregunta que no está acá, nuestro equipo responde en minutos.
+            </p>
+            <a href="https://wa.me/573209921580?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20OCTTO.%20%C2%BFPueden%20ayudarme%3F%20%F0%9F%91%8B" target="_blank" className="btn btn-ghost" style={{ padding: '13px 22px', fontSize: 14, display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+              <Icon name="chatbot" size={16} />
+              Hablar con un asesor
+            </a>
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+            {faqs.map((faq, i) => (
+              <div key={i} style={{ borderRadius: 14, background: open === i ? 'rgba(122,92,255,0.06)' : 'rgba(255,255,255,0.018)', border: open === i ? '1px solid rgba(122,92,255,0.3)' : '1px solid var(--line)', overflow: 'hidden', transition: 'all .25s' }}>
+                <button onClick={() => setOpen(open === i ? -1 : i)} style={{ width: '100%', padding: '17px 20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left' }}>
+                  <span style={{ fontSize: 14.5, fontWeight: 600, color: open === i ? '#fff' : 'var(--text)', lineHeight: 1.35, fontFamily: 'Manrope' }}>{faq.q}</span>
+                  <div style={{ width: 24, height: 24, borderRadius: 7, flexShrink: 0, background: open === i ? 'rgba(122,92,255,0.25)' : 'rgba(255,255,255,0.05)', border: '1px solid var(--line)', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all .2s' }}>
+                    <Icon name={open === i ? 'x' : 'plus'} size={12} color="var(--text-dim)" />
+                  </div>
+                </button>
+                {open === i && (
+                  <div style={{ padding: '0 20px 18px', fontSize: 13.5, color: 'var(--text-dim)', lineHeight: 1.7 }}>{faq.a}</div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      <style>{`
+        @media (max-width: 860px) { .faq-grid { grid-template-columns: 1fr !important; } }
+      `}</style>
+    </section>
+  );
+};
+
+Object.assign(window, { AIFeaturesSection, BenefitsSection, IntegrationsSection, CTASection, Footer, HowItWorksSection, IndustriesSection, PricingSection, FAQSection });
+
+</script>
+
+<script type="text/babel" data-from="accounting-section">
+// ── Contabilidad 360° conectada + ecosistema de módulos ──────────────────────
+const AccountingSection = () => {
+  const sources = [
+    { icon: 'pos', label: 'Ventas POS' },
+    { icon: 'invoice', label: 'Facturas DIAN' },
+    { icon: 'inventory', label: 'Inventario' },
+    { icon: 'logistics', label: 'Compras' },
+    { icon: 'hr', label: 'Nómina' },
+    { icon: 'finance', label: 'Gastos' },
+  ];
+  const outputs = [
+    'Balance General en tiempo real',
+    'Estado de Resultados (P&G)',
+    'Información Exógena DIAN',
+    'Certificados de retención',
+    'Recepción de documentos (RADIAN)',
+    'Auxiliares por cuenta y NIT',
+  ];
+
+  return (
+    <section className="section-pad" id="contabilidad" style={{ position: 'relative', overflow: 'hidden' }}>
+      <div className="glow-orb" style={{ width: 600, height: 600, top: '20%', right: '-15%', background: 'var(--accent)', opacity: 0.07 }} />
+      <div className="container" style={{ position: 'relative' }}>
+        <div style={{ textAlign: 'center', marginBottom: 56 }}>
+          <div className="eyebrow" style={{ marginBottom: 14 }}>✦ Contabilidad integrada 360° — el diferenciador que ningún otro ERP tiene</div>
+          <h2 className="display" style={{ fontSize: 'clamp(36px, 5vw, 68px)', marginBottom: 20 }}>
+            Vendés en el POS. La IA <span className="gradient-accent">contabiliza sola.</span>
+          </h2>
+          <p style={{ color: 'var(--text-dim)', fontSize: 18, maxWidth: 680, margin: '0 auto', lineHeight: 1.55 }}>
+            Esta es la razón por la que los contadores de nuestros clientes no quieren volver al software anterior. Cada venta, cada compra, cada pago de nómina genera su asiento contable en el momento exacto — sin digitación, sin reprocesos, sin el contador pegado al computador a fin de mes. El balance siempre está al día. Siempre.
+          </p>
+        </div>
+
+        {/* Flujo: fuentes → motor IA → resultados */}
+        <div className="acc-flow" style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: 28, alignItems: 'center', marginBottom: 56 }}>
+          {/* Fuentes */}
+          <div>
+            <div className="mono" style={{ fontSize: 11, letterSpacing: '0.12em', color: 'var(--text-muted)', marginBottom: 14, textTransform: 'uppercase' }}>Cada operación de tu negocio</div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
+              {sources.map((s) => (
+                <div key={s.label} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '12px 14px', borderRadius: 12, background: 'rgba(255,255,255,0.03)', border: '1px solid var(--line)' }}>
+                  <Icon name={s.icon} size={18} color="var(--secondary)" />
+                  <span style={{ fontSize: 13.5, color: 'var(--text)', fontWeight: 500 }}>{s.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Motor IA */}
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12 }} className="acc-engine">
+            <Icon name="arrow-right" size={22} color="var(--accent)" />
+            <div style={{ padding: '24px 20px', borderRadius: 18, background: 'linear-gradient(180deg, rgba(122,92,255,0.18), rgba(11,15,26,0.9))', border: '1px solid rgba(122,92,255,0.5)', textAlign: 'center', boxShadow: '0 20px 50px -20px rgba(91,61,245,0.5)', width: 150 }}>
+              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 10 }}>
+                <Icon name="cpu" size={30} color="#fff" />
+              </div>
+              <div style={{ fontSize: 14, fontWeight: 800, color: '#fff', fontFamily: 'Manrope', lineHeight: 1.2 }}>Motor contable IA</div>
+              <div style={{ fontSize: 11, color: 'var(--text-dim)', marginTop: 6 }}>asiento automático</div>
+            </div>
+            <Icon name="arrow-right" size={22} color="var(--accent)" />
+          </div>
+
+          {/* Resultados */}
+          <div>
+            <div className="mono" style={{ fontSize: 11, letterSpacing: '0.12em', color: 'var(--text-muted)', marginBottom: 14, textTransform: 'uppercase' }}>Información financiera lista</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+              {outputs.map((o) => (
+                <div key={o} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '11px 14px', borderRadius: 12, background: 'rgba(245,184,65,0.06)', border: '1px solid rgba(245,184,65,0.22)' }}>
+                  <div style={{ width: 18, height: 18, borderRadius: '50%', flexShrink: 0, background: 'rgba(245,184,65,0.18)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <Icon name="check" size={10} color="var(--accent)" />
+                  </div>
+                  <span style={{ fontSize: 13.5, color: 'var(--text)', fontWeight: 500 }}>{o}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Stats */}
+        <div style={{ display: 'flex', justifyContent: 'center', gap: 48, flexWrap: 'wrap', paddingTop: 8 }}>
+          {[
+            { val: '0', label: 'digitación manual' },
+            { val: '100%', label: 'cumplimiento DIAN' },
+            { val: 'Tiempo real', label: 'estados financieros' },
+            { val: '24/7', label: 'asistente contable IA' },
+          ].map((m) => (
+            <div key={m.label} style={{ textAlign: 'center' }}>
+              <div className="display gradient-text" style={{ fontSize: 36, lineHeight: 1, marginBottom: 6 }}>{m.val}</div>
+              <div style={{ fontSize: 13, color: 'var(--text-dim)' }}>{m.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <style>{`
+        @media (max-width: 860px) {
+          .acc-flow { grid-template-columns: 1fr !important; }
+          .acc-engine { flex-direction: row !important; justify-content: center; }
+          .acc-engine svg { transform: rotate(90deg); }
+        }
+      `}</style>
+    </section>
+  );
+};
+
+const EcosystemSection = () => {
+  const modules = [
+    { icon: 'pos', name: 'POS & Ventas', tag: '' },
+    { icon: 'invoice', name: 'Facturación DIAN', tag: '' },
+    { icon: 'inventory', name: 'Inventario', tag: '' },
+    { icon: 'finance', name: 'Contabilidad 360°', tag: 'IA' },
+    { icon: 'hr', name: 'Nómina electrónica', tag: '' },
+    { icon: 'crm', name: 'CRM', tag: '' },
+    { icon: 'chatbot', name: 'Chatbot IA (WhatsApp)', tag: 'IA' },
+    { icon: 'ecommerce', name: 'Tienda virtual', tag: '' },
+    { icon: 'globe', name: 'Marketplace', tag: '' },
+    { icon: 'invoice', name: 'Documento Soporte', tag: '' },
+    { icon: 'shield', name: 'Recepción RADIAN', tag: '' },
+    { icon: 'cpu', name: 'Producción (MRP)', tag: '' },
+    { icon: 'logistics', name: 'Logística (WMS)', tag: '' },
+    { icon: 'insights', name: 'Insights predictivos', tag: 'IA' },
+  ];
+
+  return (
+    <section className="section-pad" id="ecosistema" style={{ position: 'relative', overflow: 'hidden', paddingTop: 0 }}>
+      <div className="container" style={{ position: 'relative' }}>
+        <div style={{ textAlign: 'center', marginBottom: 44 }}>
+          <div className="eyebrow" style={{ marginBottom: 14 }}>Un solo sistema · todos los módulos</div>
+          <h2 className="display" style={{ fontSize: 'clamp(32px, 4.5vw, 60px)', marginBottom: 18 }}>
+            14 módulos. <span className="gradient-text">Un solo cerebro de IA.</span>
+          </h2>
+          <p style={{ color: 'var(--text-dim)', fontSize: 17, maxWidth: 620, margin: '0 auto', lineHeight: 1.55 }}>
+            Cada módulo comparte datos en tiempo real con los demás. Reemplazás 8 a 12 herramientas desconectadas por un ecosistema que la IA opera completo.
+          </p>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(190px, 1fr))', gap: 12 }}>
+          {modules.map((m) => (
+            <div key={m.name} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '16px 16px', borderRadius: 14, background: 'rgba(255,255,255,0.03)', border: '1px solid var(--line)', transition: 'all .2s' }}
+              onMouseEnter={e => { e.currentTarget.style.background = 'rgba(122,92,255,0.08)'; e.currentTarget.style.borderColor = 'rgba(122,92,255,0.4)'; }}
+              onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.03)'; e.currentTarget.style.borderColor = 'var(--line)'; }}>
+              <div style={{ width: 38, height: 38, borderRadius: 10, flexShrink: 0, background: 'rgba(122,92,255,0.12)', border: '1px solid rgba(122,92,255,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Icon name={m.icon} size={19} color="var(--secondary)" />
+              </div>
+              <span style={{ fontSize: 14, color: 'var(--text)', fontWeight: 600, fontFamily: 'Manrope' }}>{m.name}</span>
+              {m.tag && <span style={{ marginLeft: 'auto', fontSize: 9, padding: '3px 7px', borderRadius: 999, background: 'rgba(245,184,65,0.18)', color: 'var(--accent)', fontWeight: 700, letterSpacing: '0.04em' }}>{m.tag}</span>}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const ComparisonSection = () => {
+  const rows = [
+    { label: 'Herramientas', before: '5 a 12 apps que no se hablan entre sí', after: '1 sola plataforma con IA' },
+    { label: 'Inventario', before: 'Excel actualizado a mano, siempre desfasado', after: 'IA en tiempo real, multi-sede' },
+    { label: 'Contabilidad', before: 'Le pasás todo al contador a fin de mes', after: 'Asiento automático en cada movimiento' },
+    { label: 'Atención', before: 'Respondés WhatsApp uno por uno', after: 'Chatbot IA vende y cobra 24/7' },
+    { label: 'Decisiones', before: 'Con datos viejos y a ciegas', after: 'La IA te dice qué hacer y lo ejecuta' },
+    { label: 'Costo', before: 'Pagás 5 a 12 suscripciones distintas', after: '−61% de gasto en software' },
+    { label: 'Tu tiempo', before: '14 hrs/semana en tareas manuales', after: 'La IA las hace en segundos' },
+  ];
+
+  return (
+    <section className="section-pad" id="comparativa" style={{ position: 'relative', overflow: 'hidden' }}>
+      <div className="glow-orb" style={{ width: 600, height: 600, top: '30%', left: '-15%', background: 'var(--primary)', opacity: 0.08 }} />
+      <div className="container" style={{ position: 'relative' }}>
+        <div style={{ textAlign: 'center', marginBottom: 48 }}>
+          <div className="eyebrow" style={{ marginBottom: 14 }}>El cambio real</div>
+          <h2 className="display" style={{ fontSize: 'clamp(34px, 5vw, 64px)', marginBottom: 18 }}>
+            12 herramientas sueltas. <span className="gradient-text">O un solo OCTTO.</span>
+          </h2>
+          <p style={{ color: 'var(--text-dim)', fontSize: 17, maxWidth: 600, margin: '0 auto', lineHeight: 1.55 }}>
+            La diferencia entre operar tu negocio a mano y que la IA lo opere por vos.
+          </p>
+        </div>
+
+        <div className="card" style={{ padding: 0, overflow: 'hidden', maxWidth: 920, margin: '0 auto' }}>
+          {/* Encabezado de columnas */}
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.1fr 1.1fr' }}>
+            <div />
+            <div style={{ padding: '18px 20px', textAlign: 'center', fontSize: 13, fontWeight: 700, color: 'var(--text-dim)', fontFamily: 'Manrope', borderBottom: '1px solid var(--line)' }}>
+              Tu operación hoy
+            </div>
+            <div style={{ padding: '18px 20px', textAlign: 'center', fontSize: 13, fontWeight: 800, color: '#fff', fontFamily: 'Manrope', background: 'rgba(122,92,255,0.12)', borderBottom: '1px solid rgba(122,92,255,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+              <Icon name="sparkle" size={14} color="var(--accent)" /> Con OCTTO
+            </div>
+          </div>
+
+          {rows.map((r, i) => (
+            <div key={r.label} style={{ display: 'grid', gridTemplateColumns: '1fr 1.1fr 1.1fr', borderTop: i === 0 ? 'none' : '1px solid var(--line)' }}>
+              <div style={{ padding: '16px 20px', fontSize: 13, fontWeight: 700, color: 'var(--text)', display: 'flex', alignItems: 'center', fontFamily: 'Manrope' }}>{r.label}</div>
+              <div style={{ padding: '16px 20px', display: 'flex', alignItems: 'center', gap: 10, fontSize: 13.5, color: 'var(--text-dim)' }}>
+                <Icon name="x" size={14} color="#ff6b7a" />
+                <span>{r.before}</span>
+              </div>
+              <div style={{ padding: '16px 20px', display: 'flex', alignItems: 'center', gap: 10, fontSize: 13.5, color: 'var(--text)', background: 'rgba(122,92,255,0.06)' }}>
+                <Icon name="check" size={14} color="#4ade80" />
+                <span style={{ fontWeight: 500 }}>{r.after}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div style={{ textAlign: 'center', marginTop: 36 }}>
+          <a href="https://wa.me/573209921580?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20OCTTO.%20%C2%BFPueden%20ayudarme%3F%20%F0%9F%91%8B" target="_blank" className="btn btn-primary" style={{ padding: '14px 28px', fontSize: 15 }}>
+            Quiero unificar mi negocio<Icon name="arrow-right" size={15} />
+          </a>
+        </div>
+      </div>
+      <style>{`
+        @media (max-width: 720px) {
+          #comparativa .card > div { grid-template-columns: 1fr !important; }
+          #comparativa .card > div > div:first-child { background: rgba(255,255,255,0.03); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); padding-bottom: 4px; }
+        }
+      `}</style>
+    </section>
+  );
+};
+
+Object.assign(window, { AccountingSection, EcosystemSection, ComparisonSection });
+
+</script>
+
+<script type="text/babel" data-from="components/fidelizacion.jsx">
+// ─── FIDELIZACIÓN — Módulo nativo de tarjetas + geo-marketing fusionado con OCTTO ERP ───
+
+const FIDEL_INDIGO = '#6366f1';
+const FIDEL_INDIGO_SOFT = 'rgba(99,102,241,0.15)';
+const fi = { // estilos base reutilizables
+  section: { padding: '96px 0' },
+  wrap:    { maxWidth: 1100, margin: '0 auto', padding: '0 24px' },
+  eyebrow: { fontSize: 11, fontWeight: 700, letterSpacing: 3, textTransform: 'uppercase', color: FIDEL_INDIGO, marginBottom: 12, display: 'block' },
+  h2:      { fontSize: 'clamp(26px,4vw,44px)', fontWeight: 800, color: '#fff', lineHeight: 1.15, marginBottom: 16 },
+  sub:     { fontSize: 16, color: 'rgba(255,255,255,0.52)', lineHeight: 1.7 },
+  card:    { background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 16, padding: 24 },
+  altBg:   { background: 'rgba(99,102,241,0.04)', borderTop: '1px solid rgba(99,102,241,0.1)', borderBottom: '1px solid rgba(99,102,241,0.1)' },
+};
+
+/* ── Punch Card animada ── */
+const AnimatedPunchCard = () => {
+  const [filled, setFilled] = React.useState(0);
+  React.useEffect(() => {
+    const t = setInterval(() => setFilled(f => f >= 8 ? 0 : f + 1), 700);
+    return () => clearInterval(t);
+  }, []);
+  return (
+    <div style={{
+      background: 'linear-gradient(135deg,#1e1b4b 0%,#312e81 100%)',
+      borderRadius: 20, padding: 24, width: 300, boxShadow: '0 32px 80px rgba(99,102,241,0.4)',
+      border: '1px solid rgba(99,102,241,0.35)', position: 'relative', overflow: 'hidden'
+    }}>
+      <div style={{ position: 'absolute', top: -30, right: -30, width: 120, height: 120, borderRadius: '50%', background: 'rgba(99,102,241,0.15)', filter: 'blur(24px)' }} />
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
+        <div>
+          <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', letterSpacing: 2, textTransform: 'uppercase' }}>Café Brújula</div>
+          <div style={{ fontSize: 17, fontWeight: 700, color: '#fff', marginTop: 2 }}>Tarjeta de Sellos</div>
+        </div>
+        <div style={{ fontSize: 24 }}>☕</div>
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 8, marginBottom: 16 }}>
+        {[...Array(8)].map((_, i) => (
+          <div key={i} style={{
+            width: '100%', aspectRatio: '1', borderRadius: 10,
+            background: i < filled ? 'linear-gradient(135deg,#6366f1,#818cf8)' : 'rgba(255,255,255,0.07)',
+            border: `1.5px solid ${i < filled ? '#6366f1' : 'rgba(255,255,255,0.1)'}`,
+            display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16,
+            transition: 'all 0.35s cubic-bezier(0.34,1.56,0.64,1)',
+            transform: i < filled ? 'scale(1.05)' : 'scale(1)',
+            boxShadow: i < filled ? '0 0 12px rgba(99,102,241,0.6)' : 'none'
+          }}>{i < filled ? '☕' : ''}</div>
+        ))}
+      </div>
+      <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', textAlign: 'center' }}>
+        {filled < 8 ? `${filled} de 8 sellos · ¡Faltan ${8 - filled} para tu café gratis!` : '🎉 ¡Premio desbloqueado!'}
+      </div>
+      {/* Notificación lock screen */}
+      <div style={{
+        marginTop: 16, background: 'rgba(0,0,0,0.45)', backdropFilter: 'blur(10px)',
+        borderRadius: 12, padding: '10px 14px', border: '1px solid rgba(255,255,255,0.1)',
+        display: 'flex', gap: 10, alignItems: 'center'
+      }}>
+        <div style={{ fontSize: 22 }}>👛</div>
+        <div>
+          <div style={{ fontSize: 11, fontWeight: 600, color: '#fff' }}>Wallet · Café Brújula</div>
+          <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.6)' }}>☕ ¡Ya casi! Solo {Math.max(0,8-filled)} sellos para tu café gratis</div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+/* ── Mapa con pulso geo-fence ── */
+const GeoMap = () => {
+  const [pulse, setPulse] = React.useState(0);
+  React.useEffect(() => {
+    const t = setInterval(() => setPulse(p => (p + 1) % 3), 1200);
+    return () => clearInterval(t);
+  }, []);
+  return (
+    <div style={{ position: 'relative', width: 320, height: 280, borderRadius: 16, overflow: 'hidden', background: '#0f172a', border: '1px solid rgba(99,102,241,0.2)' }}>
+      {/* Grilla de mapa oscura */}
+      <svg width="320" height="280" style={{ position: 'absolute', inset: 0 }}>
+        <defs>
+          <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+            <path d="M 32 0 L 0 0 0 32" fill="none" stroke="rgba(99,102,241,0.08)" strokeWidth="1"/>
+          </pattern>
+        </defs>
+        <rect width="320" height="280" fill="url(#grid)" />
+        {/* Calles simuladas */}
+        <line x1="0" y1="140" x2="320" y2="140" stroke="rgba(99,102,241,0.12)" strokeWidth="2"/>
+        <line x1="160" y1="0" x2="160" y2="280" stroke="rgba(99,102,241,0.12)" strokeWidth="2"/>
+        <line x1="0" y1="80" x2="320" y2="80" stroke="rgba(99,102,241,0.07)" strokeWidth="1"/>
+        <line x1="0" y1="200" x2="320" y2="200" stroke="rgba(99,102,241,0.07)" strokeWidth="1"/>
+        <line x1="80" y1="0" x2="80" y2="280" stroke="rgba(99,102,241,0.07)" strokeWidth="1"/>
+        <line x1="240" y1="0" x2="240" y2="280" stroke="rgba(99,102,241,0.07)" strokeWidth="1"/>
+        {/* Geofence ripples */}
+        {[0,1,2].map(i => (
+          <circle key={i} cx="160" cy="140" r={60 + i * 30}
+            fill="none" stroke={FIDEL_INDIGO}
+            strokeWidth={pulse === i ? 2 : 0.5}
+            opacity={pulse === i ? 0.6 : 0.15}
+            style={{ transition: 'all 0.6s ease' }}
+          />
+        ))}
+        {/* Centro — negocio */}
+        <circle cx="160" cy="140" r="10" fill={FIDEL_INDIGO} opacity="0.9"/>
+        <circle cx="160" cy="140" r="5" fill="#fff"/>
+        {/* Clientes caminando */}
+        <circle cx="115" cy="110" r="6" fill="#10b981" opacity="0.85"/>
+        <circle cx="200" cy="160" r="6" fill="#10b981" opacity="0.85"/>
+        <circle cx="130" cy="175" r="6" fill="#f59e0b" opacity="0.85"/>
+      </svg>
+      {/* Leyenda */}
+      <div style={{ position: 'absolute', bottom: 12, left: 12, display: 'flex', flexDirection: 'column', gap: 4 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 10, color: 'rgba(255,255,255,0.6)' }}>
+          <div style={{ width: 8, height: 8, borderRadius: '50%', background: FIDEL_INDIGO }} />
+          Tu negocio
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 10, color: 'rgba(255,255,255,0.6)' }}>
+          <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#10b981' }} />
+          Cliente con tarjeta (notificado)
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 10, color: 'rgba(255,255,255,0.6)' }}>
+          <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#f59e0b' }} />
+          Cliente en zona de alcance
+        </div>
+      </div>
+      <div style={{ position: 'absolute', top: 12, right: 12, background: 'rgba(99,102,241,0.15)', border: '1px solid rgba(99,102,241,0.3)', borderRadius: 8, padding: '4px 10px', fontSize: 11, color: '#a5b4fc', fontWeight: 600 }}>
+        Radio: 200 m
+      </div>
+    </div>
+  );
+};
+
+/* ── Toggle de automatización ── */
+const AutoToggle = ({ emoji, title, desc, defaultOn = true }) => {
+  const [on, setOn] = React.useState(defaultOn);
+  return (
+    <div style={{
+      background: 'rgba(255,255,255,0.03)', border: `1px solid ${on ? 'rgba(99,102,241,0.3)' : 'rgba(255,255,255,0.07)'}`,
+      borderRadius: 14, padding: '18px 20px', transition: 'border-color 0.3s'
+    }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 }}>
+        <div style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
+          <span style={{ fontSize: 24 }}>{emoji}</span>
+          <div>
+            <div style={{ fontWeight: 700, color: '#fff', fontSize: 14, marginBottom: 4 }}>{title}</div>
+            <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', lineHeight: 1.5 }}>{desc}</div>
+          </div>
+        </div>
+        <button onClick={() => setOn(v => !v)} style={{
+          width: 44, height: 24, borderRadius: 12, border: 'none', cursor: 'pointer', flexShrink: 0,
+          background: on ? FIDEL_INDIGO : 'rgba(255,255,255,0.1)', transition: 'background 0.3s', position: 'relative'
+        }}>
+          <div style={{
+            position: 'absolute', top: 3, left: on ? 23 : 3, width: 18, height: 18,
+            borderRadius: '50%', background: '#fff', transition: 'left 0.3s cubic-bezier(0.34,1.56,0.64,1)'
+          }} />
+        </button>
+      </div>
+    </div>
+  );
+};
+
+/* ── Tarjeta de tipo de fidelización ── */
+const FidelCard = ({ emoji, type, title, desc, color, preview }) => (
+  <div style={{
+    background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)',
+    borderRadius: 16, padding: 24, display: 'flex', flexDirection: 'column', gap: 16,
+    transition: 'border-color 0.3s, transform 0.3s',
+    cursor: 'default'
+  }}
+    onMouseEnter={e => { e.currentTarget.style.borderColor = color; e.currentTarget.style.transform = 'translateY(-4px)'; }}
+    onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)'; e.currentTarget.style.transform = 'translateY(0)'; }}
+  >
+    <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+      <div style={{ width: 44, height: 44, borderRadius: 12, background: `${color}22`, border: `1px solid ${color}44`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22 }}>{emoji}</div>
+      <div>
+        <div style={{ fontSize: 10, letterSpacing: 2, textTransform: 'uppercase', color: color, fontWeight: 700 }}>{type}</div>
+        <div style={{ fontSize: 16, fontWeight: 700, color: '#fff' }}>{title}</div>
+      </div>
+    </div>
+    <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.55)', lineHeight: 1.65 }}>{desc}</div>
+    <div style={{ background: `${color}11`, border: `1px solid ${color}22`, borderRadius: 10, padding: '10px 14px', fontSize: 12, color: color, fontWeight: 500 }}>{preview}</div>
+  </div>
+);
+
+/* ── Segmento RFM ── */
+const RFMBadge = ({ color, bg, label, count, desc }) => (
+  <div style={{ background: bg, border: `1px solid ${color}33`, borderRadius: 14, padding: 20, textAlign: 'center' }}>
+    <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase', color: color, marginBottom: 6 }}>{label}</div>
+    <div style={{ fontSize: 32, fontWeight: 800, color: '#fff', marginBottom: 4 }}>{count}</div>
+    <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', lineHeight: 1.5 }}>{desc}</div>
+  </div>
+);
+
+/* ══════════════════════════════════════════
+   FIDELIZACIÓN PAGE — integración nativa ERP
+══════════════════════════════════════════ */
+const FidelizacionPage = () => {
+
+  const [activeCard, setActiveCard] = React.useState(0);
+  const [activeRFM, setActiveRFM] = React.useState(0);
+
+  const cardTypes = [
+    {
+      emoji: '🎯', type: 'Punch Card', title: 'Tarjeta de Sellos', color: FIDEL_INDIGO,
+      config: ['Número de sellos requeridos (ej: 8)', 'Premio al completar (producto, descuento, servicio)', 'Vigencia de la tarjeta'],
+      cliente: 'Escanea QR en caja → sello aparece en su Wallet al instante → al completar recibe notificación de premio.',
+      erp: 'El POS de OCTTO registra la venta, dispara el sello vía API Wallet y genera la factura electrónica DIAN — todo en un solo gesto del cajero.',
+      preview: '☕ ☕ ☕ ☕ ☕ ☕ ☕ ⬜  →  café gratis',
+    },
+    {
+      emoji: '⭐', type: 'Puntos', title: 'Sistema de Puntos', color: '#f59e0b',
+      config: ['Tasa de conversión: pesos → puntos (ej: $100 = 1 punto)', 'Catálogo de canje: descuentos, productos, upgrades', 'Puntos mínimos para redimir'],
+      cliente: 'Cada peso gastado en el POS suma puntos en tiempo real. El saldo aparece en su tarjeta Wallet y puede canjear desde allí o en caja.',
+      erp: 'El módulo de Ventas & POS captura el monto de la transacción y calcula los puntos automáticamente. El CRM actualiza el perfil del cliente y las Finanzas registran el pasivo de puntos pendientes de canje.',
+      preview: '1.850 pts acumulados · Canjea desde 500 pts',
+    },
+    {
+      emoji: '💰', type: 'Cashback', title: 'Devolución en Efectivo', color: '#10b981',
+      config: ['Porcentaje de cashback por compra (ej: 5%)', 'Monto mínimo de compra para acumular', 'Fecha de expiración del saldo'],
+      cliente: 'Acumula cashback invisible en su tarjeta. Lo ve en su Wallet. Lo usa cuando quiere — en la próxima compra el cajero lo aplica como descuento directo.',
+      erp: 'Cada venta cerrada en el POS genera dos movimientos en Finanzas Automáticas: el ingreso por la venta y el pasivo de cashback. Al redimir, el ERP emite la nota débito correspondiente ante la DIAN.',
+      preview: '$12.400 disponibles para tu próxima compra',
+    },
+    {
+      emoji: '👑', type: 'Membresía VIP', title: 'Club de Beneficios', color: '#a78bfa',
+      config: ['Requisitos de acceso (gasto mínimo, invitación)', 'Beneficios activos: % descuento, acceso anticipado, envío gratis', 'Renovación anual o automática por consumo'],
+      cliente: 'Su tarjeta Wallet cambia visualmente cuando sube de nivel. Cada vez que compra, el POS reconoce su membresía y aplica el beneficio sin que el cliente diga nada.',
+      erp: 'El CRM Inteligente de OCTTO actualiza el segmento del cliente en tiempo real. El POS lee la membresía vigente y aplica el descuento antes de generar la factura DIAN. El historial queda en el perfil del cliente del ERP.',
+      preview: '👑 Miembro VIP · 15% descuento activo siempre',
+    },
+  ];
+
+  const rfmSegments = [
+    { color: '#10b981', bg: 'rgba(16,185,129,0.08)', label: 'Activos', icon: '🟢', desc: 'Compraron en los últimos 30 días, visita frecuente, ticket alto. El CRM los marca como prioritarios. El sistema no los interrumpe — los cuida con silencio estratégico.', accion: 'Campaña de upgrade a Membresía VIP automática.' },
+    { color: '#f59e0b', bg: 'rgba(245,158,11,0.08)', label: 'En Riesgo', icon: '🟡', desc: 'Entre 31 y 60 días sin comprar. El trigger de reactivación ya está corriendo. Reciben una notificación geo-contextual cuando pasan cerca del local.', accion: 'Trigger automático: oferta personalizada al día 14.' },
+    { color: '#ef4444', bg: 'rgba(239,68,68,0.08)', label: 'Perdidos', icon: '🔴', desc: 'Más de 60 días sin actividad. El CRM los separa para no gastar en ellos recursos de geo-fence. Pueden recibir una campaña de rescate puntual desde el módulo de automatización.', accion: 'Campaña de rescate: cupón de alto valor, una vez.' },
+    { color: FIDEL_INDIGO, bg: 'rgba(99,102,241,0.08)', label: 'Nuevos', icon: '🔵', desc: 'Primera o segunda compra. El sistema activa automáticamente el cupón de bienvenida en su Wallet y empieza a construir su perfil RFM desde cero.', accion: 'Cupón de bienvenida automático al registrarse.' },
+  ];
+
+  return (
+    <div id="fidelizacion" style={{ background: 'var(--bg)' }}>
+
+      {/* ── HERO ── */}
+      <section style={{ ...fi.section, paddingTop: 120, position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', top: -100, left: '50%', transform: 'translateX(-50%)', width: 700, height: 500, borderRadius: '50%', background: 'radial-gradient(circle, rgba(99,102,241,0.2) 0%, transparent 70%)', filter: 'blur(60px)', pointerEvents: 'none' }} />
+        <div style={{ ...fi.wrap, display: 'flex', alignItems: 'center', gap: 64, flexWrap: 'wrap' }}>
+          <div style={{ flex: 1, minWidth: 280 }}>
+            <span style={fi.eyebrow}>Fidelización nativa · OCTTO ERP</span>
+            <h1 style={{ ...fi.h2, fontSize: 'clamp(32px,5vw,56px)', marginBottom: 20 }}>
+              Haz que tus clientes<br />
+              <span style={{ background: 'linear-gradient(135deg,#6366f1,#a5b4fc)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>vuelvan solos. Siempre.</span>
+            </h1>
+            <p style={{ ...fi.sub, maxWidth: 520, marginBottom: 36 }}>
+              Tarjetas de fidelización en Apple Wallet y Google Wallet con geo-marketing automático, integradas de forma nativa con tu POS, inventario, CRM y contabilidad OCTTO. Sin app. Sin costo por mensaje. Sin trabajo manual.
+            </p>
+            <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
+              <a href="https://wa.me/573209921580?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20OCTTO.%20%C2%BFPueden%20ayudarme%3F%20%F0%9F%91%8B" target="_blank" className="btn btn-primary" style={{ padding: '14px 28px', fontSize: 15, background: FIDEL_INDIGO, boxShadow: '0 0 40px rgba(99,102,241,0.4)' }}>
+                Empieza gratis 14 días <Icon name="arrow-right" size={16} />
+              </a>
+              <a href="#fidelizacion-cards" className="btn btn-ghost" style={{ padding: '14px 24px', fontSize: 15 }}>Ver tarjetas →</a>
+            </div>
+            <div style={{ display: 'flex', gap: 20, marginTop: 28, flexWrap: 'wrap' }}>
+              {['Integrado con tu POS', 'Factura DIAN automática', 'Notificaciones $0'].map(t => (
+                <div key={t} style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, color: 'rgba(255,255,255,0.45)' }}>
+                  <Icon name="check" size={13} color={FIDEL_INDIGO} /> {t}
+                </div>
+              ))}
+            </div>
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'center', flex: '0 0 auto' }}>
+            <AnimatedPunchCard />
+          </div>
+        </div>
+      </section>
+
+      {/* ── ESTADÍSTICAS ── */}
+      <section style={fi.section}>
+        <div style={fi.wrap}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(240px,1fr))', gap: 20, marginBottom: 40 }}>
+            {[
+              { num: '68%', label: 'de clientes no regresan después de su primera visita', color: '#ef4444' },
+              { num: '5×', label: 'más caro conseguir un cliente nuevo que retener uno existente', color: '#f59e0b' },
+              { num: '$0', label: 'es lo que la mayoría de negocios invierte hoy en retención', color: FIDEL_INDIGO },
+            ].map(s => (
+              <div key={s.num} style={{ ...fi.card, textAlign: 'center' }}>
+                <div style={{ fontSize: 52, fontWeight: 900, color: s.color, lineHeight: 1, marginBottom: 10, letterSpacing: -2 }}>{s.num}</div>
+                <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', lineHeight: 1.6 }}>{s.label}</div>
+              </div>
+            ))}
+          </div>
+          <p style={{ textAlign: 'center', fontSize: 20, fontWeight: 700, color: '#fff' }}>Con OCTTO Fidelización, eso cambia desde el primer día.</p>
+        </div>
+      </section>
+
+      {/* ── CÓMO FUNCIONA ── */}
+      <section style={{ ...fi.section, ...fi.altBg }}>
+        <div style={fi.wrap}>
+          <div style={{ textAlign: 'center', marginBottom: 52 }}>
+            <span style={fi.eyebrow}>Flujo nativo</span>
+            <h2 style={{ ...fi.h2, textAlign: 'center' }}>Una venta en el POS.<br />Todo lo demás ocurre solo.</h2>
+            <p style={{ ...fi.sub, textAlign: 'center', maxWidth: 540, margin: '0 auto' }}>
+              No hay integración que configurar. La fidelización está fusionada con el motor de ventas de OCTTO desde el primer módulo.
+            </p>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(220px,1fr))', gap: 24 }}>
+            {[
+              { n: '01', emoji: '📱', title: 'Cliente escanea en caja', desc: 'El cliente escanea el QR en tu punto de venta OCTTO y guarda su tarjeta digital en Apple Wallet o Google Wallet. Sin descargar ninguna app.' },
+              { n: '02', emoji: '🖥️', title: 'El POS registra y dispara', desc: 'El cajero cierra la venta en el POS de OCTTO. En ese mismo instante el sistema suma puntos, actualiza la tarjeta Wallet y genera la factura electrónica DIAN — todo en una sola acción.' },
+              { n: '03', emoji: '📊', title: 'El ERP lo registra todo', desc: 'La venta queda en el historial del cliente dentro del CRM. Las Finanzas Automáticas registran el pasivo de puntos o cashback. El inventario se actualiza. Sin doble trabajo.' },
+              { n: '04', emoji: '📍', title: 'Geo-marketing actúa solo', desc: 'Cuando ese cliente pasa cerca del local, su celular muestra la notificación automáticamente. El negocio no hace nada. El sistema trabaja 24/7.' },
+            ].map((s, i) => (
+              <div key={i} style={{ ...fi.card }}>
+                <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: 3, color: 'rgba(99,102,241,0.5)', marginBottom: 10 }}>{s.n}</div>
+                <div style={{ fontSize: 30, marginBottom: 12 }}>{s.emoji}</div>
+                <div style={{ fontSize: 15, fontWeight: 700, color: '#fff', marginBottom: 8 }}>{s.title}</div>
+                <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', lineHeight: 1.65 }}>{s.desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── LAS 4 TARJETAS — tabs interactivos ── */}
+      <section id="fidelizacion-cards" style={fi.section}>
+        <div style={fi.wrap}>
+          <div style={{ textAlign: 'center', marginBottom: 40 }}>
+            <span style={fi.eyebrow}>Tipos de tarjeta</span>
+            <h2 style={{ ...fi.h2, textAlign: 'center' }}>Cuatro formas de fidelizar.<br />Tú decides cuál usar — o usas todas.</h2>
+          </div>
+          {/* Tabs */}
+          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 32, justifyContent: 'center' }}>
+            {cardTypes.map((c, i) => (
+              <button key={i} onClick={() => setActiveCard(i)} style={{
+                padding: '9px 18px', borderRadius: 10, border: `1.5px solid ${activeCard === i ? c.color : 'rgba(255,255,255,0.1)'}`,
+                background: activeCard === i ? `${c.color}18` : 'transparent',
+                color: activeCard === i ? c.color : 'rgba(255,255,255,0.5)',
+                fontSize: 13, fontWeight: 600, cursor: 'pointer', transition: 'all 0.2s'
+              }}>{c.emoji} {c.type}</button>
+            ))}
+          </div>
+          {/* Panel activo */}
+          {(() => {
+            const c = cardTypes[activeCard];
+            return (
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: 20 }}>
+                <div style={{ ...fi.card, borderColor: `${c.color}33` }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
+                    <div style={{ width: 44, height: 44, borderRadius: 12, background: `${c.color}18`, border: `1px solid ${c.color}33`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22 }}>{c.emoji}</div>
+                    <div>
+                      <div style={{ fontSize: 10, letterSpacing: 2, textTransform: 'uppercase', color: c.color, fontWeight: 700 }}>{c.type}</div>
+                      <div style={{ fontSize: 17, fontWeight: 700, color: '#fff' }}>{c.title}</div>
+                    </div>
+                  </div>
+                  <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, marginBottom: 20 }}>{c.preview}</div>
+                  <div style={{ background: `${c.color}10`, border: `1px solid ${c.color}22`, borderRadius: 10, padding: '12px 16px' }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: c.color, marginBottom: 8, letterSpacing: 1, textTransform: 'uppercase' }}>El negocio configura</div>
+                    {c.config.map((cf, j) => (
+                      <div key={j} style={{ display: 'flex', gap: 8, fontSize: 12, color: 'rgba(255,255,255,0.6)', marginBottom: 4 }}>
+                        <span style={{ color: c.color }}>·</span> {cf}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+                  <div style={{ ...fi.card }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.35)', marginBottom: 8, letterSpacing: 1, textTransform: 'uppercase' }}>Lo que vive el cliente</div>
+                    <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.65)', lineHeight: 1.7, margin: 0 }}>{c.cliente}</p>
+                  </div>
+                  <div style={{ ...fi.card, borderColor: 'rgba(99,102,241,0.2)', background: 'rgba(99,102,241,0.04)' }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: FIDEL_INDIGO, marginBottom: 8, letterSpacing: 1, textTransform: 'uppercase' }}>Cómo fluye en OCTTO ERP</div>
+                    <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.65)', lineHeight: 1.7, margin: 0 }}>{c.erp}</p>
+                  </div>
+                </div>
+              </div>
+            );
+          })()}
+        </div>
+      </section>
+
+      {/* ── GEO-MARKETING ── */}
+      <section style={{ ...fi.section, ...fi.altBg }}>
+        <div style={{ ...fi.wrap, display: 'flex', gap: 64, alignItems: 'center', flexWrap: 'wrap' }}>
+          <div style={{ flex: 1, minWidth: 280 }}>
+            <span style={fi.eyebrow}>Geo-Marketing</span>
+            <h2 style={fi.h2}>Tu negocio notifica a sus clientes cuando están a metros de tu puerta.<br /><span style={{ color: FIDEL_INDIGO }}>Costo: $0.</span></h2>
+            <p style={{ ...fi.sub, marginBottom: 24 }}>
+              Defines un radio alrededor de tu local — 100, 200 o 500 metros. Cuando un cliente que tiene tu tarjeta entra a esa zona, su iPhone o Android muestra automáticamente una notificación en pantalla de bloqueo. Sin app. Sin SMS. Sin WhatsApp.
+            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 28 }}>
+              {[
+                '👋 ¡María, estás cerca! Hoy tienes 2× puntos en Café Brújula',
+                '🎯 ¡Ya casi! Solo 2 sellos para tu café gratis. ¿Entramos?',
+                '🎁 ¡Hola de nuevo! 14 días sin verte — hoy tu segunda bebida es gratis',
+              ].map(msg => (
+                <div key={msg} style={{ ...fi.card, padding: '11px 14px', fontSize: 13, color: 'rgba(255,255,255,0.7)' }}>{msg}</div>
+              ))}
+            </div>
+            <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', lineHeight: 1.6 }}>
+              Las notificaciones van directo por Apple y Google Wallet — la infraestructura de los fabricantes, no la tuya. Por eso no cuestan nada y tienen tasa de apertura altísima.
+            </div>
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'center', flex: '0 0 auto' }}>
+            <GeoMap />
+          </div>
+        </div>
+      </section>
+
+      {/* ── PUSH NOTIFICATIONS ── */}
+      <section style={fi.section}>
+        <div style={fi.wrap}>
+          <div style={{ textAlign: 'center', marginBottom: 48 }}>
+            <span style={fi.eyebrow}>Push Notifications</span>
+            <h2 style={{ ...fi.h2, textAlign: 'center' }}>No es SMS. No es email. No es WhatsApp.<br />Es mejor que todo eso.</h2>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(220px,1fr))', gap: 20 }}>
+            {[
+              { icon: '🔕', bad: true, title: 'SMS', desc: 'Costo por envío. Fácil de ignorar. Sin contexto de marca. Sin historial del cliente.' },
+              { icon: '📧', bad: true, title: 'Email', desc: 'Tasa de apertura menor al 20%. Termina en spam. Requiere campaña manual.' },
+              { icon: '💬', bad: true, title: 'WhatsApp Business', desc: 'Costo por mensaje de plantilla. Limitaciones de frecuencia. Requiere opt-in activo.' },
+              { icon: '👛', bad: false, title: 'Apple & Google Wallet', desc: 'Costo $0. Notificación nativa en pantalla de bloqueo. Contextual con la ubicación. Tasa de lectura superior al 90%. Automática.' },
+            ].map(n => (
+              <div key={n.title} style={{ ...fi.card, borderColor: n.bad ? 'rgba(255,255,255,0.05)' : `${FIDEL_INDIGO}44`, background: n.bad ? 'rgba(255,255,255,0.02)' : 'rgba(99,102,241,0.06)' }}>
+                <div style={{ fontSize: 28, marginBottom: 10 }}>{n.icon}</div>
+                <div style={{ fontSize: 14, fontWeight: 700, color: n.bad ? 'rgba(255,255,255,0.4)' : '#fff', marginBottom: 8 }}>{n.title}</div>
+                <div style={{ fontSize: 12, color: n.bad ? 'rgba(255,255,255,0.3)' : 'rgba(255,255,255,0.65)', lineHeight: 1.6 }}>{n.desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── TRIGGERS AUTOMÁTICOS ── */}
+      <section style={{ ...fi.section, ...fi.altBg }}>
+        <div style={fi.wrap}>
+          <div style={{ textAlign: 'center', marginBottom: 48 }}>
+            <span style={fi.eyebrow}>Automatización</span>
+            <h2 style={{ ...fi.h2, textAlign: 'center' }}>El sistema trabaja solo.<br />Las 24 horas. Los 7 días.</h2>
+            <p style={{ ...fi.sub, textAlign: 'center', maxWidth: 500, margin: '0 auto' }}>Cuatro triggers que se ejecutan solos. Activá los que necesitás y olvidate.</p>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(260px,1fr))', gap: 16 }}>
+            <AutoToggle emoji="🔄" title="Reactivación por inactividad"
+              desc="¿Tu cliente no ha vuelto en 14 días? El CRM de OCTTO lo detecta y el sistema envía automáticamente una oferta personalizada a su Wallet. Sin que vos hagas nada." defaultOn={true} />
+            <AutoToggle emoji="🎯" title="Motivación por proximidad al premio"
+              desc="Cuando el cliente tiene el 80% de sus sellos o puntos completos, recibe una notificación push. El momento exacto en que volver tiene más valor para él." defaultOn={true} />
+            <AutoToggle emoji="🎁" title="Cupón de bienvenida automático"
+              desc="Al registrarse, el cliente recibe un cupón en su Wallet al instante. El ERP lo crea, lo emite y lo registra en contabilidad sin intervención humana." defaultOn={true} />
+            <AutoToggle emoji="🎂" title="Oferta de cumpleaños"
+              desc="El CRM Inteligente de OCTTO tiene la fecha de nacimiento del cliente. El día de su cumpleaños, le llega una oferta especial. El detalle que genera lealtad real." defaultOn={false} />
+          </div>
+        </div>
+      </section>
+
+      {/* ── SEGMENTACIÓN RFM ── */}
+      <section style={fi.section}>
+        <div style={fi.wrap}>
+          <div style={{ textAlign: 'center', marginBottom: 48 }}>
+            <span style={fi.eyebrow}>Segmentación RFM</span>
+            <h2 style={{ ...fi.h2, textAlign: 'center' }}>Siempre sabes en qué estado está cada cliente.<br />Y el sistema ya está actuando sobre eso.</h2>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(220px,1fr))', gap: 16 }}>
+            {rfmSegments.map((s, i) => (
+              <div key={i} onClick={() => setActiveRFM(i)} style={{
+                background: s.bg, border: `1.5px solid ${activeRFM === i ? s.color : `${s.color}22`}`,
+                borderRadius: 14, padding: 24, cursor: 'pointer', transition: 'border-color 0.2s'
+              }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
+                  <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase', color: s.color }}>{s.label}</div>
+                  <span>{s.icon}</span>
+                </div>
+                <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6, marginBottom: 12 }}>{s.desc}</div>
+                <div style={{ fontSize: 12, color: s.color, fontWeight: 600, background: `${s.color}12`, borderRadius: 8, padding: '7px 10px' }}>{s.accion}</div>
+              </div>
+            ))}
+          </div>
+          <p style={{ textAlign: 'center', fontSize: 13, color: 'rgba(255,255,255,0.3)', marginTop: 24 }}>
+            La clasificación RFM se actualiza automáticamente con cada venta registrada en el POS. No hay que hacer nada manual.
+          </p>
+        </div>
+      </section>
+
+      {/* ── INTEGRACIÓN NATIVA CON EL ERP ── */}
+      <section style={{ ...fi.section, ...fi.altBg }}>
+        <div style={fi.wrap}>
+          <div style={{ textAlign: 'center', marginBottom: 48 }}>
+            <span style={fi.eyebrow}>Integración nativa · OCTTO ERP</span>
+            <h2 style={{ ...fi.h2, textAlign: 'center' }}>No es un plugin. No es una integración.<br />Es parte del mismo sistema.</h2>
+            <p style={{ ...fi.sub, textAlign: 'center', maxWidth: 560, margin: '0 auto' }}>
+              La fidelización no se conecta con OCTTO — vive dentro de OCTTO. Cada módulo del ERP le pasa información en tiempo real, sin APIs externas ni configuraciones.
+            </p>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(260px,1fr))', gap: 20 }}>
+            {[
+              {
+                icon: '🖥️', mod: 'Ventas & POS', color: 'var(--primary)',
+                title: 'El POS es el disparador de todo',
+                desc: 'Cuando el cajero cierra una venta, el POS de OCTTO envía el monto, el cliente y los productos al motor de fidelización en milisegundos. Los puntos se calculan, la tarjeta Wallet se actualiza y la factura DIAN se genera — en una sola acción.'
+              },
+              {
+                icon: '🏛️', mod: 'Facturación DIAN', color: '#6366f1',
+                title: 'Cashback y descuentos en la factura real',
+                desc: 'Cuando un cliente redime cashback o aplica un premio, el sistema genera automáticamente la nota débito o el descuento correspondiente y lo reporta a la DIAN. Cero errores contables. Cero trabajo manual del contador.'
+              },
+              {
+                icon: '📦', mod: 'Inventario con IA', color: '#10b981',
+                title: 'Los premios afectan el stock',
+                desc: 'Cuando un cliente canjea un producto como premio, el inventario de OCTTO lo descuenta automáticamente. La IA de inventario aprende el patrón de canje y lo incluye en sus predicciones de reabastecimiento.'
+              },
+              {
+                icon: '👥', mod: 'CRM Inteligente', color: '#f59e0b',
+                title: 'El CRM construye el perfil de lealtad',
+                desc: 'Cada visita, cada compra, cada canje queda en el historial del cliente dentro del CRM. El sistema detecta comportamientos: qué días viene, qué compra, cuándo suele fallar. Esa inteligencia alimenta los triggers automáticos.'
+              },
+              {
+                icon: '💰', mod: 'Finanzas Automáticas',color: '#a78bfa',
+                title: 'La contabilidad lo registra todo',
+                desc: 'Los puntos emitidos y el cashback acumulado generan asientos contables automáticos en el módulo de Finanzas. El balance siempre refleja el pasivo de fidelización vigente. El contador ve los tableros en línea sin esperar reportes manuales.'
+              },
+              {
+                icon: '💬', mod: 'Chatbot con IA · WhatsApp', color: '#25D366',
+                title: 'El chatbot conoce el saldo del cliente',
+                desc: 'El agente de IA de WhatsApp está conectado al ERP. Cuando un cliente pregunta cuántos puntos tiene o qué premio puede canjear, el chatbot responde con información en tiempo real extraída directamente de su perfil de fidelización.'
+              },
+            ].map((m, i) => (
+              <div key={i} style={{ ...fi.card, borderColor: `${m.color}22` }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
+                  <span style={{ fontSize: 22 }}>{m.icon}</span>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase', color: m.color }}>{m.mod}</div>
+                </div>
+                <div style={{ fontSize: 14, fontWeight: 700, color: '#fff', marginBottom: 8 }}>{m.title}</div>
+                <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', lineHeight: 1.65 }}>{m.desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── PRECIOS ── */}
+      <section style={fi.section}>
+        <div style={fi.wrap}>
+          <div style={{ textAlign: 'center', marginBottom: 48 }}>
+            <span style={fi.eyebrow}>Precios</span>
+            <h2 style={{ ...fi.h2, textAlign: 'center' }}>Planes en pesos colombianos.</h2>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(99,102,241,0.1)', border: '1px solid rgba(99,102,241,0.25)', borderRadius: 8, padding: '8px 16px', fontSize: 13, color: '#a5b4fc', marginTop: 8 }}>
+              ✓ 14 días gratis · Sin tarjeta de crédito
+            </div>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(250px,1fr))', gap: 24, alignItems: 'start' }}>
+            {[
+              {
+                name: 'Básico', price: '$149', highlight: false,
+                features: ['Clientes ilimitados', 'Mensajes y notificaciones ilimitados', '2 tipos de tarjeta activas', '1 zona de geo-marketing', 'Apple Wallet y Google Wallet', 'Triggers automáticos incluidos', 'Integración nativa con POS y ERP'],
+              },
+              {
+                name: 'Pro', price: '$299', highlight: true, badge: '✦ MÁS POPULAR',
+                features: ['Clientes ilimitados', 'Mensajes y notificaciones ilimitados', '10 tipos de tarjeta activas', '10 zonas de geo-marketing', 'Apple Wallet y Google Wallet', 'Segmentación RFM completa', 'Integración nativa ERP + POS + CRM', 'Panel de analítica de fidelización'],
+              },
+              {
+                name: 'Enterprise', price: 'A medida', highlight: false,
+                features: ['Clientes ilimitados', 'Mensajes y notificaciones ilimitados', 'Tarjetas y zonas ilimitadas', 'Múltiples sucursales', 'White-label completo', 'API abierta', 'Soporte dedicado 24/7'],
+              },
+            ].map((p, i) => (
+              <div key={i} style={{
+                background: p.highlight ? 'linear-gradient(145deg,rgba(99,102,241,0.16),rgba(99,102,241,0.05))' : 'rgba(255,255,255,0.03)',
+                border: `${p.highlight ? 2 : 1}px solid ${p.highlight ? FIDEL_INDIGO : 'rgba(255,255,255,0.08)'}`,
+                borderRadius: 20, padding: 32, position: 'relative'
+              }}>
+                {p.badge && <div style={{ position: 'absolute', top: -13, left: '50%', transform: 'translateX(-50%)', background: FIDEL_INDIGO, color: '#fff', fontSize: 11, fontWeight: 700, padding: '4px 14px', borderRadius: 20, whiteSpace: 'nowrap' }}>{p.badge}</div>}
+                <div style={{ fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.45)', marginBottom: 8 }}>{p.name}</div>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 4, marginBottom: 4 }}>
+                  <span style={{ fontSize: i === 2 ? 28 : 40, fontWeight: 900, color: '#fff' }}>{p.price}</span>
+                  {i < 2 && <><span style={{ fontSize: 16, fontWeight: 700, color: '#fff' }}>.000</span><span style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)' }}>COP/mes</span></>}
+                </div>
+                <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.3)', marginBottom: 24 }}>Excluido de IVA</div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 9, marginBottom: 28 }}>
+                  {p.features.map(f => (
+                    <div key={f} style={{ display: 'flex', gap: 8, alignItems: 'center', fontSize: 13, color: p.highlight ? 'rgba(255,255,255,0.75)' : 'rgba(255,255,255,0.55)' }}>
+                      <Icon name="check" size={13} color={FIDEL_INDIGO} /> {f}
+                    </div>
+                  ))}
+                </div>
+                <a href="https://wa.me/573209921580?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20OCTTO.%20%C2%BFPueden%20ayudarme%3F%20%F0%9F%91%8B" target="_blank" className={p.highlight ? 'btn btn-primary' : 'btn'} style={{
+                  display: 'block', textAlign: 'center', padding: '13px 0', borderRadius: 10,
+                  fontSize: 14, fontWeight: 600,
+                  ...(p.highlight ? { background: FIDEL_INDIGO, boxShadow: '0 0 28px rgba(99,102,241,0.4)' } : { border: '1px solid rgba(255,255,255,0.12)', color: '#fff' })
+                }}>{i === 2 ? 'Hablar con ventas' : 'Empezar gratis 14 días'}</a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── CTA FINAL ── */}
+      <section style={{ ...fi.section, ...fi.altBg, textAlign: 'center' }}>
+        <div style={{ ...fi.wrap, maxWidth: 620 }}>
+          <h2 style={{ ...fi.h2, textAlign: 'center', fontSize: 'clamp(24px,4vw,40px)', marginBottom: 12 }}>
+            Tu competencia ya está fidelizando.<br />¿Vos cuándo empezás?
+          </h2>
+          <p style={{ ...fi.sub, textAlign: 'center', marginBottom: 36 }}>Te contactamos en menos de 2 horas.</p>
+          <form onSubmit={e => e.preventDefault()} style={{ display: 'flex', flexDirection: 'column', gap: 12, textAlign: 'left' }}>
+            {[
+              { placeholder: 'Tu nombre', type: 'text' },
+              { placeholder: 'Nombre de tu negocio', type: 'text' },
+              { placeholder: 'WhatsApp (con indicativo de ciudad)', type: 'tel' },
+              { placeholder: 'Ciudad', type: 'text' },
+            ].map((f, i) => (
+              <input key={i} type={f.type} placeholder={f.placeholder} style={{
+                background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)',
+                borderRadius: 10, padding: '13px 16px', fontSize: 14, color: '#fff', outline: 'none',
+                width: '100%', boxSizing: 'border-box', fontFamily: 'inherit'
+              }}
+                onFocus={e => e.target.style.borderColor = FIDEL_INDIGO}
+                onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.1)'}
+              />
+            ))}
+            <button type="submit" style={{
+              padding: '15px 0', fontSize: 16, fontWeight: 700, borderRadius: 12, marginTop: 6,
+              background: FIDEL_INDIGO, boxShadow: '0 0 40px rgba(99,102,241,0.4)',
+              border: 'none', cursor: 'pointer', color: '#fff', fontFamily: 'inherit'
+            }}>Quiero mi demo gratis →</button>
+          </form>
+        </div>
+      </section>
+
+    </div>
+  );
+};
+</script>
+
+<script type="text/babel">
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "primary": "#5B3DF5",
+  "secondary": "#7A5CFF",
+  "accent": "#F5B841",
+  "bg": "#0B0F1A",
+  "glowIntensity": 1.8,
+  "gridPattern": true,
+  "heroTagline": "Your business, running on autopilot."
+}/*EDITMODE-END*/;
+
+function App() {
+  const [tweaks, setTweaks] = React.useState(TWEAK_DEFAULTS);
+  const setTweak = (key, value) => setTweaks(t => ({ ...t, [key]: value }));
+
+  React.useEffect(() => {
+    const r = document.documentElement;
+    r.style.setProperty('--primary', tweaks.primary);
+    r.style.setProperty('--secondary', tweaks.secondary);
+    r.style.setProperty('--accent', tweaks.accent);
+    r.style.setProperty('--bg', tweaks.bg);
+    const gi = tweaks.glowIntensity;
+    const toHex = n => Math.max(0, Math.min(255, Math.floor(n))).toString(16).padStart(2, '0');
+    r.style.setProperty('--glow-primary', tweaks.primary + toHex(128 * gi));
+    r.style.setProperty('--glow-secondary', tweaks.secondary + toHex(112 * gi));
+  }, [tweaks]);
+
+  return (
+    <>
+      <Nav />
+      <Hero />
+      <ProblemSection />
+      <SolutionSection />
+      <ServicesSection />
+      <AccountingSection />
+      <EcosystemSection />
+      <ComparisonSection />
+      <HowItWorksSection />
+      <AIFeaturesSection />
+      <BenefitsSection />
+      <IndustriesSection />
+      <IntegrationsSection />
+      <FidelizacionPage />
+      <PricingSection />
+      <FAQSection />
+      <CTASection />
+      <Footer />
+
+      {typeof TweaksPanel !== 'undefined' && (
+        <TweaksPanel>
+          <TweakSection label="Colores de marca">
+            <TweakColor label="Primario (morado)" value={tweaks.primary} onChange={v => setTweak('primary', v)} />
+            <TweakColor label="Secundario (morado neón)" value={tweaks.secondary} onChange={v => setTweak('secondary', v)} />
+            <TweakColor label="Acento (dorado)" value={tweaks.accent} onChange={v => setTweak('accent', v)} />
+            <TweakColor label="Fondo" value={tweaks.bg} onChange={v => setTweak('bg', v)} />
+          </TweakSection>
+          <TweakSection label="Atmósfera">
+            <TweakSlider label="Intensidad del brillo" value={tweaks.glowIntensity} min={0} max={2} step={0.1} onChange={v => setTweak('glowIntensity', v)} />
+          </TweakSection>
+        </TweaksPanel>
+      )}
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

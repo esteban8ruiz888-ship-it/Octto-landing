@@ -1,0 +1,202 @@
+/* OCTTO — Futuristic SaaS site styles */
+
+:root {
+  --primary: #5B3DF5;
+  --secondary: #7A5CFF;
+  --bg: #0B0F1A;
+  --bg-2: #0E1424;
+  --bg-3: #121a2e;
+  --text: #EAEAF0;
+  --text-dim: #9ba0b4;
+  --text-muted: #6b7089;
+  --accent: #F5B841;
+  --line: rgba(255,255,255,0.08);
+  --line-strong: rgba(255,255,255,0.14);
+  --glow-primary: rgba(91, 61, 245, 0.5);
+  --glow-secondary: rgba(122, 92, 255, 0.45);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--bg); color: var(--text); font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; -webkit-font-smoothing: antialiased; }
+body { overflow-x: hidden; }
+
+/* Typography */
+.display {
+  font-family: 'Manrope', 'Inter', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 0.98;
+}
+.eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 500;
+}
+.mono { font-family: 'JetBrains Mono', monospace; }
+
+/* Grain */
+.grain::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.35 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  opacity: 0.035;
+  pointer-events: none;
+  z-index: 1000;
+  mix-blend-mode: overlay;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #fff 0%, #c7b8ff 45%, var(--secondary) 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}
+.gradient-accent {
+  background: linear-gradient(135deg, var(--accent) 0%, #ffd97a 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Shared container */
+.container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 22px; border-radius: 999px;
+  font-weight: 600; font-size: 14px; letter-spacing: -0.01em;
+  border: 1px solid transparent;
+  cursor: pointer; transition: all 0.25s cubic-bezier(.2,.8,.2,1);
+  text-decoration: none;
+  font-family: inherit;
+}
+.btn-primary {
+  background: linear-gradient(180deg, var(--secondary) 0%, var(--primary) 100%);
+  color: #fff;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.12) inset,
+    0 8px 24px -6px var(--glow-primary),
+    0 0 40px -10px var(--glow-secondary);
+}
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.2) inset,
+    0 12px 32px -4px var(--glow-primary),
+    0 0 60px -6px var(--glow-secondary);
+}
+.btn-ghost {
+  background: rgba(255,255,255,0.04);
+  color: var(--text);
+  border-color: var(--line-strong);
+  backdrop-filter: blur(12px);
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.22); }
+
+/* Card */
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+}
+
+/* Glow orb */
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+/* Grid background pattern */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(122,92,255,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(122,92,255,0.06) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* Subtle underline animation */
+.link-arrow { display: inline-flex; align-items: center; gap: 6px; color: var(--text); font-weight: 500; font-size: 14px; transition: gap .2s ease; cursor: pointer; }
+.link-arrow:hover { gap: 10px; color: var(--secondary); }
+
+/* Pill */
+.pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 12px; border-radius: 999px;
+  background: rgba(122,92,255,0.1);
+  border: 1px solid rgba(122,92,255,0.25);
+  font-size: 12px; font-weight: 500;
+  color: #cfc4ff;
+}
+.pill-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--secondary); box-shadow: 0 0 8px var(--secondary); }
+
+/* Fade-in on scroll helper */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.8,.2,1); }
+.reveal.in { opacity: 1; transform: none; }
+
+/* Section */
+section { position: relative; }
+.section-pad { padding: 140px 0; }
+@media (max-width: 768px) { .section-pad { padding: 80px 0; } }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: #22283d; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #2d3452; }
+
+/* Text selection */
+::selection { background: rgba(122,92,255,0.4); color: #fff; }
+
+/* Hide scroll bars on specific marquees */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.9; }
+}
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes dash {
+  to { stroke-dashoffset: -200; }
+}
+
+.animate-marquee { animation: marquee 40s linear infinite; }
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+.animate-spin-slow { animation: spin-slow 40s linear infinite; }
+
+/* Noise shimmer for AI elements */
+.shimmer {
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(122,92,255,0.15) 50%,
+    transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer-move 3s linear infinite;
+}
+@keyframes shimmer-move {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
