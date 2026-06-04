@@ -63,8 +63,15 @@
 <script type="text/babel" data-from="components/shared.jsx">
 // OCTTO — Shared iconography + visual components (ES)
 
+const scrollTo = (id) => {
+  if (!id || id === '#') { window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+  const el = document.querySelector(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+};
+
 const Logo = ({ size = 28 }) => (
-  <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+  <div onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+    style={{ display: 'flex', alignItems: 'center', gap: 10, cursor: 'pointer' }}>
     <img src="assets/octto-mascot-transparent.png" alt="OCTTO" style={{ width: size * 1.35, height: size * 1.35, objectFit: 'contain', filter: 'drop-shadow(0 0 8px rgba(184,158,255,0.7))' }} />
     <span style={{ fontFamily: 'Manrope', fontWeight: 800, fontSize: 20, letterSpacing: '-0.04em', color: '#fff' }}>
       OCTTO
@@ -127,6 +134,12 @@ const Nav = () => {
     { emoji: '🔗', label: 'Integraciones', desc: 'DIAN, Wallets, pasarelas y más', href: '#integrations' },
   ];
 
+  const handleNavClick = (e, href) => {
+    e.preventDefault();
+    setSolucionesOpen(false);
+    scrollTo(href);
+  };
+
   return (
     <nav style={{
       position: 'fixed', top: 16, left: '50%', transform: 'translateX(-50%)',
@@ -142,8 +155,8 @@ const Nav = () => {
     }}>
       <Logo size={22} />
       <div style={{ display: 'flex', gap: 28, alignItems: 'center' }} className="nav-links">
-        <a href="#platform" style={linkStyle}>Plataforma</a>
-        <a href="#ai" style={linkStyle}>IA</a>
+        <a href="#platform" onClick={e => { e.preventDefault(); scrollTo('#platform'); }} style={linkStyle}>Plataforma</a>
+        <a href="#ai" onClick={e => { e.preventDefault(); scrollTo('#ai'); }} style={linkStyle}>IA</a>
 
         {/* Soluciones dropdown */}
         <div ref={ref} style={{ position: 'relative' }}>
@@ -166,7 +179,7 @@ const Nav = () => {
               animation: 'fadeIn .15s ease'
             }}>
               {soluciones.map(s => (
-                <a key={s.label} href={s.href} onClick={() => setSolucionesOpen(false)} style={{
+                <a key={s.label} href={s.href} onClick={e => handleNavClick(e, s.href)} style={{
                   display: 'flex', alignItems: 'center', gap: 12, padding: '10px 14px',
                   borderRadius: 10, textDecoration: 'none',
                   background: s.accent ? 'rgba(99,102,241,0.1)' : 'transparent',
@@ -188,7 +201,7 @@ const Nav = () => {
           )}
         </div>
 
-        <a href="#pricing" style={linkStyle}>Precios</a>
+        <a href="#pricing" onClick={e => { e.preventDefault(); scrollTo('#pricing'); }} style={linkStyle}>Precios</a>
       </div>
       <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
         <a href="https://app.octto.co" style={{ ...linkStyle, fontSize: 14 }}>Iniciar sesión</a>
