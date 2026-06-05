@@ -157,55 +157,80 @@ section { position: relative; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { scrollbar-width: none; }
 
-/* ── Mobile responsive ─────────────────────── */
+/* ── Mobile ─────────────────────────────────── */
 @media (max-width: 768px) {
-  /* Contenedor */
-  .container { padding: 0 18px; }
 
-  /* Hero */
-  .hero-grid { grid-template-columns: 1fr !important; text-align: center; }
-  .hero-grid > div:first-child > div[style*="flex"] { justify-content: center; }
-  .hero-grid p { margin-left: auto !important; margin-right: auto !important; }
-  .hero-mascot { min-height: 260px !important; }
+  /* Base */
+  .container { padding: 0 16px; }
+  .section-pad { padding: 56px 0; }
+
+  /* Previene zoom en iOS al enfocar inputs */
+  input, button, select, textarea { font-size: 16px !important; }
 
   /* Tipografía */
-  .display { font-size: clamp(32px, 8vw, 52px) !important; }
+  .display { font-size: clamp(28px, 7.5vw, 46px) !important; line-height: 1.05 !important; }
+  .eyebrow { font-size: 10px !important; letter-spacing: 0.15em !important; }
 
-  /* Nav visible en móvil */
-  .nav-links { display: flex !important; gap: 12px !important; flex-wrap: nowrap; }
-  .nav-links a, .nav-links button { font-size: 12px !important; white-space: nowrap; }
+  /* Nav */
+  .nav-links { display: flex !important; gap: 10px !important; flex-wrap: nowrap; }
+  .nav-links a, .nav-links button { font-size: 11px !important; white-space: nowrap; }
 
-  /* Dashboard hero */
-  .hero-dash-grid { grid-template-columns: 1fr !important; }
+  /* Hero */
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+    text-align: center;
+    gap: 24px !important;
+  }
+  .hero-grid > div:first-child > div[style*="flex"] { justify-content: center; }
+  .hero-grid p { margin-left: auto !important; margin-right: auto !important; max-width: 100% !important; }
+  .hero-mascot { min-height: 200px !important; max-height: 260px; }
+
+  /* Botones — solo CTA primario ancho completo */
+  .btn-primary { width: 100%; justify-content: center; box-sizing: border-box; }
+  .btn-ghost { width: auto; }
+
+  /* Dashboard hero — ocultar en móvil para no saturar */
+  .hero-dash-grid { display: none !important; }
+
+  /* Cards — más padding en móvil */
+  .card { border-radius: 16px; }
 
   /* Contabilidad 360 */
-  .acc-flow { grid-template-columns: 1fr !important; }
-  .acc-engine { flex-direction: row !important; justify-content: center; }
+  .acc-flow { grid-template-columns: 1fr !important; gap: 16px !important; }
+  .acc-engine { flex-direction: row !important; justify-content: center; gap: 8px !important; }
 
-  /* Sección de módulos integrations */
-  .integrations-stats { grid-template-columns: 1fr !important; }
+  /* Integraciones stats */
+  .integrations-stats { grid-template-columns: 1fr 1fr !important; }
 
   /* Pricing */
-  .pricing-grid { grid-template-columns: 1fr !important; }
+  .pricing-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
   .pricing-grid > div { transform: scale(1) !important; }
 
   /* FAQ */
-  .faq-grid { grid-template-columns: 1fr !important; }
+  .faq-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
 
   /* Industrias */
   .industry-detail { grid-template-columns: 1fr !important; }
 
-  /* Botones hero */
-  .btn { width: 100%; justify-content: center; box-sizing: border-box; }
-
-  /* Sección de comparativa */
+  /* Comparativa */
   #comparativa .card > div { grid-template-columns: 1fr !important; }
 
-  /* Fidelización hero */
-  #fidelizacion > section:first-child > div > div { flex-direction: column !important; align-items: center; }
+  /* Fidelización — stack en móvil */
+  #fidelizacion > section > div[style*="flex"] { flex-direction: column !important; align-items: stretch !important; }
 
-  /* Geo map centrado */
-  #fidelizacion .geo-wrap { flex-direction: column !important; }
+  /* Punch card animada — más pequeña */
+  #fidelizacion [style*="width: 300"] { width: 100% !important; max-width: 300px; margin: 0 auto; }
+
+  /* Geo map — ancho completo */
+  #fidelizacion [style*="width: 320"] { width: 100% !important; max-width: 100% !important; }
+
+  /* Tabs de tarjetas — scroll horizontal */
+  #fidelizacion-cards ~ div, #fidelizacion [style*="display: flex"][style*="gap: 8"] {
+    overflow-x: auto;
+    flex-wrap: nowrap !important;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 /* Animations */
