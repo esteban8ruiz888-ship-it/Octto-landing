@@ -171,9 +171,9 @@ section { position: relative; }
   /* Tipografía */
   .display { font-size: clamp(32px, 8vw, 52px) !important; }
 
-  /* Nav visible en móvil, scroll horizontal */
-  .nav-links { display: flex !important; gap: 16px !important; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
-  .nav-links::-webkit-scrollbar { display: none; }
+  /* Nav visible en móvil */
+  .nav-links { display: flex !important; gap: 12px !important; flex-wrap: nowrap; }
+  .nav-links a, .nav-links button { font-size: 12px !important; white-space: nowrap; }
 
   /* Dashboard hero */
   .hero-dash-grid { grid-template-columns: 1fr !important; }

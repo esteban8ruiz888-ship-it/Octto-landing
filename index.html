@@ -122,7 +122,8 @@ const Nav = () => {
   React.useEffect(() => {
     const handler = (e) => { if (ref.current && !ref.current.contains(e.target)) setSolucionesOpen(false); };
     document.addEventListener('mousedown', handler);
-    return () => document.removeEventListener('mousedown', handler);
+    document.addEventListener('touchstart', handler);
+    return () => { document.removeEventListener('mousedown', handler); document.removeEventListener('touchstart', handler); };
   }, []);
 
   const linkStyle = { color: 'var(--text-dim)', textDecoration: 'none', fontSize: 14, fontWeight: 500, transition: 'color .2s' };
