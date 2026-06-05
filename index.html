@@ -72,7 +72,7 @@ const scrollTo = (id) => {
 const Logo = ({ size = 28 }) => (
   <div onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
     style={{ display: 'flex', alignItems: 'center', gap: 10, cursor: 'pointer' }}>
-    <img src="assets/octto-mascot-transparent.png" alt="OCTTO" style={{ width: size * 1.35, height: size * 1.35, objectFit: 'contain', filter: 'drop-shadow(0 0 8px rgba(184,158,255,0.7))' }} />
+    <img src="assets/octto-logo.png" alt="OCTTO" style={{ width: size * 1.35, height: size * 1.35, objectFit: 'contain', filter: 'drop-shadow(0 0 8px rgba(184,158,255,0.7))' }} />
     <span style={{ fontFamily: 'Manrope', fontWeight: 800, fontSize: 20, letterSpacing: '-0.04em', color: '#fff' }}>
       OCTTO
     </span>
@@ -361,7 +361,7 @@ const Hero = () => {
                 <circle cx="260" cy="260" r="200" fill="none" stroke="rgba(184,158,255,0.35)" strokeWidth="1" strokeDasharray="1 8" />
               </g>
             </svg>
-            <img src="assets/octto-mascot-transparent.png" alt="OCTTO" className="animate-float" style={{
+            <img src="assets/octto-logo.png" alt="OCTTO" className="animate-float" style={{
               position: 'relative', width: '100%', maxWidth: 460, height: 'auto',
               filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.5)) drop-shadow(0 0 40px rgba(184,158,255,0.7)) drop-shadow(0 0 80px rgba(122,92,255,0.5))',
               zIndex: 2,
@@ -811,7 +811,7 @@ const EcosystemHub = ({ modules, active, setActive }) => {
           background: 'radial-gradient(circle, rgba(220,210,255,0.3) 0%, transparent 60%)',
           filter: 'blur(12px)',
         }} />
-        <img src="assets/octto-mascot-transparent.png" alt="OCTTO" className="animate-float" style={{
+        <img src="assets/octto-logo.png" alt="OCTTO" className="animate-float" style={{
           width: 180, height: 180, objectFit: 'contain', position: 'relative',
           filter: 'drop-shadow(0 0 20px rgba(184,158,255,0.7)) drop-shadow(0 0 40px rgba(122,92,255,0.5))',
         }} />
@@ -868,7 +868,7 @@ const ServicesSection = () => {
       key: 'core',
       label: 'Plataforma Core',
       subtitle: 'IA que vende, factura, contabiliza y controla tu inventario por ti.',
-      mascot: 'assets/octto-mascot-transparent.png',
+      mascot: 'assets/octto-logo.png',
       mascotTag: 'Opera',
       services: [
         {
