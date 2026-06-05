@@ -172,10 +172,10 @@ const Nav = () => {
 
           {solucionesOpen && (
             <div style={{
-              position: 'fixed', top: 72, left: '50%', transform: 'translateX(-50%)',
+              position: 'fixed', top: 72, left: 16, right: 16,
               background: 'rgba(11,15,26,0.98)', border: '1px solid rgba(255,255,255,0.1)',
-              borderRadius: 16, padding: 8, minWidth: 260, zIndex: 999,
-              backdropFilter: 'blur(20px)', boxShadow: '0 24px 60px rgba(0,0,0,0.5)',
+              borderRadius: 16, padding: 8, zIndex: 9999,
+              backdropFilter: 'blur(20px)', boxShadow: '0 24px 60px rgba(0,0,0,0.7)',
               animation: 'fadeIn .15s ease'
             }}>
               {soluciones.map(s => (
@@ -330,13 +330,6 @@ const Hero = () => {
                 Quiero ver mi negocio con IA
                 <Icon name="arrow-right" size={16} />
               </a>
-              <button onClick={() => setShowVideo(true)} className="btn btn-ghost" style={{ padding: '15px 26px', fontSize: 15, border: 'none', cursor: 'pointer' }}>
-                <span style={{ width: 24, height: 24, borderRadius: '50%', background: 'rgba(122,92,255,0.25)', border: '1.5px solid rgba(122,92,255,0.5)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                  <svg width="8" height="8" viewBox="0 0 8 8"><polygon points="1,0 7,4 1,8" fill="#fff"/></svg>
-                </span>
-                Ver demo de 2 min
-              </button>
-              {showVideo && <VideoModal onClose={() => setShowVideo(false)} />}
             </div>
           </div>
 
