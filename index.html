@@ -71,11 +71,8 @@ const scrollTo = (id) => {
 
 const Logo = ({ size = 28 }) => (
   <div onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-    style={{ display: 'flex', alignItems: 'center', gap: 10, cursor: 'pointer' }}>
-    <img src="assets/octto-logo.png" alt="OCTTO" style={{ width: size * 1.35, height: size * 1.35, objectFit: 'contain', filter: 'drop-shadow(0 0 8px rgba(184,158,255,0.7))' }} />
-    <span style={{ fontFamily: 'Manrope', fontWeight: 800, fontSize: 20, letterSpacing: '-0.04em', color: '#fff' }}>
-      OCTTO
-    </span>
+    style={{ cursor: 'pointer' }}>
+    <img src="assets/octto-logo.png" alt="OCTTO" style={{ height: 48, width: 'auto', objectFit: 'contain', display: 'block' }} />
   </div>
 );
 
