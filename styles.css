@@ -171,8 +171,9 @@ section { position: relative; }
   /* Tipografía */
   .display { font-size: clamp(32px, 8vw, 52px) !important; }
 
-  /* Nav oculto en móvil (ya existe, reforzar) */
-  .nav-links { display: none !important; }
+  /* Nav visible en móvil, scroll horizontal */
+  .nav-links { display: flex !important; gap: 16px !important; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .nav-links::-webkit-scrollbar { display: none; }
 
   /* Dashboard hero */
   .hero-dash-grid { grid-template-columns: 1fr !important; }
