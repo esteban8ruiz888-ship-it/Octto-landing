@@ -204,7 +204,6 @@ const Nav = () => {
         <a href="#pricing" onClick={e => { e.preventDefault(); scrollTo('#pricing'); }} style={linkStyle}>Precios</a>
       </div>
       <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
-        <a href="https://app.octto.co" style={{ ...linkStyle, fontSize: 14 }}>Iniciar sesión</a>
         <a href="https://wa.me/573209921580?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20OCTTO.%20%C2%BFPueden%20ayudarme%3F%20%F0%9F%91%8B" target="_blank" className="btn btn-primary" style={{ padding: '10px 18px', fontSize: 13 }}>
           Agendar demo
           <Icon name="arrow-right" size={14} />
@@ -602,10 +601,10 @@ const ProblemSection = () => {
         <div style={{ textAlign: 'center', marginBottom: 64 }}>
           <div className="eyebrow" style={{ marginBottom: 14 }}>El problema que te está costando plata</div>
           <h2 className="display" style={{ fontSize: 'clamp(36px, 5vw, 64px)', marginBottom: 20, maxWidth: 900, marginLeft: 'auto', marginRight: 'auto' }}>
-            Mientras vos digitás a mano, <span style={{ color: '#ff6b7a' }}>tu competencia ya usa IA.</span>
+            Mientras tu negocio opera a mano, <span style={{ color: '#ff6b7a' }}>tu competencia ya usa IA.</span>
           </h2>
           <p style={{ color: 'var(--text-dim)', fontSize: 18, maxWidth: 640, margin: '0 auto', lineHeight: 1.55 }}>
-            Cada asiento contable a mano es dinero botado. Cada decisión sin datos en tiempo real es una venta que no ves venir. El problema no es que trabajes mucho — es que el software que usás no trabaja por vos.
+            Cada asiento contable a mano es dinero botado. Cada decisión sin datos en tiempo real es una venta que no ves venir. El problema no es que trabajes mucho — es que el software que usas no trabaja por ti.
           </p>
         </div>
 
@@ -728,7 +727,7 @@ const SolutionSection = () => {
             Un solo sistema. <span className="gradient-text">Un solo cerebro de IA.</span> Cero software desconectado.
           </h2>
           <p style={{ color: 'var(--text-dim)', fontSize: 18, maxWidth: 680, margin: '0 auto', lineHeight: 1.55 }}>
-            Con el software tradicional, vos registrás. Con OCTTO, la IA registra sola — y además vende, cobra, concilia, factura a la DIAN y te dice qué decisión tomar. La diferencia no es el software: es que OCTTO trabaja mientras vos dormís.
+            Con el software tradicional, tú registras. Con OCTTO, la IA registra sola — y además vende, cobra, concilia, factura a la DIAN y te dice qué decisión tomar. La diferencia no es el software: es que OCTTO trabaja mientras tú duermes.
           </p>
         </div>
 
@@ -925,7 +924,7 @@ const ServicesSection = () => {
         {
           icon: 'chatbot',
           title: 'Agente de ventas IA para WhatsApp',
-          tagline: 'Atiende, vende y cobra por WhatsApp — 24/7, sin que estés.',
+          tagline: 'Atiende, vende y cobra por WhatsApp — 24/7, sin intervención humana.',
           desc: 'Un agente de IA entrenado con tu catálogo, precios e inventario real que atiende a tus clientes por WhatsApp: responde, recomienda, toma el pedido y cobra. Cuando hace falta, escala a un humano con todo el contexto de la conversación.',
           bullets: ['Conectado a tu inventario y ERP en vivo', 'Toma pedidos y cobra dentro del chat de WhatsApp', 'Escalamiento a humano con historial completo'],
           stat: '73% de las ventas resueltas sin intervención humana',
@@ -979,7 +978,7 @@ const ServicesSection = () => {
         {
           icon: 'chatbot',
           title: 'Agente de ventas IA para WhatsApp',
-          tagline: 'Cierra ventas por WhatsApp mientras dormís.',
+          tagline: 'Cierra ventas por WhatsApp mientras duermes.',
           desc: 'Agente de IA entrenado con tu catálogo, precios e inventario real que atiende a tus clientes por WhatsApp: responde, recomienda, toma pedidos y cobra. Escala a un humano cuando hace falta, con todo el contexto.',
           bullets: ['Toma pedidos y cobra en el chat de WhatsApp', 'Escalamiento a humano con contexto completo', 'Multilingüe · ES / EN / PT'],
           stat: '73% de las ventas sin intervención humana',
@@ -1030,7 +1029,7 @@ const ServicesSection = () => {
             Reemplazá 8 herramientas con una. <span className="gradient-text">La que piensa.</span>
           </h2>
           <p style={{ color: 'var(--text-dim)', fontSize: 18, lineHeight: 1.55, maxWidth: 680, margin: '0 auto' }}>
-            No es un ERP con un chatbot pegado. Es inteligencia artificial que vive en cada módulo: el inventario anticipa, el CRM reactiva, la contabilidad cierra sola y el agente de WhatsApp vende mientras dormís. La IA no es una función de OCTTO — es la razón por la que existe.
+            No es un ERP con un chatbot pegado. Es inteligencia artificial que vive en cada módulo: el inventario anticipa, el CRM reactiva, la contabilidad cierra sola y el agente de WhatsApp vende mientras duermes. La IA no es una función de OCTTO — es la razón por la que existe.
           </p>
         </div>
 
@@ -1293,7 +1292,7 @@ const ServicesSection = () => {
             </a>
             <a href="https://wa.me/573209921580?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20OCTTO.%20%C2%BFPueden%20ayudarme%3F%20%F0%9F%91%8B" target="_blank" style={{ fontSize: 12, color: 'var(--text-dim)', textAlign: 'center', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 6, justifyContent: 'center' }}>
               <Icon name="chatbot" size={12} />
-              o mirá una demo del agente de WhatsApp
+              o mira una demo del agente de WhatsApp
             </a>
           </div>
         </div>
@@ -1332,7 +1331,7 @@ const AIFeaturesSection = () => {
     {
       icon: 'sparkle',
       title: 'Agente autónomo 24/7',
-      desc: 'La IA monitorea tu negocio mientras dormís. Detecta anomalías, ejecuta acciones y te avisa solo cuando necesitás decidir algo importante.',
+      desc: 'La IA monitorea tu negocio mientras duermes. Detecta anomalías, ejecuta acciones y te avisa solo cuando necesitas decidir algo importante.',
       detail: 'Más de 200 reglas preconfiguradas para retail, restaurantes, e-commerce y servicios. El agente aprende de tus patrones y mejora cada semana.',
       metric: '94% de tareas sin intervención humana',
     },
@@ -1637,10 +1636,10 @@ const IntegrationsSection = () => {
         <div style={{ textAlign: 'center', marginBottom: 56 }}>
           <div className="eyebrow" style={{ marginBottom: 14 }}>Ecosistema conectado</div>
           <h2 className="display" style={{ fontSize: 'clamp(36px, 5vw, 64px)', marginBottom: 20 }}>
-            Se conecta con todo lo que <span className="gradient-text">ya usás.</span>
+            Se conecta con todo lo que <span className="gradient-text">ya usas.</span>
           </h2>
           <p style={{ color: 'var(--text-dim)', fontSize: 18, maxWidth: 600, margin: '0 auto', lineHeight: 1.55 }}>
-            Conectores nativos con las herramientas que ya usás en Colombia. Sin desarrollo, sin fricción — tu stack funciona desde el día uno.
+            Conectores nativos con las herramientas que ya usas en Colombia. Sin desarrollo, sin fricción — tu stack funciona desde el día uno.
           </p>
         </div>
       </div>
@@ -1864,7 +1863,7 @@ const Footer = () => {
 const HowItWorksSection = () => {
   const steps = [
     { num: '01', icon: 'sparkle', title: 'Diagnóstico gratuito', desc: 'Un especialista analiza tu operación, identifica los cuellos de botella y diseña tu plan de implementación personalizado.', duration: '30 minutos', color: '#7A5CFF' },
-    { num: '02', icon: 'cpu', title: 'Configuración personalizada', desc: 'Nuestro equipo carga tu catálogo, migra tus datos y conecta las integraciones que ya usás. Sin que vos toques nada.', duration: '3 a 5 días', color: '#5B3DF5' },
+    { num: '02', icon: 'cpu', title: 'Configuración personalizada', desc: 'Nuestro equipo carga tu catálogo, migra tus datos y conecta las integraciones que ya usas. Sin que toques nada.', duration: '3 a 5 días', color: '#5B3DF5' },
     { num: '03', icon: 'hr', title: 'Capacitación express', desc: 'Entrenamos a tu equipo en menos de un día. OCTTO es tan simple que cualquier empleado puede dominarlo sin experiencia técnica.', duration: '1 día', color: '#F5B841' },
     { num: '04', icon: 'automation', title: 'Piloto automático', desc: 'La IA aprende tus patrones, automatiza las tareas repetitivas y te libera para enfocarte en crecer, no en operar.', duration: 'Desde el día 7', color: '#4ade80' },
   ];
@@ -1879,7 +1878,7 @@ const HowItWorksSection = () => {
             De cero a <span className="gradient-text">piloto automático</span> en 7 días.
           </h2>
           <p style={{ color: 'var(--text-dim)', fontSize: 18, maxWidth: 580, margin: '0 auto', lineHeight: 1.55 }}>
-            No necesitás ser técnico ni contratar consultores. Nuestro equipo se encarga de todo.
+            No necesitas ser técnico ni contratar consultores. Nuestro equipo se encarga de todo.
           </p>
         </div>
 
@@ -1922,7 +1921,7 @@ const IndustriesSection = () => {
   const [active, setActive] = React.useState(0);
 
   const industries = [
-    { icon: 'pos', title: 'Retail & Tiendas', tag: 'Más popular', desc: 'Control de inventario en tiempo real, facturación electrónica DIAN, y un vendedor digital que atiende por WhatsApp sin que vos estés presente.', stats: [{ val: '-43%', label: 'merma de inventario' }, { val: '+29%', label: 'ticket promedio' }], features: ['POS táctil con modo offline', 'Multi-sede sincronizado', 'Catálogo en WhatsApp', 'Alertas de reabastecimiento'], color: '#7A5CFF' },
+    { icon: 'pos', title: 'Retail & Tiendas', tag: 'Más popular', desc: 'Control de inventario en tiempo real, facturación electrónica DIAN, y un vendedor digital que atiende por WhatsApp sin que estés presente.', stats: [{ val: '-43%', label: 'merma de inventario' }, { val: '+29%', label: 'ticket promedio' }], features: ['POS táctil con modo offline', 'Multi-sede sincronizado', 'Catálogo en WhatsApp', 'Alertas de reabastecimiento'], color: '#7A5CFF' },
     { icon: 'ecommerce', title: 'Moda & Textiles', tag: 'Tendencia', desc: 'Gestión de tallas, colores y temporadas. Sincronización automática entre tienda física, web e Instagram Shopping.', stats: [{ val: '+52%', label: 'ventas online' }, { val: '-38%', label: 'ropa sin vender' }], features: ['Variantes de talla y color', 'Sync Instagram Shopping', 'Liquidación inteligente', 'Temporadas automáticas'], color: '#F5B841' },
     { icon: 'inventory', title: 'Restaurantes & Food', tag: '', desc: 'Comandas digitales, gestión de mesa, pedidos por WhatsApp y delivery integrado. Control de mermas y recetas con costeo automático.', stats: [{ val: '+34%', label: 'pedidos WhatsApp' }, { val: '-22%', label: 'costo de mermas' }], features: ['Comandas en tablet', 'Reservas automáticas', 'Recetario con costeo', 'Delivery multi-plataforma'], color: '#FF6B6B' },
     { icon: 'hr', title: 'Salones & Barberías', tag: '', desc: 'Agenda de citas automatizada, recordatorios por WhatsApp, gestión de estilistas y comisiones. Historial completo por cliente.', stats: [{ val: '-71%', label: 'citas canceladas' }, { val: '+41%', label: 'retención clientes' }], features: ['Agenda online 24/7', 'Recordatorios automáticos', 'Comisiones por estilista', 'Historial de clientes'], color: '#4ade80' },
@@ -2123,14 +2122,14 @@ const FAQSection = () => {
   const [open, setOpen] = React.useState(0);
 
   const faqs = [
-    { q: '¿Por qué OCTTO y no otro software de gestión?', a: 'Los sistemas de gestión tradicionales hacen lo que vos les decís. OCTTO es diferente: la IA contabiliza sola cada venta, compra y pago — sin que tu contador o vos toquen nada. Los otros no tienen POS con IA, ni chatbot de ventas para WhatsApp, ni CRM inteligente, ni predicción de inventario, ni geo-marketing. OCTTO no es un software con extras de IA: es un sistema operativo completo donde la inteligencia artificial reemplaza trabajo humano real en cada módulo.' },
+    { q: '¿Por qué OCTTO y no otro software de gestión?', a: 'Los sistemas de gestión tradicionales hacen lo que tú les dices. OCTTO es diferente: la IA contabiliza sola cada venta, compra y pago — sin que tu contador o tú toquen nada. Los otros no tienen POS con IA, ni chatbot de ventas para WhatsApp, ni CRM inteligente, ni predicción de inventario, ni geo-marketing. OCTTO no es un software con extras de IA: es un sistema operativo completo donde la inteligencia artificial reemplaza trabajo humano real en cada módulo.' },
     { q: '¿OCTTO está habilitado para facturación electrónica DIAN?', a: 'Sí. OCTTO es proveedor tecnológico habilitado por la DIAN para emitir facturas electrónicas, notas crédito y documentos equivalentes. Tu operación queda 100% en regla desde el primer día, sin necesidad de contratar un proveedor externo.' },
     { q: '¿Cuánto tiempo tarda la implementación?', a: 'El promedio de nuestros clientes está operativo en 3 a 7 días hábiles. El proceso incluye: carga de catálogo y precios, migración de clientes y proveedores, configuración según tu industria y capacitación de tu equipo. Nuestro equipo se encarga de todo.' },
-    { q: '¿Puedo migrar mis datos desde mi sistema actual?', a: 'Sí. Tenemos conectores para los sistemas más usados en Colombia y LATAM, además de importación desde Excel y CSV. Si usás otro sistema, nuestro equipo de datos hace la migración sin costo adicional.' },
-    { q: '¿Hay contrato de permanencia mínima?', a: 'No. Pagás tu plan de usuarios mes a mes sin penalidades, o anual con 15% de descuento. La activación es un pago único inicial. Apostamos a que te quedés porque OCTTO genera valor real, no porque estés atado.' },
+    { q: '¿Puedo migrar mis datos desde mi sistema actual?', a: 'Sí. Tenemos conectores para los sistemas más usados en Colombia y LATAM, además de importación desde Excel y CSV. Si usas otro sistema, nuestro equipo de datos hace la migración sin costo adicional.' },
+    { q: '¿Hay contrato de permanencia mínima?', a: 'No. Pagas tu plan mes a mes sin penalidades, o anual con 15% de descuento. La activación es un pago único inicial. Apostamos a que te quedes porque OCTTO genera valor real, no porque estés atado.' },
     { q: '¿Cómo funciona el soporte técnico?', a: 'Todos los planes incluyen soporte técnico permanente y personalizado por WhatsApp, teléfono y conexión remota (5x8 y 7x24 para contingencias), más actualizaciones permanentes del sistema. El plan ERP Empresas suma un account manager dedicado.' },
     { q: '¿Mis empleados necesitan experiencia técnica?', a: 'No. OCTTO fue diseñado para que cualquier persona pueda dominarlo en menos de 1 día. La interfaz es táctil, en español, con guías en video para cada función. Y si alguien tiene dudas, puede preguntarle al agente IA directamente en lenguaje natural.' },
-    { q: '¿Qué pasa con mis datos si cancelo?', a: 'Tus datos son tuyos. Si cancelás, tenés 60 días para exportar toda tu información en formatos estándar (CSV, Excel, PDF). Nunca vendemos ni compartimos tus datos comerciales con terceros. Cumplimos con la Ley 1581 de Habeas Data de Colombia.' },
+    { q: '¿Qué pasa con mis datos si cancelo?', a: 'Tus datos son tuyos. Si cancelas, tienes 60 días para exportar toda tu información en formatos estándar (CSV, Excel, PDF). Nunca vendemos ni compartimos tus datos comerciales con terceros. Cumplimos con la Ley 1581 de Habeas Data de Colombia.' },
     { q: '¿OCTTO funciona sin conexión a internet?', a: 'El módulo POS funciona en modo offline para ventas y cobros básicos. Cuando se restaura la conexión, sincroniza automáticamente. Los demás módulos requieren conexión, pero tenemos app móvil para consultas en campo.' },
   ];
 
@@ -2145,7 +2144,7 @@ const FAQSection = () => {
               Preguntas que siempre nos hacen.
             </h2>
             <p style={{ color: 'var(--text-dim)', fontSize: 15, lineHeight: 1.65, marginBottom: 32 }}>
-              Si tenés alguna pregunta que no está acá, nuestro equipo responde en minutos.
+              Si tienes alguna pregunta que no está aquí, nuestro equipo responde en minutos.
             </p>
             <a href="https://wa.me/573209921580?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20OCTTO.%20%C2%BFPueden%20ayudarme%3F%20%F0%9F%91%8B" target="_blank" className="btn btn-ghost" style={{ padding: '13px 22px', fontSize: 14, display: 'inline-flex', alignItems: 'center', gap: 8 }}>
               <Icon name="chatbot" size={16} />
@@ -2843,11 +2842,11 @@ const FidelizacionPage = () => {
           <div style={{ textAlign: 'center', marginBottom: 48 }}>
             <span style={fi.eyebrow}>Automatización</span>
             <h2 style={{ ...fi.h2, textAlign: 'center' }}>El sistema trabaja solo.<br />Las 24 horas. Los 7 días.</h2>
-            <p style={{ ...fi.sub, textAlign: 'center', maxWidth: 500, margin: '0 auto' }}>Cuatro triggers que se ejecutan solos. Activá los que necesitás y olvidate.</p>
+            <p style={{ ...fi.sub, textAlign: 'center', maxWidth: 500, margin: '0 auto' }}>Cuatro triggers que se ejecutan solos. Activa los que necesitas y olvídate.</p>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(260px,1fr))', gap: 16 }}>
             <AutoToggle emoji="🔄" title="Reactivación por inactividad"
-              desc="¿Tu cliente no ha vuelto en 14 días? El CRM de OCTTO lo detecta y el sistema envía automáticamente una oferta personalizada a su Wallet. Sin que vos hagas nada." defaultOn={true} />
+              desc="¿Tu cliente no ha vuelto en 14 días? El CRM de OCTTO lo detecta y el sistema envía automáticamente una oferta personalizada a su Wallet. Sin que hagas nada." defaultOn={true} />
             <AutoToggle emoji="🎯" title="Motivación por proximidad al premio"
               desc="Cuando el cliente tiene el 80% de sus sellos o puntos completos, recibe una notificación push. El momento exacto en que volver tiene más valor para él." defaultOn={true} />
             <AutoToggle emoji="🎁" title="Cupón de bienvenida automático"
@@ -3001,7 +3000,7 @@ const FidelizacionPage = () => {
       <section style={{ ...fi.section, ...fi.altBg, textAlign: 'center' }}>
         <div style={{ ...fi.wrap, maxWidth: 620 }}>
           <h2 style={{ ...fi.h2, textAlign: 'center', fontSize: 'clamp(24px,4vw,40px)', marginBottom: 12 }}>
-            Tu competencia ya está fidelizando.<br />¿Vos cuándo empezás?
+            Tu competencia ya está fidelizando.<br />¿Tú cuándo empiezas?
           </h2>
           <p style={{ ...fi.sub, textAlign: 'center', marginBottom: 36 }}>Te contactamos en menos de 2 horas.</p>
           <form onSubmit={e => e.preventDefault()} style={{ display: 'flex', flexDirection: 'column', gap: 12, textAlign: 'left' }}>

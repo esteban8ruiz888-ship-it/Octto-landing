@@ -157,6 +157,56 @@ section { position: relative; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { scrollbar-width: none; }
 
+/* ── Mobile responsive ─────────────────────── */
+@media (max-width: 768px) {
+  /* Contenedor */
+  .container { padding: 0 18px; }
+
+  /* Hero */
+  .hero-grid { grid-template-columns: 1fr !important; text-align: center; }
+  .hero-grid > div:first-child > div[style*="flex"] { justify-content: center; }
+  .hero-grid p { margin-left: auto !important; margin-right: auto !important; }
+  .hero-mascot { min-height: 260px !important; }
+
+  /* Tipografía */
+  .display { font-size: clamp(32px, 8vw, 52px) !important; }
+
+  /* Nav oculto en móvil (ya existe, reforzar) */
+  .nav-links { display: none !important; }
+
+  /* Dashboard hero */
+  .hero-dash-grid { grid-template-columns: 1fr !important; }
+
+  /* Contabilidad 360 */
+  .acc-flow { grid-template-columns: 1fr !important; }
+  .acc-engine { flex-direction: row !important; justify-content: center; }
+
+  /* Sección de módulos integrations */
+  .integrations-stats { grid-template-columns: 1fr !important; }
+
+  /* Pricing */
+  .pricing-grid { grid-template-columns: 1fr !important; }
+  .pricing-grid > div { transform: scale(1) !important; }
+
+  /* FAQ */
+  .faq-grid { grid-template-columns: 1fr !important; }
+
+  /* Industrias */
+  .industry-detail { grid-template-columns: 1fr !important; }
+
+  /* Botones hero */
+  .btn { width: 100%; justify-content: center; box-sizing: border-box; }
+
+  /* Sección de comparativa */
+  #comparativa .card > div { grid-template-columns: 1fr !important; }
+
+  /* Fidelización hero */
+  #fidelizacion > section:first-child > div > div { flex-direction: column !important; align-items: center; }
+
+  /* Geo map centrado */
+  #fidelizacion .geo-wrap { flex-direction: column !important; }
+}
+
 /* Animations */
 @keyframes float {
   0%, 100% { transform: translateY(0); }
