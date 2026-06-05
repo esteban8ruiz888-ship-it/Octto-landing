@@ -172,9 +172,9 @@ const Nav = () => {
 
           {solucionesOpen && (
             <div style={{
-              position: 'absolute', top: 'calc(100% + 14px)', left: '50%', transform: 'translateX(-50%)',
-              background: 'rgba(11,15,26,0.95)', border: '1px solid rgba(255,255,255,0.1)',
-              borderRadius: 16, padding: 8, minWidth: 260,
+              position: 'fixed', top: 72, left: '50%', transform: 'translateX(-50%)',
+              background: 'rgba(11,15,26,0.98)', border: '1px solid rgba(255,255,255,0.1)',
+              borderRadius: 16, padding: 8, minWidth: 260, zIndex: 999,
               backdropFilter: 'blur(20px)', boxShadow: '0 24px 60px rgba(0,0,0,0.5)',
               animation: 'fadeIn .15s ease'
             }}>
